@@ -1,0 +1,97 @@
+name: EVIE Commons Export Gate
+
+on:
+  push:
+    branches:
+      - "commons/export-v0.1"
+  pull_request:
+
+jobs:
+  verify-and-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Compile Python sources
+        run: python -m compileall -q app tests tools cli.py
+
+      - name: Validate JSON files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in Path(".").rglob("*.json"):
+              if any(part.startswith(".") for part in path.parts):
+                  continue
+              json.loads(path.read_text(encoding="utf-8"))
+              print(f"validated {path}")
+          PY
+
+      - name: Run tests
+        env:
+          EV_API_KEY: ci-placeholder
+          EV_LLM_BACKEND: ollama
+          EV_EMBED_BACKEND: hash
+          EV_DATA_DIR: ./data
+          EV_DB_PATH: ./data/embervault.db
+        run: pytest -q
+
+      - name: Enforce public-tree hygiene
+        run: |
+          python - <<'PY'
+          import re
+          import subprocess
+          from pathlib import Path
+
+          tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+
+          forbidden = [
+              re.compile(r"(^|/)\.env($|\.)"),
+              re.compile(r"\.(db|sqlite|sqlite3|db-wal|db-shm|npz|pem|key|p12|pfx|gguf|safetensors|bin)$", re.I),
+          ]
+
+          bad = []
+          for path in tracked:
+              if path == ".env.example":
+                  continue
+              if path.startswith("data/") and path != "data/.gitkeep":
+                  bad.append(path)
+                  continue
+              if any(pattern.search(path) for pattern in forbidden):
+                  bad.append(path)
+
+          if bad:
+              raise SystemExit("forbidden public files: " + ", ".join(sorted(set(bad))))
+
+          if not Path("LICENSE").read_text(encoding="utf-8").startswith("MIT License"):
+              raise SystemExit("MIT LICENSE missing")
+
+          if Path("GUIDE_HOW_TO_USE_AND_MAKE_MONEY.md").exists():
+              raise SystemExit("historical personalized monetization guide must not be in public export")
+
+          print("public-tree hygiene passed")
+          PY
+
+      - name: Build clean source archive
+        run: |
+          git archive --format=zip --output=evie-commons-v0.1.zip HEAD
+
+      - name: Upload clean source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: evie-commons-v0.1
+          path: evie-commons-v0.1.zip
+          if-no-files-found: error
