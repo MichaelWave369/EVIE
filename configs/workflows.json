@@ -1,0 +1,720 @@
+{
+  "youtube_flywheel": {
+    "description": "Trend \u2192 script \u2192 socials \u2192 newsletter \u2192 ebook draft (fast flywheel).",
+    "tags": [
+      "content",
+      "flywheel"
+    ],
+    "steps": [
+      {
+        "module": "trend_miner"
+      },
+      {
+        "module": "youtube_script"
+      },
+      {
+        "module": "social_posts"
+      },
+      {
+        "module": "newsletter_excerpt"
+      },
+      {
+        "module": "ebooks"
+      }
+    ]
+  },
+  "offer_to_storefront": {
+    "description": "Offer ladder \u2192 QA \u2192 conversion packager \u2192 storefront HTML.",
+    "tags": [
+      "offer",
+      "storefront"
+    ],
+    "steps": [
+      {
+        "module": "offer_ladder"
+      },
+      {
+        "module": "offer_qa_gate"
+      },
+      {
+        "module": "conversion_packager"
+      },
+      {
+        "module": "storefront_html_generator"
+      }
+    ]
+  },
+  "pseo_site_compiler": {
+    "description": "Programmatic SEO pack \u2192 site compiler \u2192 publisher prep (local-only).",
+    "tags": [
+      "seo",
+      "site"
+    ],
+    "steps": [
+      {
+        "module": "programmatic_seo_generator"
+      },
+      {
+        "module": "seo_site_compiler"
+      },
+      {
+        "module": "seo_site_publisher"
+      }
+    ]
+  },
+  "vault_to_lesson_pack": {
+    "description": "Build a coherent lesson pack from vault/topic context: podcast script, slides, infographic, study assets, with optional audio/video media.",
+    "tags": [
+      "lesson",
+      "media",
+      "notebooklm",
+      "workflow"
+    ],
+    "notes": "Optional steps are controlled by include_audio/include_video flags and degrade to partial success when media dependencies are unavailable.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "include_audio": {
+          "type": "boolean",
+          "description": "Run audio_generator after podcast script."
+        },
+        "include_video": {
+          "type": "boolean",
+          "description": "Run video_generator after presentation/infographic/audio."
+        },
+        "context": {
+          "type": "string",
+          "description": "Optional retrieved vault context."
+        },
+        "artifact_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Optional prior artifacts to include."
+        }
+      }
+    },
+    "example_constraints": {
+      "include_audio": false,
+      "include_video": false,
+      "style": "educational",
+      "mode": "flashcards"
+    },
+    "steps": [
+      {
+        "module": "podcast_script_generator"
+      },
+      {
+        "module": "presentation_generator"
+      },
+      {
+        "module": "infographic_generator"
+      },
+      {
+        "module": "study_module"
+      },
+      {
+        "module": "audio_generator",
+        "optional": true,
+        "when_constraint": "include_audio"
+      },
+      {
+        "module": "video_generator",
+        "optional": true,
+        "when_constraint": "include_video"
+      }
+    ]
+  },
+  "vault_to_money_pack": {
+    "description": "Lesson pack plus monetization outputs (hooks, packaging, sales copy, and distribution assets).",
+    "tags": [
+      "money",
+      "product",
+      "distribution",
+      "workflow"
+    ],
+    "notes": "Extends vault_to_lesson_pack with revenue-focused post-processing modules.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "include_audio": {
+          "type": "boolean"
+        },
+        "include_video": {
+          "type": "boolean"
+        },
+        "context": {
+          "type": "string"
+        },
+        "artifact_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "generate_images": {
+          "type": "boolean"
+        },
+        "image_style": {
+          "type": "string"
+        },
+        "num_images": {
+          "type": "integer"
+        },
+        "generate_thumbnails": {
+          "type": "boolean"
+        },
+        "generate_product_covers": {
+          "type": "boolean"
+        },
+        "generate_social_visuals": {
+          "type": "boolean"
+        }
+      }
+    },
+    "example_constraints": {
+      "include_audio": false,
+      "include_video": false,
+      "style": "educational",
+      "generate_images": false,
+      "image_style": "cinematic",
+      "num_images": 3,
+      "generate_thumbnails": false,
+      "generate_product_covers": false,
+      "generate_social_visuals": false
+    },
+    "steps": [
+      {
+        "module": "podcast_script_generator"
+      },
+      {
+        "module": "presentation_generator"
+      },
+      {
+        "module": "infographic_generator"
+      },
+      {
+        "module": "study_module"
+      },
+      {
+        "module": "hooks_generator"
+      },
+      {
+        "module": "product_packager"
+      },
+      {
+        "module": "sales_copy_generator"
+      },
+      {
+        "module": "distribution_generator"
+      },
+      {
+        "module": "image_generator_v2",
+        "optional": true,
+        "when_constraint": "generate_images"
+      },
+      {
+        "module": "thumbnail_generator",
+        "optional": true,
+        "when_constraint": "generate_thumbnails"
+      },
+      {
+        "module": "product_cover_generator",
+        "optional": true,
+        "when_constraint": "generate_product_covers"
+      },
+      {
+        "module": "social_visual_generator",
+        "optional": true,
+        "when_constraint": "generate_social_visuals"
+      },
+      {
+        "module": "audio_generator",
+        "optional": true,
+        "when_constraint": "include_audio"
+      },
+      {
+        "module": "video_generator",
+        "optional": true,
+        "when_constraint": "include_video"
+      }
+    ]
+  },
+  "vault_to_money_publish": {
+    "description": "Run money-pack generation, create newsletter/social launch packs, export publishing bundle, then optionally attempt Gumroad and YouTube publishing.",
+    "tags": [
+      "money",
+      "publish",
+      "distribution",
+      "workflow"
+    ],
+    "notes": "Publishing is controlled by auto_publish and dry_run flags. No publish attempt when auto_publish=false.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "include_audio": {
+          "type": "boolean"
+        },
+        "include_video": {
+          "type": "boolean"
+        },
+        "auto_publish": {
+          "type": "boolean"
+        },
+        "dry_run": {
+          "type": "boolean"
+        },
+        "publish_to_gumroad": {
+          "type": "boolean"
+        },
+        "publish_to_youtube": {
+          "type": "boolean"
+        },
+        "export_social_pack": {
+          "type": "boolean"
+        },
+        "export_newsletter_pack": {
+          "type": "boolean"
+        },
+        "context": {
+          "type": "string"
+        },
+        "export_payhip_pack": {
+          "type": "boolean"
+        },
+        "generate_images": {
+          "type": "boolean"
+        },
+        "image_style": {
+          "type": "string"
+        },
+        "num_images": {
+          "type": "integer"
+        },
+        "generate_thumbnails": {
+          "type": "boolean"
+        },
+        "generate_product_covers": {
+          "type": "boolean"
+        },
+        "generate_social_visuals": {
+          "type": "boolean"
+        },
+        "include_thread_bomber": {
+          "type": "boolean"
+        },
+        "include_short_form_pack": {
+          "type": "boolean"
+        }
+      }
+    },
+    "example_constraints": {
+      "include_audio": true,
+      "include_video": true,
+      "auto_publish": false,
+      "dry_run": true,
+      "publish_to_gumroad": true,
+      "publish_to_youtube": true,
+      "export_social_pack": true,
+      "export_newsletter_pack": true,
+      "export_payhip_pack": true,
+      "generate_images": false,
+      "image_style": "cinematic",
+      "num_images": 3,
+      "generate_thumbnails": false,
+      "generate_product_covers": false,
+      "generate_social_visuals": false,
+      "include_thread_bomber": false,
+      "include_short_form_pack": false
+    },
+    "steps": [
+      {
+        "workflow": "vault_to_money_pack"
+      },
+      {
+        "module": "newsletter_packager"
+      },
+      {
+        "module": "social_launch_packager"
+      },
+      {
+        "module": "thread_bomber",
+        "optional": true,
+        "when_constraint": "include_thread_bomber"
+      },
+      {
+        "module": "short_form_pack",
+        "optional": true,
+        "when_constraint": "include_short_form_pack"
+      },
+      {
+        "module": "payhip_packager"
+      },
+      {
+        "module": "image_generator_v2",
+        "optional": true,
+        "when_constraint": "generate_images"
+      },
+      {
+        "module": "thumbnail_generator",
+        "optional": true,
+        "when_constraint": "generate_thumbnails"
+      },
+      {
+        "module": "product_cover_generator",
+        "optional": true,
+        "when_constraint": "generate_product_covers"
+      },
+      {
+        "module": "social_visual_generator",
+        "optional": true,
+        "when_constraint": "generate_social_visuals"
+      },
+      {
+        "module": "content_exporter"
+      },
+      {
+        "module": "publish_controller"
+      },
+      {
+        "module": "gumroad_publisher",
+        "optional": true,
+        "when_constraint": "publish_to_gumroad"
+      },
+      {
+        "module": "youtube_publisher",
+        "optional": true,
+        "when_constraint": "publish_to_youtube"
+      }
+    ]
+  },
+  "vault_to_membership_pack": {
+    "description": "Build a weekly membership/newsletter publishing bundle with premium bonus assets and launch content.",
+    "tags": [
+      "membership",
+      "newsletter",
+      "recurring-income",
+      "workflow"
+    ],
+    "notes": "Export-first recurring cadence workflow. Optional media and channel support packs are controlled via constraints.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "include_audio": {
+          "type": "boolean"
+        },
+        "include_video": {
+          "type": "boolean"
+        },
+        "export_newsletter_pack": {
+          "type": "boolean"
+        },
+        "export_social_pack": {
+          "type": "boolean"
+        },
+        "export_gumroad_bonus": {
+          "type": "boolean"
+        },
+        "export_youtube_supporting_content": {
+          "type": "boolean"
+        },
+        "context": {
+          "type": "string"
+        },
+        "artifact_paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "export_payhip_pack": {
+          "type": "boolean"
+        },
+        "generate_images": {
+          "type": "boolean"
+        },
+        "image_style": {
+          "type": "string"
+        },
+        "num_images": {
+          "type": "integer"
+        },
+        "generate_thumbnails": {
+          "type": "boolean"
+        },
+        "generate_product_covers": {
+          "type": "boolean"
+        },
+        "generate_social_visuals": {
+          "type": "boolean"
+        }
+      }
+    },
+    "example_constraints": {
+      "include_audio": false,
+      "include_video": false,
+      "export_newsletter_pack": true,
+      "export_social_pack": true,
+      "export_gumroad_bonus": true,
+      "export_youtube_supporting_content": true,
+      "export_payhip_pack": true,
+      "generate_images": false,
+      "image_style": "cinematic",
+      "num_images": 3,
+      "generate_thumbnails": false,
+      "generate_product_covers": false,
+      "generate_social_visuals": false
+    },
+    "steps": [
+      {
+        "module": "podcast_script_generator"
+      },
+      {
+        "module": "presentation_generator"
+      },
+      {
+        "module": "infographic_generator"
+      },
+      {
+        "module": "study_module"
+      },
+      {
+        "module": "audio_generator",
+        "optional": true,
+        "when_constraint": "include_audio"
+      },
+      {
+        "module": "video_generator",
+        "optional": true,
+        "when_constraint": "include_video"
+      },
+      {
+        "module": "newsletter_packager"
+      },
+      {
+        "module": "social_launch_packager"
+      },
+      {
+        "module": "product_packager"
+      },
+      {
+        "module": "sales_copy_generator"
+      },
+      {
+        "module": "payhip_packager"
+      },
+      {
+        "module": "image_generator_v2",
+        "optional": true,
+        "when_constraint": "generate_images"
+      },
+      {
+        "module": "thumbnail_generator",
+        "optional": true,
+        "when_constraint": "generate_thumbnails"
+      },
+      {
+        "module": "product_cover_generator",
+        "optional": true,
+        "when_constraint": "generate_product_covers"
+      },
+      {
+        "module": "social_visual_generator",
+        "optional": true,
+        "when_constraint": "generate_social_visuals"
+      },
+      {
+        "module": "content_exporter"
+      }
+    ]
+  },
+  "helion_signal_to_offer": {
+    "description": "Lightweight strategic chain: trend signals -> prediction tracking -> idea mining -> sales/email drafts.",
+    "tags": [
+      "strategy",
+      "conversion",
+      "workflow"
+    ],
+    "notes": "Non-breaking optional chain for Helion Batch 1 modules.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "create_predictions": {
+          "type": "boolean"
+        },
+        "emails": {
+          "type": "integer"
+        }
+      }
+    },
+    "example_constraints": {
+      "keywords": [
+        "ai education",
+        "creator economy"
+      ],
+      "create_predictions": true,
+      "emails": 5
+    },
+    "steps": [
+      {
+        "module": "trend_surfer"
+      },
+      {
+        "module": "prediction_tracker",
+        "constraints": {
+          "action": "add"
+        }
+      },
+      {
+        "module": "idea_miner"
+      },
+      {
+        "module": "sales_page_builder"
+      },
+      {
+        "module": "email_sequence_builder"
+      },
+      {
+        "module": "cross_pollinator"
+      }
+    ]
+  },
+  "trend_to_money_publish": {
+    "description": "Trend-aligned opportunity to product + launch-ready outputs with optional publish automation.",
+    "tags": [
+      "trend",
+      "money",
+      "publish",
+      "workflow"
+    ],
+    "notes": "Safety-first: publish is optional and controlled via run_publish_workflow/auto_publish/dry_run flags.",
+    "input_schema": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "include_cross_pollination": {
+          "type": "boolean"
+        },
+        "create_predictions": {
+          "type": "boolean"
+        },
+        "include_audio": {
+          "type": "boolean"
+        },
+        "include_video": {
+          "type": "boolean"
+        },
+        "auto_publish": {
+          "type": "boolean"
+        },
+        "dry_run": {
+          "type": "boolean"
+        },
+        "run_publish_workflow": {
+          "type": "boolean"
+        },
+        "generate_images": {
+          "type": "boolean"
+        },
+        "generate_thumbnails": {
+          "type": "boolean"
+        },
+        "generate_product_covers": {
+          "type": "boolean"
+        },
+        "generate_social_visuals": {
+          "type": "boolean"
+        },
+        "include_thread_bomber": {
+          "type": "boolean"
+        },
+        "include_short_form_pack": {
+          "type": "boolean"
+        }
+      }
+    },
+    "example_constraints": {
+      "keywords": [
+        "ai creator tools",
+        "micro products"
+      ],
+      "create_predictions": true,
+      "include_cross_pollination": true,
+      "include_audio": false,
+      "include_video": false,
+      "auto_publish": false,
+      "dry_run": true,
+      "run_publish_workflow": false,
+      "generate_images": false,
+      "generate_thumbnails": false,
+      "generate_product_covers": false,
+      "generate_social_visuals": false,
+      "include_thread_bomber": false,
+      "include_short_form_pack": false
+    },
+    "steps": [
+      {
+        "module": "trend_surfer"
+      },
+      {
+        "module": "prediction_tracker",
+        "optional": true,
+        "when_constraint": "create_predictions",
+        "constraints": {
+          "action": "add",
+          "source": "trend_to_money_publish"
+        }
+      },
+      {
+        "module": "idea_miner"
+      },
+      {
+        "module": "cross_pollinator",
+        "optional": true,
+        "when_constraint": "include_cross_pollination"
+      },
+      {
+        "workflow": "vault_to_money_pack"
+      },
+      {
+        "module": "sales_page_builder"
+      },
+      {
+        "module": "email_sequence_builder"
+      },
+      {
+        "module": "thread_bomber",
+        "optional": true,
+        "when_constraint": "include_thread_bomber"
+      },
+      {
+        "module": "short_form_pack",
+        "optional": true,
+        "when_constraint": "include_short_form_pack"
+      },
+      {
+        "workflow": "vault_to_money_publish",
+        "optional": true,
+        "when_constraint": "run_publish_workflow"
+      }
+    ]
+  }
+}
