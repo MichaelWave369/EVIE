@@ -2,38 +2,50 @@
 
 ## Private development era
 
-The original EVIE repository was developed privately and contains historical runtime-derived files in its Git history.
+EVIE was originally developed in a private repository.
 
-That repository should remain private as the archaeological/source archive.
+That historical repository is preserved at:
 
-The source snapshot used to begin the Commons export came from:
+```text
+MichaelWave369/EVIE-private-archive
+```
+
+The source snapshot used to create the first clean Commons export was:
 
 ```text
 63b589ffff034e09d1cdaca1889fd8dc98e4fb69
 ```
 
-The private history is intentionally **not** part of the public Commons distribution.
+The private archive contains historical runtime-derived files and remains private for provenance and safety.
 
-## Phi Commons clean release
+## Phi Commons public era
 
-Public EVIE releases should be created from a clean source snapshot that excludes private Git history and runtime state.
+The public Commons repository is:
 
-The Commons distribution uses the MIT License for project-owned code and documentation unless otherwise noted.
+```text
+MichaelWave369/EVIE
+```
+
+It was created with a fresh Git history from a verified clean source export. The private repository's Git history was intentionally not imported.
+
+Project-owned EVIE code and documentation in the public repository are released under the MIT License unless otherwise noted.
 
 Third-party packages, external services, model weights, datasets, generated user data, and separately licensed assets remain under their respective terms.
 
-## Why the history is separated
+## Why the histories are separated
 
 Licensing history and data provenance are not the same thing.
 
-The private repository has tracked runtime artifacts such as SQLite sidecar/index files. Even where a particular file appears harmless, the project does not treat old runtime history as suitable for public release without a full forensic review.
+The historical repository contained tracked runtime-derived files such as SQLite sidecar/index artifacts. Even where an individual file appears harmless, old runtime history is not treated as suitable for public release without full forensic review.
 
-The safe default is therefore:
+The permanent boundary is therefore:
 
 ```text
-private historical repository
+private historical archive
         ↓
-clean source snapshot
+verified clean export
         ↓
-public Commons repository
+public Phi Commons repository
 ```
+
+The public repository should never absorb the private archive's Git history.

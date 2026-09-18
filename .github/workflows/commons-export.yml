@@ -1,10 +1,14 @@
-name: EVIE Commons Export Gate
+name: EVIE Public Release Gate
 
 on:
   push:
     branches:
-      - "commons/export-v0.1"
+      - main
+      - "seed/**"
+      - "commons/**"
   pull_request:
+    branches:
+      - main
 
 jobs:
   verify-and-export:
@@ -60,7 +64,10 @@ jobs:
 
           forbidden = [
               re.compile(r"(^|/)\.env($|\.)"),
-              re.compile(r"\.(db|sqlite|sqlite3|db-wal|db-shm|npz|pem|key|p12|pfx|gguf|safetensors|bin)$", re.I),
+              re.compile(
+                  r"\.(db|sqlite|sqlite3|db-wal|db-shm|npz|pem|key|p12|pfx|gguf|safetensors|bin)$",
+                  re.I,
+              ),
           ]
 
           bad = []
@@ -74,13 +81,17 @@ jobs:
                   bad.append(path)
 
           if bad:
-              raise SystemExit("forbidden public files: " + ", ".join(sorted(set(bad))))
+              raise SystemExit(
+                  "forbidden public files: " + ", ".join(sorted(set(bad)))
+              )
 
           if not Path("LICENSE").read_text(encoding="utf-8").startswith("MIT License"):
               raise SystemExit("MIT LICENSE missing")
 
           if Path("GUIDE_HOW_TO_USE_AND_MAKE_MONEY.md").exists():
-              raise SystemExit("historical personalized monetization guide must not be in public export")
+              raise SystemExit(
+                  "historical personalized monetization guide must not be public"
+              )
 
           print("public-tree hygiene passed")
           PY

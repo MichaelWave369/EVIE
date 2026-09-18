@@ -1,41 +1,58 @@
-# EVIE Public Release Plan
+# EVIE Public Release
 
-## Important
+EVIE is now published as a clean **Phi Commons** repository at:
 
-**Do not make the historical `MichaelWave369/EVIE` repository public in-place.**
+```text
+MichaelWave369/EVIE
+```
 
-That private repository contains runtime-derived files in Git history. The public Commons distribution should start from a clean source snapshot with no inherited Git history.
+The public repository was intentionally created with a fresh Git history.
 
-## Recommended publication path
+## Private historical archive
 
-1. Keep the historical repository private.
-2. Optionally rename it to something like `EVIE-private-archive`.
-3. Use the CI-produced `evie-commons-v0.1.zip` artifact from the `commons/export-v0.1` branch.
-4. Create a new public repository, ideally `EVIE` or `EVIE-Commons`.
-5. Initialize a fresh Git history from the extracted clean source.
-6. Confirm the new repository is MIT-licensed and passes its public-release workflow.
-7. Only then mark the new repository public.
+The original development repository remains private at:
 
-## Clean-tree exclusions
+```text
+MichaelWave369/EVIE-private-archive
+```
 
-The Commons export excludes:
+Its historical source snapshot used for the Commons export was:
 
-- historical Git metadata;
-- `data/` runtime artifacts and indexes;
-- SQLite sidecars;
-- private/generated Vault material;
-- the personalized historical monetization guide.
+```text
+63b589ffff034e09d1cdaca1889fd8dc98e4fb69
+```
 
-The original private archive retains those materials for provenance.
+The private archive contains historical runtime-derived files and is **not** the repository that should be made public.
 
-## Publication gate
+## Clean-source boundary
 
-The clean release must pass:
+The public EVIE tree was seeded from the verified clean Commons export and excludes:
 
-- Python compilation;
+- historical private Git metadata;
+- Vault/runtime database files and SQLite sidecars;
+- generated embedding/index files;
+- generated/private artifacts;
+- the personalized historical monetization guide;
+- live credentials and local environment files.
+
+The public history begins only with clean Commons material.
+
+## Public release gate
+
+Every pull request and supported release branch should pass:
+
 - dependency installation;
-- tests;
+- Python compilation;
 - JSON/config validation;
+- the EVIE test suite;
 - tracked-file hygiene;
-- MIT license presence;
-- clean source archive generation.
+- MIT license verification;
+- clean source-archive generation.
+
+## Provenance rule
+
+The private archive remains the source of historical provenance.
+
+The public repository is the supported Commons distribution.
+
+No future release should merge the private archive's Git history into the public repository.
