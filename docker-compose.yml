@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "18791:18791"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - EV_API_KEY=${EV_API_KEY:-change-me-long-random}
+      - EV_DATA_DIR=/app/data
+      - EV_DB_PATH=/app/data/embervault.db
+      - EV_VAULT_FILES_DIR=/app/data/vault_files
+      - EV_INDEX_DIR=/app/data/indexes
+      - EV_GUMROAD_DIR=/app/data/gumroad
+  dashboard:
+    build: .
+    command: ["streamlit", "run", "dashboard/app.py", "--server.address=0.0.0.0", "--server.port=8501"]
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    environment:
+      - EV_API_BASE=http://api:18791
+      - EV_API_KEY=${EV_API_KEY:-change-me-long-random}
+    volumes:
+      - ./data:/app/data

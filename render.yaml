@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: evie-api
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: EV_API_KEY
+        sync: false
+      - key: EV_DATA_DIR
+        value: ./data
+      - key: EV_DB_PATH
+        value: ./data/embervault.db
+      - key: EV_VAULT_FILES_DIR
+        value: ./data/vault_files
+      - key: EV_INDEX_DIR
+        value: ./data/indexes
+      - key: EV_GUMROAD_DIR
+        value: ./data/gumroad
+      - key: EV_LLM_BACKEND
+        value: openai
+      - key: EV_EMBED_BACKEND
+        value: hash
+
+  - type: web
+    name: evie-dashboard
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerCommand: streamlit run dashboard/app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
+    envVars:
+      - key: EV_API_BASE
+        value: https://evie-api.onrender.com
+      - key: EV_API_KEY
+        sync: false

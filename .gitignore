@@ -1,0 +1,51 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# EVIE runtime state
+data/*
+!data/.gitkeep
+logs/
+backups/
+workspace/
+
+# Databases / indexes
+*.db
+*.sqlite
+*.sqlite3
+*.db-wal
+*.db-shm
+*.npz
+
+# Model and generated media artifacts
+*.gguf
+*.safetensors
+*.bin
+*.ckpt
+*.pt
+*.pth
+*.mp3
+*.mp4
+*.wav
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
