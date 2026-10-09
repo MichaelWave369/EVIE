@@ -1,0 +1,25 @@
+{
+  "name": "evie-public-porch",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync:shelf": "node scripts/sync-shelf.mjs",
+    "predev": "npm run sync:shelf",
+    "dev": "vite --host 127.0.0.1",
+    "prebuild": "npm run sync:shelf",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "pretest": "npm run sync:shelf",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "6.0.1",
+    "vite": "8.2.0",
+    "vitest": "4.1.10"
+  }
+}
