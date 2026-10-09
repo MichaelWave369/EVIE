@@ -1,9 +1,40 @@
-import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
-import {resolve,dirname} from 'node:path';
-const source=resolve(import.meta.dirname,'../../app/shelf/architecture_cards.json');
-const target=resolve(import.meta.dirname,'../src/generated/architecture.json');
-const catalog=JSON.parse(readFileSync(source,'utf8'));
-if(catalog.schemaVersion!=='evie.shelf.architecture-catalog/1'||!Array.isArray(catalog.cards)||!Array.isArray(catalog.rituals))throw Error('Canonical EVIE Architecture Shelf missing or changed.');
-const ids=new Set();for(const c of catalog.cards){if(!c.card_id||!c.slug||ids.has(c.card_id)||!c.execution?.status)throw Error('Invalid or duplicate Shelf record.');ids.add(c.card_id);}
-mkdirSync(dirname(target),{recursive:true});writeFileSync(target,JSON.stringify(catalog,null,2)+'\n');
-console.log('Synced',catalog.cards.length,'historical cards and',catalog.rituals.length,'rituals from EVIE canonical catalog.');
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+
+const read = (path) => JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8'));
+const save = (filename, data) => {
+  const output = resolve(import.meta.dirname, '../src/generated/', filename);
+  mkdirSync(dirname(output), { recursive: true });
+  writeFileSync(output, JSON.stringify(data, null, 2) + '\n');
+};
+const architecture = read('../../app/shelf/architecture_cards.json');
+if (architecture.schemaVersion !== 'evie.shelf.architecture-catalog/1' || architecture.cards.length !== 11) {
+  throw Error('EVIE Architecture Pack catalog changed. Review before publishing.');
+}
+save('architecture.json', architecture);
+
+const shelf = read('../../app/shelf/public_nested_catalog.json');
+if (shelf.schemaVersion !== 'evie.shelf.public-nested/1' || shelf.source.totalCards !== 159 ||
+    shelf.cards.length !== 159 || shelf.packs.length !== 9) {
+  throw Error('Nested Shelf source missing or incomplete (expected 159 cards and 9 packs).');
+}
+const ids = new Set(), packIds = new Set();
+for (const p of shelf.packs) {
+  if (!p.id || packIds.has(p.id)) throw Error('Missing or duplicate pack ID: ' + p.id);
+  packIds.add(p.id);
+}
+for (const c of shelf.cards) {
+  if (!c.id || !c.slug || !c.name || ids.has(c.id) || !packIds.has(c.packId)) throw Error('Invalid nested shelf card: ' + c.id);
+  if (!['catalog_only', 'bounded_adapter'].includes(c.status)) throw Error('Unreviewed execution status: ' + c.id);
+  ids.add(c.id);
+}
+for (const p of shelf.packs) for (const id of p.includedIds) if (!ids.has(id)) {
+  throw Error('Pack ' + p.id + ' references missing card ' + id);
+}
+const historicFloor = shelf.cards.find(c => c.id === 'shard_floor_plan_generator');
+const checkedFloor = architecture.cards.find(c => c.card_id === 'shard_floor_plan_generator');
+if (!historicFloor || !checkedFloor || historicFloor.status !== checkedFloor.execution.status) {
+  throw Error('CAD producer status diverged from the audited Architecture Pack');
+}
+save('nested-shelf.json', shelf);
+console.log('Synced:', shelf.cards.length, 'cards,', shelf.packs.length, 'packs; architecture audit:', architecture.cards.length, 'cards.');
