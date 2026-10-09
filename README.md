@@ -443,3 +443,8 @@ Eleven original Architecture Pack card definitions and two ritual sequences are 
 The static, public React/Vite interface lives in [`web/`](web/README.md). It features a searchable Sovereign Shelf Architecture catalog, recovered ritual sequences, and a browser-only sample OpenBlueprint handoff. No API key, vault content, or Python module execution is exposed by GitHub Pages.
 
 **Expected GitHub Pages address:** https://michaelwave369.github.io/EVIE/ (available after merging the frontend and selecting **GitHub Actions** in Settings → Pages). The static porch is **not** the local authenticated EVIE API or a hosted Streamlit dashboard.
+
+
+## Full Nested Sovereign Shelf
+
+The EVIE React public porch now explores a reviewed, sanitized historical catalog of all 159 unique cards nested under 9 packs, with 7 card classes, linked rituals, compatible-card trails and a design-only deck composer. The original 11-card Architecture Pack remains available. The deck does not execute, import, authorize or operate EVIE's private API. See [Rung 4 public Shelf documentation](docs/PUBLIC_NESTED_SHELF_R4.md).

@@ -26,3 +26,10 @@ The `sync:shelf` script synchronizes the canonical catalog before dev, test, and
 
 ## Limitations and follow-up
 GitHub Pages is static: it cannot host EVIE's Python modules or vault API. Authentication, agent authority, and the live backend dashboard stay local. Use backend module `openblueprint_floor_plan` for actual local generated JSON; the public website's browser-only demo never pretends to execute it. Historical DXF/SVG outputs are NOT implemented by that module.
+
+
+## Full Nested Sovereign Shelf (R4)
+
+**Full Sovereign Shelf** in the React sidebar explores the privacy-minimized 159-card public archive across all 9 historical packs and 7 classes. Each card opens its original input/output contracts, nested ritual/mandate sequences and compatibility links. Add cards to a design-only deck, reorder, review dependency hints and export a JSON draft. **The public deck has no executor or API access.** The 11-card Architecture Pack and the original CAD fixture workshop remain independently available.
+
+Reviewed source: `app/shelf/public_nested_catalog.json`. Generated UI snapshot synchronized by `web/scripts/sync-shelf.mjs`. Original full source archive remains in the owner's Library and is not published. See `docs/PUBLIC_NESTED_SHELF_R4.md`.
