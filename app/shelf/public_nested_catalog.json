@@ -1,0 +1,5802 @@
+{
+  "schemaVersion": "evie.shelf.public-nested/1",
+  "source": {
+    "registry": "EVIE_SOVEREIGN_SHELF_CARD_REGISTRY_v1_1_FIXED.json",
+    "sha256": "efe80d7172edce3db026b5160c2fa9bd41468c16b083b3d747ce96de1b485f35",
+    "version": "1.1.0",
+    "totalCards": 159
+  },
+  "cards": [
+    {
+      "id": "node_vault",
+      "slug": "vault",
+      "name": "The Vault",
+      "cardClass": "node",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Living memory of the sovereign system.",
+      "description": "Stores all run history, artifacts, context, and knowledge. The Vault powers every RAG-aware module and gives EVIE long-term memory.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "node_ollama",
+      "slug": "ollama_core",
+      "name": "Ollama Core",
+      "cardClass": "node",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "The sovereign brain. Local. Private. Yours.",
+      "description": "Local LLM runtime powering all AI generation. No cloud dependency. Your intelligence, on your machine.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "node_comfyui",
+      "slug": "comfyui_engine",
+      "name": "ComfyUI Engine",
+      "cardClass": "node",
+      "category": "visual_media",
+      "packId": "starter_deck",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "The image forge. GPU-powered creation.",
+      "description": "Local image generation engine. Powers thumbnails, product covers, social visuals, and healing imagery via RTX GPU.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "node_visual_fx_bridge",
+      "slug": "visual_fx_bridge",
+      "name": "Visual FX Bridge",
+      "cardClass": "node",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Connects EVIE to your desktop FX toolkit.",
+      "description": "Local HTTP bridge that orchestrates Render FX, Vision FX, and Vector FX as job-based visual processors.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "node_evie_api",
+      "slug": "evie_api",
+      "name": "EVIE API",
+      "cardClass": "node",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "sovereign",
+      "pillar": "Reinforce",
+      "tagline": "The sovereign backbone. All modules flow through here.",
+      "description": "FastAPI backend that routes all module execution, workflow orchestration, and artifact storage.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_idea_miner",
+      "slug": "idea_miner",
+      "name": "Idea Miner",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "LIGHT",
+      "rarity": "common",
+      "pillar": "Replace",
+      "tagline": "Dig deep. Find gold.",
+      "description": "Generates monetizable product ideas, hooks, and opportunity angles from a topic or vault context.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "ideas",
+        "hooks",
+        "evie_run_config"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context"
+      ],
+      "produces": [
+        "ideas",
+        "hooks"
+      ],
+      "compatibleWith": [
+        "trend_surfer",
+        "cross_pollinator",
+        "sales_page_builder"
+      ],
+      "recommendedNext": [
+        "trend_surfer",
+        "sales_page_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_trend_surfer",
+      "slug": "trend_surfer",
+      "name": "Trend Surfer",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Ride the signal. Beat the noise.",
+      "description": "Identifies trending opportunities, scores vault alignment, ranks by urgency, and seeds predictions for tracking.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "trend_analysis",
+        "opportunity_score",
+        "prediction_seeds"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context",
+        "ideas"
+      ],
+      "produces": [
+        "trend_analysis",
+        "opportunity_score"
+      ],
+      "compatibleWith": [
+        "idea_miner",
+        "prediction_tracker",
+        "sales_page_builder"
+      ],
+      "recommendedNext": [
+        "prediction_tracker",
+        "idea_miner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_prediction_tracker",
+      "slug": "prediction_tracker",
+      "name": "Prediction Tracker",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Track what you bet. Learn from every run.",
+      "description": "SQLite-backed prediction and calibration system. Log trend bets, content hypotheses, and revenue forecasts — then resolve them over time.",
+      "inputs": [
+        "prediction_data"
+      ],
+      "outputs": [
+        "prediction_log",
+        "accuracy_stats"
+      ],
+      "accepts": [
+        "prediction_seeds",
+        "trend_analysis",
+        "topic"
+      ],
+      "produces": [
+        "prediction_log",
+        "accuracy_stats"
+      ],
+      "compatibleWith": [
+        "trend_surfer",
+        "evie_analytics_engine"
+      ],
+      "recommendedNext": [
+        "trend_surfer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_cross_pollinator",
+      "slug": "cross_pollinator",
+      "name": "Cross Pollinator",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Find the uncopyable combo only you can make.",
+      "description": "Discovers unexpected intersections in your vault — surfaces 4 two-way and one triple intersection. Generates product ideas no competitor can replicate.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "intersections",
+        "phi_scored_combos",
+        "unique_product_angles"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context",
+        "ideas"
+      ],
+      "produces": [
+        "intersections",
+        "unique_product_angles"
+      ],
+      "compatibleWith": [
+        "idea_miner",
+        "trend_surfer",
+        "sales_page_builder"
+      ],
+      "recommendedNext": [
+        "sales_page_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sales_page_builder",
+      "slug": "sales_page_builder",
+      "name": "Sales Page Builder",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Convert strangers into buyers.",
+      "description": "Generates full long-form sales pages — headline, story, objections, guarantee, CTA. Outputs Markdown AND Gumroad-ready HTML in one run.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "sales_page_md",
+        "sales_page_html"
+      ],
+      "accepts": [
+        "topic",
+        "ideas",
+        "product_info",
+        "unique_product_angles"
+      ],
+      "produces": [
+        "sales_page_md",
+        "sales_page_html"
+      ],
+      "compatibleWith": [
+        "email_sequence_builder",
+        "product_packager",
+        "hooks_generator"
+      ],
+      "recommendedNext": [
+        "email_sequence_builder",
+        "hooks_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sales_copy_generator",
+      "slug": "sales_copy_generator",
+      "name": "Sales Copy Generator",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Sharp words that move people.",
+      "description": "Generates headline, full description, bullet points, and CTA for product listings and ad copy.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "headline",
+        "description",
+        "bullet_points",
+        "cta"
+      ],
+      "accepts": [
+        "topic",
+        "product_info",
+        "ideas"
+      ],
+      "produces": [
+        "headline",
+        "description",
+        "bullet_points"
+      ],
+      "compatibleWith": [
+        "sales_page_builder",
+        "product_packager"
+      ],
+      "recommendedNext": [
+        "product_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_email_sequence_builder",
+      "slug": "email_sequence_builder",
+      "name": "Email Sequence Builder",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Nurture the audience. Own the relationship.",
+      "description": "Creates welcome, launch, nurture, reactivation, and mini-course email sequences. Subject lines, preview text, full body, CTAs — all included.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "email_sequence",
+        "beehiiv_export",
+        "convertkit_export"
+      ],
+      "accepts": [
+        "topic",
+        "sales_page_md",
+        "product_info"
+      ],
+      "produces": [
+        "email_sequence",
+        "beehiiv_export"
+      ],
+      "compatibleWith": [
+        "sales_page_builder",
+        "newsletter_packager",
+        "distribution_generator"
+      ],
+      "recommendedNext": [
+        "distribution_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hooks_generator",
+      "slug": "hooks_generator",
+      "name": "Hooks Generator",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "LIGHT",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "Grab attention in 3 seconds or lose it forever.",
+      "description": "Generates 5–10 short attention-grabbing hooks for TikTok, Reels, Shorts, and X — categorized by type.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "hooks",
+        "hook_categories"
+      ],
+      "accepts": [
+        "topic",
+        "script",
+        "ideas"
+      ],
+      "produces": [
+        "hooks"
+      ],
+      "compatibleWith": [
+        "thread_bomber",
+        "short_form_pack",
+        "distribution_generator"
+      ],
+      "recommendedNext": [
+        "thread_bomber",
+        "short_form_pack"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_thread_bomber",
+      "slug": "thread_bomber",
+      "name": "Thread Bomber",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Own the conversation. Build authority in public.",
+      "description": "Generates full X / Twitter threads — launch posts, educational threads, narrative arcs, and CTA variants.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "thread_posts",
+        "launch_post",
+        "cta_variants"
+      ],
+      "accepts": [
+        "topic",
+        "hooks",
+        "sales_page_md",
+        "ideas"
+      ],
+      "produces": [
+        "thread_posts",
+        "launch_post"
+      ],
+      "compatibleWith": [
+        "short_form_pack",
+        "newsletter_packager",
+        "hooks_generator"
+      ],
+      "recommendedNext": [
+        "short_form_pack"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_short_form_pack",
+      "slug": "short_form_pack",
+      "name": "Short Form Pack",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "15 seconds. All platforms. Maximum reach.",
+      "description": "Generates TikTok captions, Instagram hooks, LinkedIn posts, YouTube Shorts scripts, and platform-native short content.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "tiktok_caption",
+        "instagram_caption",
+        "linkedin_post",
+        "shorts_script"
+      ],
+      "accepts": [
+        "topic",
+        "hooks",
+        "ideas"
+      ],
+      "produces": [
+        "tiktok_caption",
+        "instagram_caption",
+        "linkedin_post"
+      ],
+      "compatibleWith": [
+        "thread_bomber",
+        "hooks_generator",
+        "social_launch_packager"
+      ],
+      "recommendedNext": [
+        "social_launch_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_product_packager",
+      "slug": "product_packager",
+      "name": "Product Packager",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Package the offer. Price it right. Ship it.",
+      "description": "Structures your output into a sellable product — product name, description, bundle contents, and pricing suggestion.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "product_name",
+        "product_description",
+        "bundle_contents",
+        "price_suggestion"
+      ],
+      "accepts": [
+        "topic",
+        "artifact_paths",
+        "ideas"
+      ],
+      "produces": [
+        "product_name",
+        "product_description",
+        "bundle_contents"
+      ],
+      "compatibleWith": [
+        "sales_page_builder",
+        "gumroad_publisher",
+        "payhip_packager"
+      ],
+      "recommendedNext": [
+        "sales_page_builder",
+        "gumroad_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_distribution_generator",
+      "slug": "distribution_generator",
+      "name": "Distribution Generator",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Reach everywhere at once.",
+      "description": "Generates YouTube title, description, thumbnail text ideas, Twitter thread, and email promo in one run.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "youtube_title",
+        "youtube_description",
+        "twitter_thread",
+        "email_promo"
+      ],
+      "accepts": [
+        "topic",
+        "product_info",
+        "ideas"
+      ],
+      "produces": [
+        "youtube_title",
+        "youtube_description",
+        "email_promo"
+      ],
+      "compatibleWith": [
+        "email_sequence_builder",
+        "newsletter_packager",
+        "youtube_publisher"
+      ],
+      "recommendedNext": [
+        "youtube_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_newsletter_packager",
+      "slug": "newsletter_packager",
+      "name": "Newsletter Packager",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Your audience. Your list. Your recurring income.",
+      "description": "Generates newsletter issue draft, short promo email, CTA variants, subject line options — ready for Beehiiv or ConvertKit.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "newsletter_draft",
+        "promo_email",
+        "subject_lines",
+        "cta_variants"
+      ],
+      "accepts": [
+        "topic",
+        "artifact_paths",
+        "email_sequence"
+      ],
+      "produces": [
+        "newsletter_draft",
+        "promo_email"
+      ],
+      "compatibleWith": [
+        "email_sequence_builder",
+        "social_launch_packager"
+      ],
+      "recommendedNext": [
+        "social_launch_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_social_launch_packager",
+      "slug": "social_launch_packager",
+      "name": "Social Launch Packager",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "Launch day. Every platform. One run.",
+      "description": "Generates X launch post, thread, TikTok/Instagram/LinkedIn captions, CTA variants, and short-form snippets for a unified launch.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "x_post",
+        "x_thread",
+        "platform_captions"
+      ],
+      "accepts": [
+        "topic",
+        "product_info",
+        "hooks"
+      ],
+      "produces": [
+        "x_post",
+        "x_thread",
+        "platform_captions"
+      ],
+      "compatibleWith": [
+        "thread_bomber",
+        "short_form_pack",
+        "newsletter_packager"
+      ],
+      "recommendedNext": [
+        "newsletter_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_competitor_dissector",
+      "slug": "competitor_dissector",
+      "name": "Competitor Dissector",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Know the field. Find the gap.",
+      "description": "Analyzes competitor positioning, offer structure, messaging, and pricing. Surfaces differentiation opportunities.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "competitor_analysis",
+        "gap_analysis",
+        "differentiation_angles"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context"
+      ],
+      "produces": [
+        "competitor_analysis",
+        "differentiation_angles"
+      ],
+      "compatibleWith": [
+        "idea_miner",
+        "sales_page_builder",
+        "cross_pollinator"
+      ],
+      "recommendedNext": [
+        "cross_pollinator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_vault_auditor",
+      "slug": "vault_auditor",
+      "name": "Vault Auditor",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Know what you have. Use what matters.",
+      "description": "Analyzes vault content quality, identifies gaps, unused potential, and surfaces best assets for monetization.",
+      "inputs": [
+        "vault_context"
+      ],
+      "outputs": [
+        "vault_report",
+        "gap_list",
+        "high_value_assets"
+      ],
+      "accepts": [
+        "vault_context"
+      ],
+      "produces": [
+        "vault_report",
+        "gap_list"
+      ],
+      "compatibleWith": [
+        "idea_miner",
+        "cross_pollinator",
+        "evie_analytics_engine"
+      ],
+      "recommendedNext": [
+        "idea_miner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_content_exporter",
+      "slug": "content_exporter",
+      "name": "Content Exporter",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Everything packaged. Nothing scattered.",
+      "description": "Bundles all workflow outputs into an organized export folder — YouTube, Gumroad, newsletter, social, Payhip, and logs.",
+      "inputs": [
+        "artifact_paths"
+      ],
+      "outputs": [
+        "export_bundle",
+        "publish_summary"
+      ],
+      "accepts": [
+        "artifact_paths",
+        "product_info"
+      ],
+      "produces": [
+        "export_bundle"
+      ],
+      "compatibleWith": [
+        "gumroad_publisher",
+        "youtube_publisher",
+        "payhip_packager"
+      ],
+      "recommendedNext": [
+        "gumroad_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_gumroad_publisher",
+      "slug": "gumroad_publisher",
+      "name": "Gumroad Publisher",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Publish once. Sell forever.",
+      "description": "Creates Gumroad products, uploads artifact bundles, sets pricing. Supports dry-run and auto-publish gating.",
+      "inputs": [
+        "product_name",
+        "description",
+        "artifact_paths"
+      ],
+      "outputs": [
+        "product_url",
+        "publish_log"
+      ],
+      "accepts": [
+        "product_name",
+        "description",
+        "artifact_paths"
+      ],
+      "produces": [
+        "product_url",
+        "publish_log"
+      ],
+      "compatibleWith": [
+        "youtube_publisher",
+        "payhip_packager",
+        "content_exporter"
+      ],
+      "recommendedNext": [
+        "youtube_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_youtube_publisher",
+      "slug": "youtube_publisher",
+      "name": "YouTube Publisher",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Upload. Optimize. Grow.",
+      "description": "Uploads videos to YouTube with title, description, and tags. Resumable upload flow with dry-run support.",
+      "inputs": [
+        "video_path",
+        "title",
+        "description"
+      ],
+      "outputs": [
+        "video_url",
+        "publish_log"
+      ],
+      "accepts": [
+        "video_path",
+        "title",
+        "description"
+      ],
+      "produces": [
+        "video_url",
+        "publish_log"
+      ],
+      "compatibleWith": [
+        "gumroad_publisher",
+        "distribution_generator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_payhip_packager",
+      "slug": "payhip_packager",
+      "name": "Payhip Packager",
+      "cardClass": "shard",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Second storefront. Zero extra work.",
+      "description": "Generates Payhip-ready product listing with title, descriptions, pricing, tags, and upload checklist.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "payhip_pack",
+        "upload_checklist"
+      ],
+      "accepts": [
+        "topic",
+        "product_info",
+        "artifact_paths"
+      ],
+      "produces": [
+        "payhip_pack",
+        "upload_checklist"
+      ],
+      "compatibleWith": [
+        "gumroad_publisher",
+        "product_packager"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_image_generator_v2",
+      "slug": "image_generator_v2",
+      "name": "Image Generator v2",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "starter_deck",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Local-first image creation. GPU-powered.",
+      "description": "Generates AI images via ComfyUI (primary) or OpenAI fallback. Supports cinematic, product, social, minimal, and cosmic style presets.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "image_paths",
+        "prompts_used"
+      ],
+      "accepts": [
+        "topic",
+        "hooks",
+        "product_info"
+      ],
+      "produces": [
+        "image_paths",
+        "prompts_used"
+      ],
+      "compatibleWith": [
+        "thumbnail_generator",
+        "product_cover_generator",
+        "visual_ranker"
+      ],
+      "recommendedNext": [
+        "visual_ranker",
+        "thumbnail_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_thumbnail_generator",
+      "slug": "thumbnail_generator",
+      "name": "Thumbnail Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "The click is everything.",
+      "description": "Generates ranked YouTube thumbnail candidates. Vision FX scoring when available, heuristic fallback. Outputs best_thumbnail_path.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "thumbnail_paths",
+        "best_thumbnail_path",
+        "ranking_metadata"
+      ],
+      "accepts": [
+        "topic",
+        "hooks",
+        "title"
+      ],
+      "produces": [
+        "thumbnail_paths",
+        "best_thumbnail_path"
+      ],
+      "compatibleWith": [
+        "image_generator_v2",
+        "visual_ranker",
+        "product_cover_generator"
+      ],
+      "recommendedNext": [
+        "visual_ranker"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_product_cover_generator",
+      "slug": "product_cover_generator",
+      "name": "Product Cover Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Your product deserves a face.",
+      "description": "Generates Gumroad/Payhip-friendly product covers and hero images with style presets.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "cover_paths",
+        "hero_path"
+      ],
+      "accepts": [
+        "topic",
+        "product_name",
+        "product_info"
+      ],
+      "produces": [
+        "cover_paths",
+        "hero_path"
+      ],
+      "compatibleWith": [
+        "thumbnail_generator",
+        "gumroad_publisher"
+      ],
+      "recommendedNext": [
+        "gumroad_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_social_visual_generator",
+      "slug": "social_visual_generator",
+      "name": "Social Visual Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "Stop the scroll. Start the conversation.",
+      "description": "Generates promo visuals for X, Instagram, LinkedIn, and TikTok with platform-appropriate style presets.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "social_visual_paths",
+        "prompts_used"
+      ],
+      "accepts": [
+        "topic",
+        "hooks",
+        "platform"
+      ],
+      "produces": [
+        "social_visual_paths"
+      ],
+      "compatibleWith": [
+        "image_generator_v2",
+        "social_launch_packager"
+      ],
+      "recommendedNext": [
+        "social_launch_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_visual_ranker",
+      "slug": "visual_ranker",
+      "name": "Visual Ranker",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Let the algorithm choose the winner.",
+      "description": "Ranks generated images via Vision FX scoring (when available) or conservative heuristic fallback.",
+      "inputs": [
+        "image_paths"
+      ],
+      "outputs": [
+        "ranked_paths",
+        "best_path",
+        "ranking_notes"
+      ],
+      "accepts": [
+        "image_paths",
+        "thumbnail_paths"
+      ],
+      "produces": [
+        "ranked_paths",
+        "best_path"
+      ],
+      "compatibleWith": [
+        "thumbnail_generator",
+        "product_cover_generator",
+        "comfyui_director"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_comfyui_director",
+      "slug": "comfyui_director",
+      "name": "ComfyUI Director",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Orchestrate the full visual pipeline.",
+      "description": "Advanced image orchestrator — tries FX bridge first, falls back to ComfyUI. Extends image_generator_v2 without replacing it.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "image_paths",
+        "handoff_jobs"
+      ],
+      "accepts": [
+        "topic",
+        "image_paths",
+        "prompts_used"
+      ],
+      "produces": [
+        "image_paths",
+        "handoff_jobs"
+      ],
+      "compatibleWith": [
+        "image_generator_v2",
+        "visual_ranker",
+        "node_visual_fx_bridge"
+      ],
+      "recommendedNext": [
+        "visual_ranker"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_podcast_script_generator",
+      "slug": "podcast_script_generator",
+      "name": "Podcast Script Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Two hosts. One topic. Infinite value.",
+      "description": "Generates NotebookLM-style two-host podcast scripts from vault content or topic input.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "script_md",
+        "script_json"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context"
+      ],
+      "produces": [
+        "script_md"
+      ],
+      "compatibleWith": [
+        "audio_generator",
+        "presentation_generator"
+      ],
+      "recommendedNext": [
+        "audio_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_presentation_generator",
+      "slug": "presentation_generator",
+      "name": "Presentation Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Slides that teach. Decks that sell.",
+      "description": "Generates PPTX slide decks from topic or vault context. Requires Node + pptxgenjs.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "pptx_path"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context",
+        "script_md"
+      ],
+      "produces": [
+        "pptx_path"
+      ],
+      "compatibleWith": [
+        "audio_generator",
+        "video_generator",
+        "infographic_generator"
+      ],
+      "recommendedNext": [
+        "audio_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_infographic_generator",
+      "slug": "infographic_generator",
+      "name": "Infographic Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "Complex ideas. Simple visuals.",
+      "description": "Generates PNG infographics from topic or content. Gracefully handles missing Pillow dependency.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "infographic_path"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context"
+      ],
+      "produces": [
+        "infographic_path"
+      ],
+      "compatibleWith": [
+        "social_visual_generator",
+        "presentation_generator"
+      ],
+      "recommendedNext": [
+        "social_launch_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_study_module",
+      "slug": "study_module",
+      "name": "Study Module",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Turn content into curriculum.",
+      "description": "Generates flashcards, quiz, and study report outputs. PDF mode requires reportlab.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "flashcards",
+        "quiz",
+        "study_report"
+      ],
+      "accepts": [
+        "topic",
+        "vault_context",
+        "script_md"
+      ],
+      "produces": [
+        "flashcards",
+        "quiz",
+        "study_report"
+      ],
+      "compatibleWith": [
+        "presentation_generator",
+        "newsletter_packager"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_audio_generator",
+      "slug": "audio_generator",
+      "name": "Audio Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Voice the content. Multiply the reach.",
+      "description": "Converts scripts to voiced MP3 via ElevenLabs. Requires ffmpeg, pydub, and EV_ELEVENLABS_API_KEY.",
+      "inputs": [
+        "script_path"
+      ],
+      "outputs": [
+        "audio_path",
+        "publish_log"
+      ],
+      "accepts": [
+        "script_path",
+        "script_md"
+      ],
+      "produces": [
+        "audio_path"
+      ],
+      "compatibleWith": [
+        "video_generator",
+        "podcast_script_generator"
+      ],
+      "recommendedNext": [
+        "video_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_video_generator",
+      "slug": "video_generator",
+      "name": "Video Generator",
+      "cardClass": "shard",
+      "category": "visual_media",
+      "packId": "visual_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Slides + audio = video. Automated.",
+      "description": "Combines slides and audio into MP4 via moviepy. Requires moviepy, Pillow, and ffmpeg.",
+      "inputs": [
+        "audio_path"
+      ],
+      "outputs": [
+        "video_path"
+      ],
+      "accepts": [
+        "audio_path",
+        "pptx_path",
+        "image_paths"
+      ],
+      "produces": [
+        "video_path"
+      ],
+      "compatibleWith": [
+        "audio_generator",
+        "presentation_generator",
+        "youtube_publisher"
+      ],
+      "recommendedNext": [
+        "youtube_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_schematic_generator",
+      "slug": "schematic_generator",
+      "name": "Schematic Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Plain English → real circuit.",
+      "description": "Converts a circuit idea into KiCad netlist, SVG schematic, component list, and design warnings.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "kicad_netlist",
+        "schematic_svg",
+        "component_list"
+      ],
+      "accepts": [
+        "circuit_description",
+        "topic"
+      ],
+      "produces": [
+        "kicad_netlist",
+        "schematic_svg",
+        "component_list"
+      ],
+      "compatibleWith": [
+        "bom_builder",
+        "kicad_project_builder"
+      ],
+      "recommendedNext": [
+        "bom_builder",
+        "kicad_project_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_bom_builder",
+      "slug": "bom_builder",
+      "name": "BOM Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Every part. Every source. Every price.",
+      "description": "Generates full sourced BOM with LCSC, Mouser, DigiKey links, pricing, and procurement notes.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "bom_csv",
+        "bom_json"
+      ],
+      "accepts": [
+        "component_list",
+        "schematic_svg"
+      ],
+      "produces": [
+        "bom_csv",
+        "bom_json"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "cost_optimizer",
+        "jlcpcb_order_helper"
+      ],
+      "recommendedNext": [
+        "cost_optimizer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_pcb_layout_advisor",
+      "slug": "pcb_layout_advisor",
+      "name": "PCB Layout Advisor",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Advisory intelligence. Not an autorouter.",
+      "description": "Generates component placement suggestions, routing hints, and layer stack advice for PCB layout.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "layout_brief",
+        "placement_hints"
+      ],
+      "accepts": [
+        "component_list",
+        "kicad_netlist"
+      ],
+      "produces": [
+        "layout_brief",
+        "placement_hints"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "design_rule_packager"
+      ],
+      "recommendedNext": [
+        "design_rule_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_enclosure_designer",
+      "slug": "enclosure_designer",
+      "name": "Enclosure Designer",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Parametric shells. Print-ready geometry.",
+      "description": "Generates parametric OpenSCAD enclosure models ready for 3D printing with mounting, ports, and lid.",
+      "inputs": [
+        "pcb_dimensions"
+      ],
+      "outputs": [
+        "openscad_model",
+        "enclosure_notes"
+      ],
+      "accepts": [
+        "pcb_dimensions",
+        "component_list"
+      ],
+      "produces": [
+        "openscad_model"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [
+        "manufacturing_packet_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_firmware_scaffolder",
+      "slug": "firmware_scaffolder",
+      "name": "Firmware Scaffolder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Arduino or MicroPython. Ready to flash.",
+      "description": "Generates Arduino/MicroPython starter code matched to the schematic's components and pin assignments.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "firmware_code",
+        "pin_map"
+      ],
+      "accepts": [
+        "component_list",
+        "kicad_netlist"
+      ],
+      "produces": [
+        "firmware_code",
+        "pin_map"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "test_plan_generator"
+      ],
+      "recommendedNext": [
+        "test_plan_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_electrical_planner",
+      "slug": "electrical_planner",
+      "name": "Electrical Planner",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Room wiring. Load calc. DXF output.",
+      "description": "Generates room/building electrical plans in DXF format with panel layout, circuit schedule, and load calculations.",
+      "inputs": [
+        "electrical_description"
+      ],
+      "outputs": [
+        "electrical_dxf",
+        "circuit_schedule"
+      ],
+      "accepts": [
+        "electrical_description",
+        "topic"
+      ],
+      "produces": [
+        "electrical_dxf",
+        "circuit_schedule"
+      ],
+      "compatibleWith": [
+        "mep_planner",
+        "construction_bom_builder"
+      ],
+      "recommendedNext": [
+        "mep_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_gerber_packager",
+      "slug": "gerber_packager",
+      "name": "Gerber Packager",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Fab-ready. Ship it to JLCPCB.",
+      "description": "Bundles all PCB outputs into a fab-ready Gerber ZIP for JLCPCB, PCBWay, or similar.",
+      "inputs": [
+        "kicad_project"
+      ],
+      "outputs": [
+        "gerber_zip",
+        "fab_notes"
+      ],
+      "accepts": [
+        "kicad_project",
+        "kicad_netlist"
+      ],
+      "produces": [
+        "gerber_zip"
+      ],
+      "compatibleWith": [
+        "jlcpcb_order_helper",
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [
+        "jlcpcb_order_helper"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_kicad_project_builder",
+      "slug": "kicad_project_builder",
+      "name": "KiCad Project Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Open in KiCad. Immediately.",
+      "description": "Generates a complete .kicad_pro + .kicad_sch + .kicad_pcb project folder ready to open in KiCad.",
+      "inputs": [
+        "kicad_netlist"
+      ],
+      "outputs": [
+        "kicad_project_folder"
+      ],
+      "accepts": [
+        "kicad_netlist",
+        "component_list"
+      ],
+      "produces": [
+        "kicad_project_folder",
+        "kicad_project"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "footprint_mapper",
+        "gerber_packager"
+      ],
+      "recommendedNext": [
+        "footprint_mapper"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_footprint_mapper",
+      "slug": "footprint_mapper",
+      "name": "Footprint Mapper",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Right footprint. Right package. Every time.",
+      "description": "Maps components to real KiCad footprints. Validates pin count, package type, SMD vs through-hole, JLCPCB compatibility.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "footprint_map",
+        "footprint_csv"
+      ],
+      "accepts": [
+        "component_list"
+      ],
+      "produces": [
+        "footprint_map",
+        "footprint_csv"
+      ],
+      "compatibleWith": [
+        "kicad_project_builder",
+        "pcb_layout_advisor"
+      ],
+      "recommendedNext": [
+        "kicad_project_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_design_rule_packager",
+      "slug": "design_rule_packager",
+      "name": "Design Rule Packager",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Rules → importable KiCad config.",
+      "description": "Outputs importable KiCad DRC config with fab-specific trace widths, clearances, and via sizes.",
+      "inputs": [],
+      "outputs": [
+        "drc_config",
+        "design_rules_md"
+      ],
+      "accepts": [
+        "fab_target",
+        "layout_brief"
+      ],
+      "produces": [
+        "drc_config"
+      ],
+      "compatibleWith": [
+        "pcb_layout_advisor",
+        "kicad_project_builder"
+      ],
+      "recommendedNext": [
+        "gerber_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_jlcpcb_order_helper",
+      "slug": "jlcpcb_order_helper",
+      "name": "JLCPCB Order Helper",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Click by click. Order in minutes.",
+      "description": "Generates exact JLCPCB order settings, BOM format, and CPL pick-and-place file for fab submission.",
+      "inputs": [
+        "gerber_zip"
+      ],
+      "outputs": [
+        "order_spec",
+        "jlcpcb_bom",
+        "order_guide_md"
+      ],
+      "accepts": [
+        "gerber_zip",
+        "bom_csv"
+      ],
+      "produces": [
+        "order_spec",
+        "jlcpcb_bom"
+      ],
+      "compatibleWith": [
+        "gerber_packager",
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [
+        "manufacturing_packet_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_test_plan_generator",
+      "slug": "test_plan_generator",
+      "name": "Test Plan Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Test before you fry it.",
+      "description": "Generates staged power-up sequence, expected voltages, multimeter checks, and first power-on checklist.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "test_plan_md",
+        "voltage_spec"
+      ],
+      "accepts": [
+        "circuit_description",
+        "component_list",
+        "schematic_svg"
+      ],
+      "produces": [
+        "test_plan_md",
+        "voltage_spec"
+      ],
+      "compatibleWith": [
+        "firmware_scaffolder",
+        "debug_assistant",
+        "bringup_sequence_generator"
+      ],
+      "recommendedNext": [
+        "bringup_sequence_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_debug_assistant",
+      "slug": "debug_assistant",
+      "name": "Debug Assistant",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Replace",
+      "tagline": "Symptoms in. Diagnosis out.",
+      "description": "Takes malfunction symptoms and measurements → outputs likely causes, debugging steps, and fix sequence.",
+      "inputs": [
+        "symptoms"
+      ],
+      "outputs": [
+        "debug_report",
+        "fix_sequence"
+      ],
+      "accepts": [
+        "symptoms",
+        "measurements",
+        "circuit_description"
+      ],
+      "produces": [
+        "debug_report",
+        "fix_sequence"
+      ],
+      "compatibleWith": [
+        "test_plan_generator",
+        "failure_mode_mapper"
+      ],
+      "recommendedNext": [
+        "failure_mode_mapper"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_component_substitutor",
+      "slug": "component_substitutor",
+      "name": "Component Substitutor",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Replace",
+      "tagline": "Part unavailable? Here's the swap.",
+      "description": "Suggests compatible alternatives for unavailable components. Validates electrical compatibility and updates BOM.",
+      "inputs": [
+        "unavailable_parts"
+      ],
+      "outputs": [
+        "substitution_map",
+        "updated_bom"
+      ],
+      "accepts": [
+        "unavailable_parts",
+        "bom_csv"
+      ],
+      "produces": [
+        "substitution_map",
+        "updated_bom"
+      ],
+      "compatibleWith": [
+        "bom_builder",
+        "cost_optimizer",
+        "supplier_risk_monitor"
+      ],
+      "recommendedNext": [
+        "cost_optimizer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_cost_optimizer",
+      "slug": "cost_optimizer",
+      "name": "Cost Optimizer",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Cheaper parts. Same performance.",
+      "description": "Finds cheaper BOM equivalents, reduces cost, suggests design simplifications to hit a target price.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "optimized_bom",
+        "savings_report"
+      ],
+      "accepts": [
+        "bom_json",
+        "bom_csv"
+      ],
+      "produces": [
+        "optimized_bom",
+        "savings_report"
+      ],
+      "compatibleWith": [
+        "bom_builder",
+        "hardware_margin_optimizer",
+        "component_substitutor"
+      ],
+      "recommendedNext": [
+        "hardware_margin_optimizer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_system_block_diagram_generator",
+      "slug": "system_block_diagram_generator",
+      "name": "System Block Diagram",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "The big picture. Always visible.",
+      "description": "Generates high-level system block diagram as SVG. Explains architecture for docs, teaching, and pitching.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "block_diagram_svg"
+      ],
+      "accepts": [
+        "circuit_description",
+        "component_list"
+      ],
+      "produces": [
+        "block_diagram_svg"
+      ],
+      "compatibleWith": [
+        "schematic_generator",
+        "product_spec_sheet_builder"
+      ],
+      "recommendedNext": [
+        "product_spec_sheet_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_panel_graphics_generator",
+      "slug": "panel_graphics_generator",
+      "name": "Panel Graphics Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Labels that look professional.",
+      "description": "Generates front-panel label SVGs for synths, devices, and enclosures.",
+      "inputs": [
+        "panel_description"
+      ],
+      "outputs": [
+        "panel_svg"
+      ],
+      "accepts": [
+        "panel_description",
+        "circuit_description"
+      ],
+      "produces": [
+        "panel_svg"
+      ],
+      "compatibleWith": [
+        "enclosure_designer",
+        "product_spec_sheet_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_kit_packager",
+      "slug": "kit_packager",
+      "name": "Kit Packager",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Assembly kit. Ready to ship.",
+      "description": "Creates assembly instructions, parts list, packaging plan, and kit listing for a sellable hardware kit.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "kit_guide_md",
+        "kit_listing"
+      ],
+      "accepts": [
+        "bom_json",
+        "assembly_guide"
+      ],
+      "produces": [
+        "kit_guide_md",
+        "kit_listing"
+      ],
+      "compatibleWith": [
+        "kit_store_listing_generator",
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [
+        "kit_store_listing_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_assembly_guide_builder",
+      "slug": "assembly_guide_builder",
+      "name": "Assembly Guide Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Step by step. Solder by solder.",
+      "description": "Generates step-by-step assembly instructions — solder order, orientation warnings, tool list, time estimate.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "assembly_guide",
+        "step_sequence"
+      ],
+      "accepts": [
+        "component_list",
+        "bom_json"
+      ],
+      "produces": [
+        "assembly_guide",
+        "step_sequence"
+      ],
+      "compatibleWith": [
+        "bringup_sequence_generator",
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [
+        "bringup_sequence_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_bringup_sequence_generator",
+      "slug": "bringup_sequence_generator",
+      "name": "Bringup Sequence Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "First power-on ritual. No magic smoke.",
+      "description": "Generates safe first-power-up sequence, staged voltage checks, and smoke-test warnings.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "bringup_sequence_md"
+      ],
+      "accepts": [
+        "circuit_description",
+        "test_plan_md"
+      ],
+      "produces": [
+        "bringup_sequence_md"
+      ],
+      "compatibleWith": [
+        "test_plan_generator",
+        "assembly_guide_builder",
+        "debug_assistant"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_manufacturing_packet_builder",
+      "slug": "manufacturing_packet_builder",
+      "name": "Manufacturing Packet Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Handoff-ready. Fab house can build it.",
+      "description": "Bundles Gerbers, BOM, CPL, fab notes, enclosure files, README, and version manifest into one package.",
+      "inputs": [
+        "gerber_zip"
+      ],
+      "outputs": [
+        "manufacturing_packet"
+      ],
+      "accepts": [
+        "gerber_zip",
+        "bom_csv",
+        "openscad_model"
+      ],
+      "produces": [
+        "manufacturing_packet"
+      ],
+      "compatibleWith": [
+        "gerber_packager",
+        "jlcpcb_order_helper",
+        "assembly_guide_builder"
+      ],
+      "recommendedNext": [
+        "product_spec_sheet_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_product_spec_sheet_builder",
+      "slug": "product_spec_sheet_builder",
+      "name": "Product Spec Sheet Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Sell the specs. Not just the idea.",
+      "description": "Generates one-page product spec sheet — features, electrical specs, dimensions, operating conditions, use cases.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "spec_sheet_md",
+        "spec_sheet_json"
+      ],
+      "accepts": [
+        "circuit_description",
+        "component_list"
+      ],
+      "produces": [
+        "spec_sheet_md",
+        "spec_sheet_json"
+      ],
+      "compatibleWith": [
+        "hardware_launch_packager",
+        "kit_store_listing_generator"
+      ],
+      "recommendedNext": [
+        "hardware_launch_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_cost_rollup",
+      "slug": "hardware_cost_rollup",
+      "name": "Hardware Cost Rollup",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Know your margins before you ship.",
+      "description": "Calculates total product cost including PCB fab, assembly, enclosure, packaging, and margin estimate.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "cost_rollup_json",
+        "margin_report_md"
+      ],
+      "accepts": [
+        "bom_json",
+        "optimized_bom"
+      ],
+      "produces": [
+        "cost_rollup_json",
+        "margin_report_md"
+      ],
+      "compatibleWith": [
+        "hardware_margin_optimizer",
+        "batch_production_planner"
+      ],
+      "recommendedNext": [
+        "hardware_margin_optimizer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_assembly_visualizer",
+      "slug": "assembly_visualizer",
+      "name": "Assembly Visualizer",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "See it before you build it.",
+      "description": "Generates exploded layout diagram, labeled board callouts, connector map, and front/back assembly SVG.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "assembly_diagram_svg"
+      ],
+      "accepts": [
+        "component_list"
+      ],
+      "produces": [
+        "assembly_diagram_svg"
+      ],
+      "compatibleWith": [
+        "assembly_guide_builder",
+        "product_spec_sheet_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_calibration_procedure_builder",
+      "slug": "calibration_procedure_builder",
+      "name": "Calibration Procedure Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Tune it until it sings.",
+      "description": "Generates calibration steps, target ranges, measurement points, trim pot and firmware config notes.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "calibration_guide_md"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "calibration_guide_md"
+      ],
+      "compatibleWith": [
+        "test_plan_generator",
+        "debug_assistant"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_compliance_precheck",
+      "slug": "compliance_precheck",
+      "name": "Compliance Precheck",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Know the risks before certification.",
+      "description": "Surfaces likely compliance concerns, high-voltage warnings, RF/EMI flags, and engineer review requirements.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "compliance_report_md",
+        "risk_flags"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "compliance_report_md",
+        "risk_flags"
+      ],
+      "compatibleWith": [
+        "manufacturing_packet_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_failure_mode_mapper",
+      "slug": "failure_mode_mapper",
+      "name": "Failure Mode Mapper",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Map the risks. Prevent the failures.",
+      "description": "Maps likely failure modes, symptom-cause relationships, thermal/power risks, and build mistake patterns.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "failure_map_md",
+        "risk_matrix"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "failure_map_md",
+        "risk_matrix"
+      ],
+      "compatibleWith": [
+        "debug_assistant",
+        "test_plan_generator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_field_install_guide",
+      "slug": "field_install_guide",
+      "name": "Field Install Guide",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Install it right. Every time.",
+      "description": "Generates mounting instructions, wiring notes, environment cautions, maintenance notes, and service intervals.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "install_guide_md"
+      ],
+      "accepts": [
+        "circuit_description",
+        "spec_sheet_json"
+      ],
+      "produces": [
+        "install_guide_md"
+      ],
+      "compatibleWith": [
+        "maintenance_manual_builder",
+        "product_spec_sheet_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_to_content_pack",
+      "slug": "hardware_to_content_pack",
+      "name": "Hardware to Content Pack",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Every build is a YouTube video.",
+      "description": "Bridges hardware → content engine. Generates YouTube script, thumbnail ideas, shorts hooks, and Twitter thread from a hardware project.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "youtube_script",
+        "thumbnail_ideas",
+        "shorts_hooks"
+      ],
+      "accepts": [
+        "circuit_description",
+        "spec_sheet_md"
+      ],
+      "produces": [
+        "youtube_script",
+        "thumbnail_ideas",
+        "shorts_hooks"
+      ],
+      "compatibleWith": [
+        "thumbnail_generator",
+        "youtube_publisher",
+        "sales_page_builder"
+      ],
+      "recommendedNext": [
+        "thumbnail_generator",
+        "youtube_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_build_video_planner",
+      "slug": "build_video_planner",
+      "name": "Build Video Planner",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Film every build. Own the audience.",
+      "description": "Creates shot list, filming plan, editing beats, and hook structure for a build-process YouTube video.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "video_plan_md",
+        "shot_list"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "video_plan_md",
+        "shot_list"
+      ],
+      "compatibleWith": [
+        "hardware_to_content_pack",
+        "youtube_publisher"
+      ],
+      "recommendedNext": [
+        "youtube_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_launch_packager",
+      "slug": "hardware_launch_packager",
+      "name": "Hardware Launch Packager",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Launch the product. Start the revenue.",
+      "description": "Generates product page, launch plan, email sequence, pre-order strategy, and pricing tiers for a hardware product.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "launch_plan_md",
+        "pricing_tiers"
+      ],
+      "accepts": [
+        "circuit_description",
+        "spec_sheet_md"
+      ],
+      "produces": [
+        "launch_plan_md",
+        "pricing_tiers"
+      ],
+      "compatibleWith": [
+        "product_spec_sheet_builder",
+        "kit_store_listing_generator",
+        "sales_page_builder"
+      ],
+      "recommendedNext": [
+        "kit_store_listing_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_kit_store_listing_generator",
+      "slug": "kit_store_listing_generator",
+      "name": "Kit Store Listing Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Gumroad. Payhip. Etsy. Ready.",
+      "description": "Generates Gumroad/Payhip/Etsy-ready kit listing with description, difficulty rating, parts list, and shipping notes.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "store_listing_json",
+        "store_listing_md"
+      ],
+      "accepts": [
+        "circuit_description",
+        "kit_listing",
+        "spec_sheet_md"
+      ],
+      "produces": [
+        "store_listing_json",
+        "store_listing_md"
+      ],
+      "compatibleWith": [
+        "gumroad_publisher",
+        "kit_packager"
+      ],
+      "recommendedNext": [
+        "gumroad_publisher"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_variants_generator",
+      "slug": "hardware_variants_generator",
+      "name": "Hardware Variants Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "One design. Multiple product lines.",
+      "description": "Generates beginner, pro, mini, and premium variants from one base design. Instant product line.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "variant_specs",
+        "variant_guide_md"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "variant_specs",
+        "variant_guide_md"
+      ],
+      "compatibleWith": [
+        "product_spec_sheet_builder",
+        "kit_store_listing_generator"
+      ],
+      "recommendedNext": [
+        "kit_store_listing_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_repair_manual_generator",
+      "slug": "repair_manual_generator",
+      "name": "Repair Manual Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Support the product. Keep customers.",
+      "description": "Generates repair procedures, replacement parts list, diagnostics, and service intervals.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "repair_manual_md"
+      ],
+      "accepts": [
+        "circuit_description",
+        "component_list"
+      ],
+      "produces": [
+        "repair_manual_md"
+      ],
+      "compatibleWith": [
+        "customer_support_builder",
+        "field_install_guide"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_membership_pack",
+      "slug": "hardware_membership_pack",
+      "name": "Hardware Membership Pack",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Weekly builds. Recurring revenue.",
+      "description": "Generates weekly hardware membership content — build plans, exclusive designs, learning modules, upgrade kits.",
+      "inputs": [
+        "circuit_description"
+      ],
+      "outputs": [
+        "membership_pack_md",
+        "weekly_schedule"
+      ],
+      "accepts": [
+        "circuit_description"
+      ],
+      "produces": [
+        "membership_pack_md",
+        "weekly_schedule"
+      ],
+      "compatibleWith": [
+        "hardware_launch_packager",
+        "newsletter_packager"
+      ],
+      "recommendedNext": [
+        "newsletter_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_inventory_planner",
+      "slug": "inventory_planner",
+      "name": "Inventory Planner",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Never stock out. Never over-order.",
+      "description": "Calculates reorder thresholds, safety stock, depletion forecast, and recommended order quantities.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "inventory_plan_json",
+        "reorder_report_md"
+      ],
+      "accepts": [
+        "bom_json",
+        "batch_production_plan"
+      ],
+      "produces": [
+        "inventory_plan_json",
+        "reorder_report_md"
+      ],
+      "compatibleWith": [
+        "batch_production_planner",
+        "supplier_risk_monitor",
+        "hardware_margin_optimizer"
+      ],
+      "recommendedNext": [
+        "batch_production_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_batch_production_planner",
+      "slug": "batch_production_planner",
+      "name": "Batch Production Planner",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Plan the run. Hit the deadline.",
+      "description": "Generates batch size recommendations, build schedule, labor estimates, and production timeline.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "batch_plan_json",
+        "timeline_md"
+      ],
+      "accepts": [
+        "bom_json",
+        "assembly_time_estimate"
+      ],
+      "produces": [
+        "batch_plan_json",
+        "timeline_md"
+      ],
+      "compatibleWith": [
+        "inventory_planner",
+        "production_scheduler",
+        "assembly_time_estimator"
+      ],
+      "recommendedNext": [
+        "production_scheduler"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_fulfillment_packager",
+      "slug": "fulfillment_packager",
+      "name": "Fulfillment Packager",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Package. Ship. Repeat.",
+      "description": "Defines packaging checklist, shipping workflow, label generation instructions, and fulfillment SOP.",
+      "inputs": [
+        "product_name"
+      ],
+      "outputs": [
+        "fulfillment_sop_md",
+        "packaging_checklist"
+      ],
+      "accepts": [
+        "product_name",
+        "batch_plan_json"
+      ],
+      "produces": [
+        "fulfillment_sop_md",
+        "packaging_checklist"
+      ],
+      "compatibleWith": [
+        "order_tracker_generator",
+        "returns_rma_generator"
+      ],
+      "recommendedNext": [
+        "order_tracker_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_order_tracker_generator",
+      "slug": "order_tracker_generator",
+      "name": "Order Tracker Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Track every order. Close every loop.",
+      "description": "Generates order schema, status lifecycle scaffold, and tracking system plan for a hardware business.",
+      "inputs": [
+        "product_name"
+      ],
+      "outputs": [
+        "order_schema_json",
+        "order_tracking_md"
+      ],
+      "accepts": [
+        "product_name"
+      ],
+      "produces": [
+        "order_schema_json"
+      ],
+      "compatibleWith": [
+        "fulfillment_packager",
+        "returns_rma_generator"
+      ],
+      "recommendedNext": [
+        "returns_rma_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_returns_rma_generator",
+      "slug": "returns_rma_generator",
+      "name": "Returns / RMA Generator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Root",
+      "tagline": "Handle returns like a pro.",
+      "description": "Generates RMA process, return conditions, refund logic, and customer return instructions.",
+      "inputs": [
+        "product_name"
+      ],
+      "outputs": [
+        "rma_guide_md",
+        "return_policy"
+      ],
+      "accepts": [
+        "product_name"
+      ],
+      "produces": [
+        "rma_guide_md",
+        "return_policy"
+      ],
+      "compatibleWith": [
+        "customer_support_builder",
+        "order_tracker_generator"
+      ],
+      "recommendedNext": [
+        "customer_support_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_customer_support_builder",
+      "slug": "customer_support_builder",
+      "name": "Customer Support Builder",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Happy customers. Every time.",
+      "description": "Generates FAQ responses, troubleshooting scripts, email templates, and escalation rules.",
+      "inputs": [
+        "product_name"
+      ],
+      "outputs": [
+        "faq_json",
+        "support_templates_md"
+      ],
+      "accepts": [
+        "product_name",
+        "spec_sheet_json"
+      ],
+      "produces": [
+        "faq_json",
+        "support_templates_md"
+      ],
+      "compatibleWith": [
+        "returns_rma_generator",
+        "repair_manual_generator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_supplier_risk_monitor",
+      "slug": "supplier_risk_monitor",
+      "name": "Supplier Risk Monitor",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Find the weak links before they snap.",
+      "description": "Identifies single-source components, suggests substitutes, flags lead time risks and pricing volatility.",
+      "inputs": [
+        "bom_json"
+      ],
+      "outputs": [
+        "risk_report_json",
+        "risk_report_md"
+      ],
+      "accepts": [
+        "bom_json"
+      ],
+      "produces": [
+        "risk_report_json"
+      ],
+      "compatibleWith": [
+        "component_substitutor",
+        "inventory_planner",
+        "batch_production_planner"
+      ],
+      "recommendedNext": [
+        "component_substitutor"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_assembly_time_estimator",
+      "slug": "assembly_time_estimator",
+      "name": "Assembly Time Estimator",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Know how long it really takes.",
+      "description": "Predicts per-unit build time, bottleneck steps, optimization suggestions, and labor cost estimate.",
+      "inputs": [
+        "component_list"
+      ],
+      "outputs": [
+        "time_estimate_json",
+        "bottleneck_report_md"
+      ],
+      "accepts": [
+        "component_list",
+        "assembly_guide"
+      ],
+      "produces": [
+        "time_estimate_json",
+        "assembly_time_estimate"
+      ],
+      "compatibleWith": [
+        "batch_production_planner",
+        "production_scheduler"
+      ],
+      "recommendedNext": [
+        "batch_production_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_production_scheduler",
+      "slug": "production_scheduler",
+      "name": "Production Scheduler",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Scheduled builds. Scalable output.",
+      "description": "Generates weekly production plan, workload distribution, deadline feasibility, and capacity limits.",
+      "inputs": [
+        "batch_plan_json"
+      ],
+      "outputs": [
+        "production_schedule_json",
+        "schedule_md"
+      ],
+      "accepts": [
+        "batch_plan_json",
+        "assembly_time_estimate"
+      ],
+      "produces": [
+        "production_schedule_json"
+      ],
+      "compatibleWith": [
+        "batch_production_planner",
+        "inventory_planner"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_hardware_margin_optimizer",
+      "slug": "hardware_margin_optimizer",
+      "name": "Hardware Margin Optimizer",
+      "cardClass": "shard",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Maximize margin. Scale smart.",
+      "description": "Calculates optimal pricing, margin per unit, break-even analysis, and scaling projections.",
+      "inputs": [
+        "cost_rollup_json"
+      ],
+      "outputs": [
+        "margin_analysis_json",
+        "pricing_recommendations_md"
+      ],
+      "accepts": [
+        "cost_rollup_json"
+      ],
+      "produces": [
+        "margin_analysis_json",
+        "pricing_recommendations_md"
+      ],
+      "compatibleWith": [
+        "hardware_cost_rollup",
+        "batch_production_planner"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_concept_parser",
+      "slug": "concept_parser",
+      "name": "Concept Parser",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Replace",
+      "tagline": "Speak it. EVIE understands.",
+      "description": "Converts plain English building descriptions into structured specs — dimensions, rooms, systems, requirements.",
+      "inputs": [
+        "structure_description"
+      ],
+      "outputs": [
+        "structure_spec"
+      ],
+      "accepts": [
+        "structure_description",
+        "topic"
+      ],
+      "produces": [
+        "structure_spec"
+      ],
+      "compatibleWith": [
+        "floor_plan_generator",
+        "elevation_generator",
+        "structural_framer"
+      ],
+      "recommendedNext": [
+        "floor_plan_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_floor_plan_generator",
+      "slug": "floor_plan_generator",
+      "name": "Floor Plan Generator",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Real DXF. Open in AutoCAD today.",
+      "description": "Generates contractor-ready DXF R12 floor plan + SVG with rooms, fixtures, dimensions, north arrow, and title block.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "floor_plan_dxf",
+        "floor_plan_svg"
+      ],
+      "accepts": [
+        "structure_spec",
+        "structure_description"
+      ],
+      "produces": [
+        "floor_plan_dxf",
+        "floor_plan_svg"
+      ],
+      "compatibleWith": [
+        "elevation_generator",
+        "structural_framer",
+        "mep_planner"
+      ],
+      "recommendedNext": [
+        "elevation_generator",
+        "structural_framer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "bounded_adapter"
+    },
+    {
+      "id": "shard_elevation_generator",
+      "slug": "elevation_generator",
+      "name": "Elevation Generator",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "All 4 faces. Exterior ready.",
+      "description": "Generates all 4 exterior elevation drawings (N/S/E/W) as SVG showing finish, roof, doors, and windows.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "elevations_svg"
+      ],
+      "accepts": [
+        "structure_spec",
+        "floor_plan_dxf"
+      ],
+      "produces": [
+        "elevations_svg"
+      ],
+      "compatibleWith": [
+        "floor_plan_generator",
+        "structural_framer"
+      ],
+      "recommendedNext": [
+        "structural_framer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_structural_framer",
+      "slug": "structural_framer",
+      "name": "Structural Framer",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Stud layout. Header sizes. Roof framing.",
+      "description": "Generates stud layout, header sizes, roof framing plan, blocking, and lateral bracing as DXF + SVG.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "framing_plan_svg",
+        "framing_dxf"
+      ],
+      "accepts": [
+        "structure_spec",
+        "floor_plan_dxf"
+      ],
+      "produces": [
+        "framing_plan_svg",
+        "framing_dxf"
+      ],
+      "compatibleWith": [
+        "foundation_planner",
+        "mep_planner",
+        "construction_bom_builder"
+      ],
+      "recommendedNext": [
+        "foundation_planner",
+        "construction_bom_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_mep_planner",
+      "slug": "mep_planner",
+      "name": "MEP Planner",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Electrical, plumbing, HVAC — all planned.",
+      "description": "Generates electrical panel layout, plumbing rough-in, HVAC, and generator transfer switch config as JSON + notes.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "mep_plan_json",
+        "mep_notes_md"
+      ],
+      "accepts": [
+        "structure_spec",
+        "floor_plan_dxf"
+      ],
+      "produces": [
+        "mep_plan_json",
+        "mep_notes_md"
+      ],
+      "compatibleWith": [
+        "structural_framer",
+        "construction_bom_builder",
+        "permit_package_builder"
+      ],
+      "recommendedNext": [
+        "construction_bom_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_construction_bom_builder",
+      "slug": "construction_bom_builder",
+      "name": "Construction BOM Builder",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Every board, pipe, wire — take it to the yard.",
+      "description": "Generates complete material list — lumber takeoff CSV, material quantities, costs by category, and lumber yard list.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "lumber_takeoff_csv",
+        "construction_bom_csv"
+      ],
+      "accepts": [
+        "structure_spec",
+        "framing_plan_svg"
+      ],
+      "produces": [
+        "lumber_takeoff_csv",
+        "construction_bom_csv"
+      ],
+      "compatibleWith": [
+        "construction_cost_estimator",
+        "build_instruction_manual"
+      ],
+      "recommendedNext": [
+        "construction_cost_estimator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_permit_package_builder",
+      "slug": "permit_package_builder",
+      "name": "Permit Package Builder",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Get the permit. Start the build.",
+      "description": "Generates permit application checklist, code compliance notes, inspection sequence, and fee estimate.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "permit_package_md",
+        "compliance_checklist"
+      ],
+      "accepts": [
+        "structure_spec",
+        "floor_plan_dxf"
+      ],
+      "produces": [
+        "permit_package_md",
+        "compliance_checklist"
+      ],
+      "compatibleWith": [
+        "construction_cost_estimator",
+        "build_instruction_manual"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_build_instruction_manual",
+      "slug": "build_instruction_manual",
+      "name": "Build Instruction Manual",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Phase by phase. Build by build.",
+      "description": "Generates phase-by-phase construction guide with safety notes, tips, and inspection checkpoints.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "build_manual_md"
+      ],
+      "accepts": [
+        "structure_spec",
+        "framing_plan_svg"
+      ],
+      "produces": [
+        "build_manual_md"
+      ],
+      "compatibleWith": [
+        "maintenance_manual_builder",
+        "construction_bom_builder"
+      ],
+      "recommendedNext": [
+        "maintenance_manual_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_maintenance_manual_builder",
+      "slug": "maintenance_manual_builder",
+      "name": "Maintenance Manual Builder",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Annual calendar. System service. Emergency procedures.",
+      "description": "Generates maintenance calendar, system service schedules, emergency procedures, and utility shutoff locations.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "maintenance_manual_md"
+      ],
+      "accepts": [
+        "structure_spec"
+      ],
+      "produces": [
+        "maintenance_manual_md"
+      ],
+      "compatibleWith": [
+        "build_instruction_manual",
+        "field_install_guide"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_build_video_script",
+      "slug": "build_video_script",
+      "name": "Build Video Script",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Resonate",
+      "tagline": "Every build is a YouTube series.",
+      "description": "Generates episode-by-episode YouTube video narration with B-roll shot lists for a build project.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "video_scripts_md",
+        "shot_lists"
+      ],
+      "accepts": [
+        "structure_spec"
+      ],
+      "produces": [
+        "video_scripts_md",
+        "shot_lists"
+      ],
+      "compatibleWith": [
+        "youtube_publisher",
+        "thumbnail_generator",
+        "hardware_to_content_pack"
+      ],
+      "recommendedNext": [
+        "thumbnail_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_construction_cost_estimator",
+      "slug": "construction_cost_estimator",
+      "name": "Construction Cost Estimator",
+      "cardClass": "shard",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "DIY vs contractor. Know before you commit.",
+      "description": "Full project cost estimate with DIY vs contractor comparison, hidden costs, ROI analysis.",
+      "inputs": [
+        "structure_spec"
+      ],
+      "outputs": [
+        "cost_estimate_json",
+        "cost_report_md"
+      ],
+      "accepts": [
+        "structure_spec",
+        "construction_bom_csv"
+      ],
+      "produces": [
+        "cost_estimate_json",
+        "cost_report_md"
+      ],
+      "compatibleWith": [
+        "construction_bom_builder",
+        "permit_package_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_garden_layout_planner",
+      "slug": "garden_layout_planner",
+      "name": "Garden Layout Planner",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "SVG beds. Real planting plan.",
+      "description": "Generates SVG garden layout with bed geometry, companion planting, irrigation zones, planting schedule, and yield estimate.",
+      "inputs": [
+        "garden_description"
+      ],
+      "outputs": [
+        "garden_layout_svg",
+        "planting_schedule_json"
+      ],
+      "accepts": [
+        "garden_description",
+        "topic"
+      ],
+      "produces": [
+        "garden_layout_svg",
+        "planting_schedule_json"
+      ],
+      "compatibleWith": [
+        "crop_rotation_planner",
+        "harvest_calendar_builder",
+        "composting_system_builder"
+      ],
+      "recommendedNext": [
+        "crop_rotation_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_crop_rotation_planner",
+      "slug": "crop_rotation_planner",
+      "name": "Crop Rotation Planner",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "4-year plan. Healthy soil. Every season.",
+      "description": "Generates 4-year crop rotation plan to prevent disease and maintain soil health.",
+      "inputs": [
+        "garden_description"
+      ],
+      "outputs": [
+        "rotation_plan_json",
+        "rotation_guide_md"
+      ],
+      "accepts": [
+        "garden_description"
+      ],
+      "produces": [
+        "rotation_plan_json",
+        "rotation_guide_md"
+      ],
+      "compatibleWith": [
+        "garden_layout_planner",
+        "soil_amendment_guide"
+      ],
+      "recommendedNext": [
+        "soil_amendment_guide"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_seed_library_builder",
+      "slug": "seed_library_builder",
+      "name": "Seed Library Builder",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Heirloom varieties. Sovereign seeds.",
+      "description": "Generates seed library with heirloom variety selection, storage protocols, germination rates, and saving instructions.",
+      "inputs": [],
+      "outputs": [
+        "seed_library_json",
+        "variety_guide_md"
+      ],
+      "accepts": [
+        "climate_zone",
+        "garden_description"
+      ],
+      "produces": [
+        "seed_library_json",
+        "variety_guide_md"
+      ],
+      "compatibleWith": [
+        "garden_layout_planner",
+        "harvest_calendar_builder"
+      ],
+      "recommendedNext": [
+        "harvest_calendar_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_food_preservation_guide",
+      "slug": "food_preservation_guide",
+      "name": "Food Preservation Guide",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "common",
+      "pillar": "Root",
+      "tagline": "Canning. Fermenting. Drying. Nothing wasted.",
+      "description": "Generates food preservation guide for canning, fermenting, drying, and root cellaring with seasonal calendar.",
+      "inputs": [],
+      "outputs": [
+        "preservation_guide_md"
+      ],
+      "accepts": [
+        "food_types",
+        "harvest_calendar"
+      ],
+      "produces": [
+        "preservation_guide_md"
+      ],
+      "compatibleWith": [
+        "harvest_calendar_builder",
+        "composting_system_builder"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_composting_system_builder",
+      "slug": "composting_system_builder",
+      "name": "Composting System Builder",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "common",
+      "pillar": "Root",
+      "tagline": "Waste into soil. Closed loop.",
+      "description": "Designs compost system with bin types, carbon/nitrogen ratios, turning schedule, and troubleshooting.",
+      "inputs": [],
+      "outputs": [
+        "compost_system_md"
+      ],
+      "accepts": [
+        "site_description"
+      ],
+      "produces": [
+        "compost_system_md"
+      ],
+      "compatibleWith": [
+        "garden_layout_planner",
+        "soil_amendment_guide"
+      ],
+      "recommendedNext": [
+        "soil_amendment_guide"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_water_catchment_planner",
+      "slug": "water_catchment_planner",
+      "name": "Water Catchment Planner",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Free water from the sky.",
+      "description": "Designs rainwater harvesting system — collection area, tank sizing, filtration, first-flush diverter.",
+      "inputs": [],
+      "outputs": [
+        "water_system_spec_json",
+        "water_plan_md"
+      ],
+      "accepts": [
+        "site_description"
+      ],
+      "produces": [
+        "water_system_spec_json",
+        "water_plan_md"
+      ],
+      "compatibleWith": [
+        "water_system_planner",
+        "greywater_recycler"
+      ],
+      "recommendedNext": [
+        "water_system_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_soil_amendment_guide",
+      "slug": "soil_amendment_guide",
+      "name": "Soil Amendment Guide",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "common",
+      "pillar": "Root",
+      "tagline": "Feed the soil. Feed the people.",
+      "description": "Recommends soil amendments based on soil type, crops planned, and seasonal goals.",
+      "inputs": [],
+      "outputs": [
+        "amendment_plan_md"
+      ],
+      "accepts": [
+        "soil_type",
+        "garden_description"
+      ],
+      "produces": [
+        "amendment_plan_md"
+      ],
+      "compatibleWith": [
+        "composting_system_builder",
+        "crop_rotation_planner"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_harvest_calendar_builder",
+      "slug": "harvest_calendar_builder",
+      "name": "Harvest Calendar Builder",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Know what's ready. When.",
+      "description": "Generates month-by-month harvest calendar with succession planting, preservation timing, and yield forecasts.",
+      "inputs": [],
+      "outputs": [
+        "harvest_calendar_json",
+        "harvest_calendar_md"
+      ],
+      "accepts": [
+        "planting_schedule_json",
+        "garden_description"
+      ],
+      "produces": [
+        "harvest_calendar_json",
+        "harvest_calendar"
+      ],
+      "compatibleWith": [
+        "garden_layout_planner",
+        "food_preservation_guide"
+      ],
+      "recommendedNext": [
+        "food_preservation_guide"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_food_forest_designer",
+      "slug": "food_forest_designer",
+      "name": "Food Forest Designer",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "7 layers of edible abundance.",
+      "description": "Designs permaculture food forest with 7 canopy layers, guild planting, and 20-year succession plan.",
+      "inputs": [
+        "site_description"
+      ],
+      "outputs": [
+        "food_forest_plan_json",
+        "food_forest_svg"
+      ],
+      "accepts": [
+        "site_description",
+        "garden_description"
+      ],
+      "produces": [
+        "food_forest_plan_json",
+        "food_forest_svg"
+      ],
+      "compatibleWith": [
+        "garden_layout_planner",
+        "livestock_system_planner"
+      ],
+      "recommendedNext": [
+        "livestock_system_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_livestock_system_planner",
+      "slug": "livestock_system_planner",
+      "name": "Livestock System Planner",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Animals that feed the land and the table.",
+      "description": "Plans livestock integration — species selection, stocking density, rotational grazing, feed requirements.",
+      "inputs": [
+        "site_description"
+      ],
+      "outputs": [
+        "livestock_plan_json",
+        "livestock_guide_md"
+      ],
+      "accepts": [
+        "site_description",
+        "acreage"
+      ],
+      "produces": [
+        "livestock_plan_json",
+        "livestock_guide_md"
+      ],
+      "compatibleWith": [
+        "food_forest_designer",
+        "garden_layout_planner"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_solar_system_designer",
+      "slug": "solar_system_designer",
+      "name": "Solar System Designer",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Free power. Forever.",
+      "description": "Complete off-grid solar system design — panel count, battery bank sizing, inverter spec, BOM, and installation notes.",
+      "inputs": [
+        "energy_requirements_kwh_day"
+      ],
+      "outputs": [
+        "solar_system_spec_json",
+        "solar_bom_csv",
+        "install_guide_md"
+      ],
+      "accepts": [
+        "energy_requirements_kwh_day",
+        "site_description"
+      ],
+      "produces": [
+        "solar_system_spec_json",
+        "solar_bom_csv"
+      ],
+      "compatibleWith": [
+        "water_system_planner",
+        "construction_bom_builder"
+      ],
+      "recommendedNext": [
+        "water_system_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_water_system_planner",
+      "slug": "water_system_planner",
+      "name": "Water System Planner",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Well to tap. Fully planned.",
+      "description": "Designs complete water system — well or source, filtration, pressure tank, distribution, and backup.",
+      "inputs": [
+        "site_description"
+      ],
+      "outputs": [
+        "water_system_plan_json",
+        "water_install_md"
+      ],
+      "accepts": [
+        "site_description",
+        "water_system_spec_json"
+      ],
+      "produces": [
+        "water_system_plan_json",
+        "water_install_md"
+      ],
+      "compatibleWith": [
+        "solar_system_designer",
+        "greywater_recycler",
+        "water_catchment_planner"
+      ],
+      "recommendedNext": [
+        "greywater_recycler"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_greywater_recycler",
+      "slug": "greywater_recycler",
+      "name": "Greywater Recycler",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Nothing wasted. Twice used.",
+      "description": "Designs greywater recycling system with planted filter beds, distribution zones, and compliance notes.",
+      "inputs": [
+        "site_description"
+      ],
+      "outputs": [
+        "greywater_plan_json",
+        "greywater_guide_md"
+      ],
+      "accepts": [
+        "site_description"
+      ],
+      "produces": [
+        "greywater_plan_json",
+        "greywater_guide_md"
+      ],
+      "compatibleWith": [
+        "water_system_planner",
+        "garden_layout_planner"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_herbal_medicine_guide",
+      "slug": "herbal_medicine_guide",
+      "name": "Herbal Medicine Guide",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "20+ plant profiles. Sovereign wellness.",
+      "description": "Generates herbal medicine guide with 20+ plant profiles — uses, preparations, contraindications, and growing notes.",
+      "inputs": [],
+      "outputs": [
+        "herbal_guide_md",
+        "plant_profiles_json"
+      ],
+      "accepts": [
+        "health_focus",
+        "garden_description"
+      ],
+      "produces": [
+        "herbal_guide_md",
+        "plant_profiles_json"
+      ],
+      "compatibleWith": [
+        "wellness_protocol_generator",
+        "first_aid_protocol_builder"
+      ],
+      "recommendedNext": [
+        "wellness_protocol_generator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_first_aid_protocol_builder",
+      "slug": "first_aid_protocol_builder",
+      "name": "First Aid Protocol Builder",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Prepared for anything. Always.",
+      "description": "Generates field first aid kit specifications with emergency protocols for off-grid scenarios.",
+      "inputs": [],
+      "outputs": [
+        "first_aid_kit_json",
+        "emergency_protocols_md"
+      ],
+      "accepts": [
+        "group_size"
+      ],
+      "produces": [
+        "first_aid_kit_json",
+        "emergency_protocols_md"
+      ],
+      "compatibleWith": [
+        "herbal_medicine_guide",
+        "wellness_protocol_generator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_wellness_protocol_generator",
+      "slug": "wellness_protocol_generator",
+      "name": "Wellness Protocol Generator",
+      "cardClass": "shard",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "PHI369 Sovereign Body Method. Applied.",
+      "description": "Generates PHI369 sovereign wellness protocol with healing frequencies, movement practices, and nutritional framework.",
+      "inputs": [],
+      "outputs": [
+        "wellness_protocol_md",
+        "frequency_schedule_json"
+      ],
+      "accepts": [
+        "health_focus"
+      ],
+      "produces": [
+        "wellness_protocol_md",
+        "frequency_schedule_json"
+      ],
+      "compatibleWith": [
+        "herbal_medicine_guide",
+        "healing_track_architect"
+      ],
+      "recommendedNext": [
+        "healing_track_architect"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sheet_music_generator",
+      "slug": "sheet_music_generator",
+      "name": "Sheet Music Generator",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Description → real MusicXML. Open in MuseScore.",
+      "description": "Generates MusicXML notation, chord charts, and lead sheets from a description. Opens directly in MuseScore, Sibelius, Finale.",
+      "inputs": [
+        "music_description"
+      ],
+      "outputs": [
+        "musicxml_file",
+        "lead_sheet_md"
+      ],
+      "accepts": [
+        "music_description",
+        "topic"
+      ],
+      "produces": [
+        "musicxml_file",
+        "lead_sheet_md"
+      ],
+      "compatibleWith": [
+        "chord_progression_builder",
+        "arrangement_planner",
+        "fl_studio_bridge"
+      ],
+      "recommendedNext": [
+        "chord_progression_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_lyric_structure_architect",
+      "slug": "lyric_structure_architect",
+      "name": "Lyric Structure Architect",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Structure the bars. Master the flow.",
+      "description": "Builds full lyric frameworks — rhyme schemes, syllable maps, dual persona delivery (American + British MC), hooks. 174 BPM calibrated.",
+      "inputs": [
+        "song_concept"
+      ],
+      "outputs": [
+        "lyric_framework_md",
+        "rhyme_dictionary"
+      ],
+      "accepts": [
+        "song_concept",
+        "topic",
+        "vault_context"
+      ],
+      "produces": [
+        "lyric_framework_md",
+        "rhyme_dictionary"
+      ],
+      "compatibleWith": [
+        "arrangement_planner",
+        "fl_studio_bridge",
+        "album_architect"
+      ],
+      "recommendedNext": [
+        "fl_studio_bridge"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_chord_progression_builder",
+      "slug": "chord_progression_builder",
+      "name": "Chord Progression Builder",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Theory into feeling.",
+      "description": "Genre-specific progressions with theory, voicings, substitutions, phi-ratio progressions, and modulation options.",
+      "inputs": [],
+      "outputs": [
+        "chord_progressions_md",
+        "chord_data_json"
+      ],
+      "accepts": [
+        "genre",
+        "key",
+        "music_description"
+      ],
+      "produces": [
+        "chord_progressions_md",
+        "chord_data_json"
+      ],
+      "compatibleWith": [
+        "sheet_music_generator",
+        "arrangement_planner",
+        "phi_frequency_composer"
+      ],
+      "recommendedNext": [
+        "arrangement_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_arrangement_planner",
+      "slug": "arrangement_planner",
+      "name": "Arrangement Planner",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Energy arc. Drop design. FL Studio notes.",
+      "description": "Full arrangement map with instrument layers, energy curve, drop design, build techniques, and frequency map.",
+      "inputs": [],
+      "outputs": [
+        "arrangement_plan_md"
+      ],
+      "accepts": [
+        "genre",
+        "bpm",
+        "music_description"
+      ],
+      "produces": [
+        "arrangement_plan_md"
+      ],
+      "compatibleWith": [
+        "fl_studio_bridge",
+        "mix_reference_guide",
+        "album_architect"
+      ],
+      "recommendedNext": [
+        "fl_studio_bridge"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_phi_frequency_composer",
+      "slug": "phi_frequency_composer",
+      "name": "Phi Frequency Composer",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "432Hz. Solfeggio. Phi-ratio intervals. Healing.",
+      "description": "Sacred frequency composition — 432Hz tuning, Solfeggio scale, chakra mapping, phi-ratio intervals. Deep TIEKAT integration.",
+      "inputs": [],
+      "outputs": [
+        "phi_composition_md",
+        "frequency_spec_json"
+      ],
+      "accepts": [
+        "intention",
+        "chakra_target",
+        "topic"
+      ],
+      "produces": [
+        "phi_composition_md",
+        "frequency_spec_json"
+      ],
+      "compatibleWith": [
+        "healing_track_architect",
+        "369_arc_sequencer",
+        "binaural_beat_planner"
+      ],
+      "recommendedNext": [
+        "healing_track_architect"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_fl_studio_bridge",
+      "slug": "fl_studio_bridge",
+      "name": "FL Studio Bridge",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Session template. Mixer. Sidechain. Ready.",
+      "description": "FL Studio session templates, mixer channel configs, master bus chain, sidechain routing, and automation clips.",
+      "inputs": [],
+      "outputs": [
+        "fl_studio_template_md"
+      ],
+      "accepts": [
+        "genre",
+        "bpm",
+        "arrangement_plan_md"
+      ],
+      "produces": [
+        "fl_studio_template_md"
+      ],
+      "compatibleWith": [
+        "arrangement_planner",
+        "mix_reference_guide",
+        "sound_design_brief"
+      ],
+      "recommendedNext": [
+        "mix_reference_guide"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_mix_reference_guide",
+      "slug": "mix_reference_guide",
+      "name": "Mix Reference Guide",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "Reference tracks. EQ targets. Master chain.",
+      "description": "Reference tracks, frequency targets, compression settings, stereo field plan, mastering chain, and loudness targets by genre.",
+      "inputs": [],
+      "outputs": [
+        "mix_guide_md"
+      ],
+      "accepts": [
+        "genre",
+        "bpm"
+      ],
+      "produces": [
+        "mix_guide_md"
+      ],
+      "compatibleWith": [
+        "fl_studio_bridge",
+        "stem_organization_system"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_album_architect",
+      "slug": "album_architect",
+      "name": "Album Architect",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "EMERGE",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Tracklist. Arc. Artwork. ComfyUI prompt.",
+      "description": "Complete album concept — tracklist flow, narrative arc, artwork brief with ComfyUI prompt, singles rollout strategy.",
+      "inputs": [],
+      "outputs": [
+        "album_concept_md",
+        "artwork_comfyui_prompt"
+      ],
+      "accepts": [
+        "album_title",
+        "genre",
+        "topic"
+      ],
+      "produces": [
+        "album_concept_md",
+        "artwork_comfyui_prompt"
+      ],
+      "compatibleWith": [
+        "single_release_packager",
+        "music_video_planner",
+        "music_press_kit_builder"
+      ],
+      "recommendedNext": [
+        "single_release_packager"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_single_release_packager",
+      "slug": "single_release_packager",
+      "name": "Single Release Packager",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Release ready. Timeline locked.",
+      "description": "Full single release package — week-by-week timeline, metadata blueprint, pre-save strategy, pitch targets, release day checklist.",
+      "inputs": [
+        "song_title"
+      ],
+      "outputs": [
+        "release_package_md"
+      ],
+      "accepts": [
+        "song_title",
+        "genre"
+      ],
+      "produces": [
+        "release_package_md"
+      ],
+      "compatibleWith": [
+        "streaming_optimizer",
+        "playlist_pitch_builder",
+        "music_social_content_pack"
+      ],
+      "recommendedNext": [
+        "streaming_optimizer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_streaming_optimizer",
+      "slug": "streaming_optimizer",
+      "name": "Streaming Optimizer",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Metadata. Algorithm. Playlists. Owned.",
+      "description": "Spotify/Apple streaming optimization — metadata blueprint, algorithm tips, playlist targeting, editorial pitch window.",
+      "inputs": [
+        "song_title"
+      ],
+      "outputs": [
+        "streaming_optimizer_md"
+      ],
+      "accepts": [
+        "song_title",
+        "genre"
+      ],
+      "produces": [
+        "streaming_optimizer_md"
+      ],
+      "compatibleWith": [
+        "playlist_pitch_builder",
+        "single_release_packager"
+      ],
+      "recommendedNext": [
+        "playlist_pitch_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_music_press_kit_builder",
+      "slug": "music_press_kit_builder",
+      "name": "Music Press Kit Builder",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "EPK. Bio. One-sheet. Press release. Rider.",
+      "description": "Complete EPK — 3-length bio (50/150/400 words), one-sheet, press release, technical rider, photo brief, booking pitch.",
+      "inputs": [
+        "artist_name"
+      ],
+      "outputs": [
+        "epk_md"
+      ],
+      "accepts": [
+        "artist_name",
+        "genre"
+      ],
+      "produces": [
+        "epk_md"
+      ],
+      "compatibleWith": [
+        "music_social_content_pack",
+        "playlist_pitch_builder",
+        "sync_licensing_packager"
+      ],
+      "recommendedNext": [
+        "music_social_content_pack"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_healing_track_architect",
+      "slug": "healing_track_architect",
+      "name": "Healing Track Architect",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "Diagnosis → Control Law → Resolution. CTL-9.",
+      "description": "Complete healing track design — 432Hz alignment, chakra frequency mapping, CTL-9 therapeutic arc, FL Studio blueprint, EnterTheField integration.",
+      "inputs": [],
+      "outputs": [
+        "healing_track_blueprint_md"
+      ],
+      "accepts": [
+        "intention",
+        "chakra",
+        "topic"
+      ],
+      "produces": [
+        "healing_track_blueprint_md"
+      ],
+      "compatibleWith": [
+        "phi_frequency_composer",
+        "369_arc_sequencer",
+        "binaural_beat_planner"
+      ],
+      "recommendedNext": [
+        "369_arc_sequencer"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sonic_sigil_creator",
+      "slug": "sonic_sigil_creator",
+      "name": "Sonic Sigil Creator",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "TIEKAT formula → synthesis parameters.",
+      "description": "Translates TIEKAT phi-ratio mathematics into sound design specs — oscillators, filter, envelope, LFO, FX chain. Phi-derived frequency map.",
+      "inputs": [
+        "formula"
+      ],
+      "outputs": [
+        "sonic_sigil_md"
+      ],
+      "accepts": [
+        "formula",
+        "base_hz",
+        "topic"
+      ],
+      "produces": [
+        "sonic_sigil_md"
+      ],
+      "compatibleWith": [
+        "healing_track_architect",
+        "phi_frequency_composer"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_369_arc_sequencer",
+      "slug": "369_arc_sequencer",
+      "name": "369 Arc Sequencer",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "Tesla's 3-6-9. Phi mathematics. Healing arc.",
+      "description": "The PHI369 369 Arc Sequencer — generates healing sequence patterns via Tesla 3-6-9 mathematics and phi ratios. Diagnosis → Control Law → Resolution.",
+      "inputs": [],
+      "outputs": [
+        "arc_sequence_md",
+        "sequence_spec_json"
+      ],
+      "accepts": [
+        "intent",
+        "base_hz",
+        "topic"
+      ],
+      "produces": [
+        "arc_sequence_md",
+        "sequence_spec_json"
+      ],
+      "compatibleWith": [
+        "healing_track_architect",
+        "phi_frequency_composer",
+        "binaural_beat_planner"
+      ],
+      "recommendedNext": [
+        "binaural_beat_planner"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_binaural_beat_planner",
+      "slug": "binaural_beat_planner",
+      "name": "Binaural Beat Planner",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Delta to Gamma. Brainwave entrained.",
+      "description": "Brainwave entrainment track design — carrier frequencies, beat frequencies, isochronic spec, phase progression, healing protocol.",
+      "inputs": [],
+      "outputs": [
+        "binaural_plan_md"
+      ],
+      "accepts": [
+        "target_brainwave",
+        "carrier_hz",
+        "intent"
+      ],
+      "produces": [
+        "binaural_plan_md"
+      ],
+      "compatibleWith": [
+        "healing_track_architect",
+        "369_arc_sequencer",
+        "sound_bath_curator"
+      ],
+      "recommendedNext": [
+        "sound_bath_curator"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sound_bath_curator",
+      "slug": "sound_bath_curator",
+      "name": "Sound Bath Curator",
+      "cardClass": "shard",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "Live healing ceremony. Fully planned.",
+      "description": "Live healing sound bath session planner — instrument selection, session arc, facilitator guide, PHI369 invocation, pricing model.",
+      "inputs": [],
+      "outputs": [
+        "sound_bath_session_md"
+      ],
+      "accepts": [
+        "intent",
+        "duration_min"
+      ],
+      "produces": [
+        "sound_bath_session_md"
+      ],
+      "compatibleWith": [
+        "binaural_beat_planner",
+        "healing_track_architect"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_evie_analytics_engine",
+      "slug": "evie_analytics_engine",
+      "name": "EVIE Analytics Engine",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Retain",
+      "tagline": "Daily briefing. System truth. What matters now.",
+      "description": "Analyzes run history, module usage, revenue signals, and prediction accuracy. Generates daily sovereign briefing with top focus items.",
+      "inputs": [],
+      "outputs": [
+        "daily_briefing_md",
+        "analytics_json"
+      ],
+      "accepts": [
+        "run_history",
+        "vault_context"
+      ],
+      "produces": [
+        "daily_briefing_md",
+        "analytics_json"
+      ],
+      "compatibleWith": [
+        "prediction_tracker",
+        "dreamteam_coordinator",
+        "institute_funding_roadmap"
+      ],
+      "recommendedNext": [
+        "institute_funding_roadmap"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_institute_funding_roadmap",
+      "slug": "institute_funding_roadmap",
+      "name": "Institute Funding Roadmap",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "MANIFEST",
+      "rarity": "sovereign",
+      "pillar": "Retain",
+      "tagline": "Every module. 10% to Shasta.",
+      "description": "Tracks progress toward Parallax Institute funding goals. Weekly revenue snapshot, milestone projection, and contribution rate.",
+      "inputs": [],
+      "outputs": [
+        "funding_roadmap_md"
+      ],
+      "accepts": [
+        "revenue_data",
+        "analytics_json"
+      ],
+      "produces": [
+        "funding_roadmap_md"
+      ],
+      "compatibleWith": [
+        "evie_analytics_engine",
+        "sovereign_budget_builder"
+      ],
+      "recommendedNext": [
+        "sovereign_budget_builder"
+      ],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_campus_master_planner",
+      "slug": "campus_master_planner",
+      "name": "Campus Master Planner",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Reinforce",
+      "tagline": "Pilgrim Creek. SHIP 369. Every structure planned.",
+      "description": "Monthly campus planning for Parallax Institute at Pilgrim Creek — structures, phases, infrastructure, and timeline.",
+      "inputs": [],
+      "outputs": [
+        "campus_plan_md"
+      ],
+      "accepts": [
+        "campus_description"
+      ],
+      "produces": [
+        "campus_plan_md"
+      ],
+      "compatibleWith": [
+        "institute_funding_roadmap",
+        "floor_plan_generator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_dreamteam_coordinator",
+      "slug": "dreamteam_coordinator",
+      "name": "Dreamteam Coordinator",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "Ori. Helion. Forge. BrainC. Unified.",
+      "description": "Surfaces current focus and next-highest-value tasks for each Dreamteam member. Coordination intelligence layer.",
+      "inputs": [],
+      "outputs": [
+        "dreamteam_brief_md"
+      ],
+      "accepts": [
+        "active_projects",
+        "analytics_json"
+      ],
+      "produces": [
+        "dreamteam_brief_md"
+      ],
+      "compatibleWith": [
+        "evie_analytics_engine",
+        "covenant_validator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_sovereign_budget_builder",
+      "slug": "sovereign_budget_builder",
+      "name": "Sovereign Budget Builder",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Retain",
+      "tagline": "Every dollar toward sovereignty.",
+      "description": "Generates sovereign operating budget — income tracking, expense categories, Institute contribution, and financial sovereignty plan.",
+      "inputs": [],
+      "outputs": [
+        "budget_plan_md",
+        "budget_json"
+      ],
+      "accepts": [
+        "income_data",
+        "revenue_data"
+      ],
+      "produces": [
+        "budget_plan_md",
+        "budget_json"
+      ],
+      "compatibleWith": [
+        "institute_funding_roadmap",
+        "hardware_margin_optimizer"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "shard_covenant_validator",
+      "slug": "covenant_validator",
+      "name": "Covenant Validator",
+      "cardClass": "shard",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Root",
+      "tagline": "φ=1.618. C*=0.809. Ω_c=0.376. Held.",
+      "description": "Validates PHI369 covenant alignment — checks phi constants, Institute contribution tracking, and sovereign design principles.",
+      "inputs": [],
+      "outputs": [
+        "covenant_report_md"
+      ],
+      "accepts": [
+        "project_data"
+      ],
+      "produces": [
+        "covenant_report_md"
+      ],
+      "compatibleWith": [
+        "evie_analytics_engine",
+        "dreamteam_coordinator"
+      ],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "lesson_generate_hooks",
+      "slug": "generate_hooks",
+      "name": "Generate Hooks",
+      "cardClass": "lesson",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "LIGHT",
+      "rarity": "common",
+      "pillar": "Resonate",
+      "tagline": "5 hooks from any output.",
+      "description": "Extracts 5 viral hooks from any module output. Fast modifier.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "lesson_tighten_copy",
+      "slug": "tighten_copy",
+      "name": "Tighten Copy",
+      "cardClass": "lesson",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Replace",
+      "tagline": "Shorter. Sharper. More.",
+      "description": "Condenses and sharpens any text output. Removes filler.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "lesson_export_markdown",
+      "slug": "export_markdown",
+      "name": "Export Markdown",
+      "cardClass": "lesson",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Clean file. Ready to use.",
+      "description": "Exports any output as a clean markdown file.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "lesson_validate_json",
+      "slug": "validate_json",
+      "name": "Validate JSON",
+      "cardClass": "lesson",
+      "category": "intelligence",
+      "packId": "money_pack",
+      "stage": "EMERGE",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Clean JSON. Always parseable.",
+      "description": "Validates and cleans any JSON output from modules.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "lesson_add_cta",
+      "slug": "add_cta",
+      "name": "Add CTA",
+      "cardClass": "lesson",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "common",
+      "pillar": "Retain",
+      "tagline": "Every output needs a next step.",
+      "description": "Appends a call-to-action block to any content output.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "glyph_local_first",
+      "slug": "local_first",
+      "name": "Local-First Glyph",
+      "cardClass": "glyph",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "No cloud. No leaks. Sovereign.",
+      "description": "All modules in this stack prioritize local-first execution. Cloud fallbacks disabled.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "glyph_publish_safe",
+      "slug": "publish_safe",
+      "name": "Publish-Safe Glyph",
+      "cardClass": "glyph",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "rare",
+      "pillar": "Retain",
+      "tagline": "Review before anything goes live.",
+      "description": "auto_publish=false across all stack steps. Nothing publishes without explicit confirmation.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "glyph_dry_run",
+      "slug": "dry_run",
+      "name": "Dry-Run Glyph",
+      "cardClass": "glyph",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "common",
+      "pillar": "Reinforce",
+      "tagline": "Test everything. Break nothing.",
+      "description": "Activates dry-run mode across all publish/export steps. Safe for first-run validation.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "glyph_healing_mode",
+      "slug": "healing_mode",
+      "name": "Healing Mode Glyph",
+      "cardClass": "glyph",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "mythic",
+      "pillar": "Resonate",
+      "tagline": "432Hz. Phi-ratio. TIEKAT aligned.",
+      "description": "All audio/frequency modules in this stack use 432Hz tuning and phi-ratio harmonic rules.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "glyph_vault_aware",
+      "slug": "vault_aware",
+      "name": "Vault-Aware Glyph",
+      "cardClass": "glyph",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Every module reads the vault first.",
+      "description": "All modules in this stack pull vault context before generating. Memory-rich outputs.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "crystal_vault_context",
+      "slug": "vault_context_crystal",
+      "name": "Vault Context Crystal",
+      "cardClass": "crystal",
+      "category": "intelligence",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "rare",
+      "pillar": "Root",
+      "tagline": "Inject memory. Sharpen outputs.",
+      "description": "Loads your vault context and injects it into the first RAG-aware module in the stack.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "crystal_trend_signal",
+      "slug": "trend_signal_crystal",
+      "name": "Trend Signal Crystal",
+      "cardClass": "crystal",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "LIGHT",
+      "rarity": "rare",
+      "pillar": "Replace",
+      "tagline": "Hot market. High timing. Go now.",
+      "description": "Accelerates the trend_surfer output to be urgency-ranked. Stack runs with market-first priority.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "crystal_phi_resonance",
+      "slug": "phi_resonance_crystal",
+      "name": "Phi Resonance Crystal",
+      "cardClass": "crystal",
+      "category": "sovereign_sound",
+      "packId": "sound_pack",
+      "stage": "LIGHT",
+      "rarity": "sovereign",
+      "pillar": "Resonate",
+      "tagline": "φ=1.618 in every harmonic.",
+      "description": "Forces all frequency/timing values in sound modules to align with phi ratios. TIEKAT-grade precision.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "crystal_artifact_booster",
+      "slug": "artifact_booster_crystal",
+      "name": "Artifact Booster Crystal",
+      "cardClass": "crystal",
+      "category": "intelligence",
+      "packId": "intelligence_pack",
+      "stage": "EMERGE",
+      "rarity": "rare",
+      "pillar": "Reinforce",
+      "tagline": "More outputs. Better quality.",
+      "description": "Increases artifact richness across all modules in the stack — more variants, richer context.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_trend_to_money_publish",
+      "slug": "trend_to_money_publish",
+      "name": "Trend → Money → Publish",
+      "cardClass": "mandate",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Replace",
+      "tagline": "Signal to sellable. One mandate.",
+      "description": "Full monetization pipeline — trend intelligence → ideation → offer → sales → email → distribution → optional publish.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "trend_surfer",
+        "prediction_tracker",
+        "idea_miner",
+        "cross_pollinator",
+        "sales_page_builder",
+        "email_sequence_builder",
+        "thread_bomber",
+        "short_form_pack"
+      ],
+      "workflowName": "trend_to_money_publish",
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_vault_to_money_publish",
+      "slug": "vault_to_money_publish",
+      "name": "Vault → Money → Publish",
+      "cardClass": "mandate",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Vault to revenue. Fully automated.",
+      "description": "Vault content → lesson pack → money pack → publish. Sales page, email, social, visual, and optional live publish.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "podcast_script_generator",
+        "presentation_generator",
+        "infographic_generator",
+        "study_module",
+        "hooks_generator",
+        "product_packager",
+        "sales_copy_generator",
+        "distribution_generator",
+        "content_exporter",
+        "publish_controller",
+        "gumroad_publisher",
+        "youtube_publisher"
+      ],
+      "workflowName": "vault_to_money_publish",
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_vault_to_membership_pack",
+      "slug": "vault_to_membership_pack",
+      "name": "Vault → Membership Pack",
+      "cardClass": "mandate",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "FRAME",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Weekly membership. Recurring income.",
+      "description": "Newsletter + bonus + social + optional Gumroad + optional YouTube. The recurring income engine.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "podcast_script_generator",
+        "presentation_generator",
+        "infographic_generator",
+        "study_module",
+        "newsletter_packager",
+        "social_launch_packager",
+        "product_packager",
+        "sales_copy_generator",
+        "content_exporter"
+      ],
+      "workflowName": "vault_to_membership_pack",
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_concept_to_built_structure",
+      "slug": "concept_to_built_structure",
+      "name": "Concept → Built Structure",
+      "cardClass": "mandate",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Reinforce",
+      "tagline": "\"I need a shed 6x12\" → everything to build it.",
+      "description": "Plain English → DXF floor plan → elevations → structural framing → MEP → BOM → permit package → build instructions.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "concept_parser",
+        "floor_plan_generator",
+        "elevation_generator",
+        "structural_framer",
+        "mep_planner",
+        "construction_bom_builder",
+        "permit_package_builder",
+        "build_instruction_manual",
+        "maintenance_manual_builder",
+        "construction_cost_estimator"
+      ],
+      "workflowName": "concept_to_built_structure",
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_idea_to_revenue_hardware",
+      "slug": "idea_to_revenue_hardware",
+      "name": "Idea → Revenue Hardware",
+      "cardClass": "mandate",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Replace",
+      "tagline": "Idea to sellable hardware product. 24 stages.",
+      "description": "The complete hardware business pipeline — design, fab, assemble, launch, operate, scale.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "idea_miner",
+        "trend_surfer",
+        "schematic_generator",
+        "kicad_project_builder",
+        "bom_builder",
+        "cost_optimizer",
+        "pcb_layout_advisor",
+        "design_rule_packager",
+        "enclosure_designer",
+        "firmware_scaffolder",
+        "test_plan_generator",
+        "assembly_guide_builder",
+        "bringup_sequence_generator",
+        "gerber_packager",
+        "jlcpcb_order_helper",
+        "manufacturing_packet_builder",
+        "product_spec_sheet_builder",
+        "hardware_cost_rollup",
+        "hardware_margin_optimizer",
+        "hardware_variants_generator",
+        "hardware_to_content_pack",
+        "build_video_planner",
+        "hardware_launch_packager",
+        "kit_store_listing_generator"
+      ],
+      "workflowName": "idea_to_revenue_hardware",
+      "status": "catalog_only"
+    },
+    {
+      "id": "mandate_sovereign_civilization_workflow",
+      "slug": "sovereign_civilization_workflow",
+      "name": "Sovereign Civilization Workflow",
+      "cardClass": "mandate",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "FRAME",
+      "rarity": "sovereign",
+      "pillar": "Root",
+      "tagline": "Arrive at Pilgrim Creek with nothing. Leave with everything.",
+      "description": "The Parallax Institute operating manual — food, water, energy, shelter, fabrication, health, and sovereignty. One workflow.",
+      "inputs": [],
+      "outputs": [],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "garden_layout_planner",
+        "crop_rotation_planner",
+        "solar_system_designer",
+        "water_system_planner",
+        "greywater_recycler",
+        "food_forest_designer",
+        "livestock_system_planner",
+        "herbal_medicine_guide",
+        "wellness_protocol_generator",
+        "concept_to_built_structure"
+      ],
+      "workflowName": "sovereign_civilization_workflow",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_trend_to_money_publish",
+      "slug": "trend_to_money_publish_ritual",
+      "name": "Trend → Money → Publish Ritual",
+      "cardClass": "ritual",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Replace",
+      "tagline": "Invoke the Trend → Money → Publish path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the trend_to_money_publish mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "trend_surfer",
+        "prediction_tracker",
+        "idea_miner",
+        "cross_pollinator",
+        "sales_page_builder",
+        "email_sequence_builder",
+        "thread_bomber",
+        "short_form_pack"
+      ],
+      "workflowName": "trend_to_money_publish",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_vault_to_money_publish",
+      "slug": "vault_to_money_publish_ritual",
+      "name": "Vault → Money → Publish Ritual",
+      "cardClass": "ritual",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Invoke the Vault → Money → Publish path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the vault_to_money_publish mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "podcast_script_generator",
+        "presentation_generator",
+        "infographic_generator",
+        "study_module",
+        "hooks_generator",
+        "product_packager",
+        "sales_copy_generator",
+        "distribution_generator",
+        "content_exporter",
+        "publish_controller",
+        "gumroad_publisher",
+        "youtube_publisher"
+      ],
+      "workflowName": "vault_to_money_publish",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_vault_to_membership_pack",
+      "slug": "vault_to_membership_pack_ritual",
+      "name": "Vault → Membership Pack Ritual",
+      "cardClass": "ritual",
+      "category": "content_money",
+      "packId": "money_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Root",
+      "tagline": "Invoke the Vault → Membership Pack path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the vault_to_membership_pack mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "podcast_script_generator",
+        "presentation_generator",
+        "infographic_generator",
+        "study_module",
+        "newsletter_packager",
+        "social_launch_packager",
+        "product_packager",
+        "sales_copy_generator",
+        "content_exporter"
+      ],
+      "workflowName": "vault_to_membership_pack",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_concept_to_built_structure",
+      "slug": "concept_to_built_structure_ritual",
+      "name": "Concept → Built Structure Ritual",
+      "cardClass": "ritual",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "MANIFEST",
+      "rarity": "sovereign",
+      "pillar": "Reinforce",
+      "tagline": "Invoke the Concept → Built Structure path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the concept_to_built_structure mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "concept_parser",
+        "floor_plan_generator",
+        "elevation_generator",
+        "structural_framer",
+        "mep_planner",
+        "construction_bom_builder",
+        "permit_package_builder",
+        "build_instruction_manual",
+        "maintenance_manual_builder",
+        "construction_cost_estimator"
+      ],
+      "workflowName": "concept_to_built_structure",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_idea_to_revenue_hardware",
+      "slug": "idea_to_revenue_hardware_ritual",
+      "name": "Idea → Revenue Hardware Ritual",
+      "cardClass": "ritual",
+      "category": "hardware",
+      "packId": "hardware_pack",
+      "stage": "MANIFEST",
+      "rarity": "sovereign",
+      "pillar": "Replace",
+      "tagline": "Invoke the Idea → Revenue Hardware path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the idea_to_revenue_hardware mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "idea_miner",
+        "trend_surfer",
+        "schematic_generator",
+        "kicad_project_builder",
+        "bom_builder",
+        "cost_optimizer",
+        "pcb_layout_advisor",
+        "design_rule_packager",
+        "enclosure_designer",
+        "firmware_scaffolder",
+        "test_plan_generator",
+        "assembly_guide_builder",
+        "bringup_sequence_generator",
+        "gerber_packager",
+        "jlcpcb_order_helper",
+        "manufacturing_packet_builder",
+        "product_spec_sheet_builder",
+        "hardware_cost_rollup",
+        "hardware_margin_optimizer",
+        "hardware_variants_generator",
+        "hardware_to_content_pack",
+        "build_video_planner",
+        "hardware_launch_packager",
+        "kit_store_listing_generator"
+      ],
+      "workflowName": "idea_to_revenue_hardware",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_sovereign_civilization_workflow",
+      "slug": "sovereign_civilization_workflow_ritual",
+      "name": "Sovereign Civilization Workflow Ritual",
+      "cardClass": "ritual",
+      "category": "sovereign_living",
+      "packId": "sovereign_living_pack",
+      "stage": "MANIFEST",
+      "rarity": "sovereign",
+      "pillar": "Root",
+      "tagline": "Invoke the Sovereign Civilization Workflow path through FRAME → LIGHT → EMERGE → MANIFEST.",
+      "description": "Executable ritual representation of the sovereign_civilization_workflow mandate. Uses the same card sequence, grouped by FLEM stages for the Job Board and Sovereign Shelf.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "artifacts",
+        "ritual_log"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "garden_layout_planner",
+        "crop_rotation_planner",
+        "solar_system_designer",
+        "water_system_planner",
+        "greywater_recycler",
+        "food_forest_designer",
+        "livestock_system_planner",
+        "herbal_medicine_guide",
+        "wellness_protocol_generator",
+        "concept_to_built_structure"
+      ],
+      "workflowName": "sovereign_civilization_workflow",
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_ai_income_pipeline",
+      "slug": "ai_income_pipeline",
+      "name": "AI Income Pipeline",
+      "cardClass": "ritual",
+      "category": "content_money",
+      "packId": "starter_deck",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Turn one topic into a monetizable offer stack.",
+      "description": "Starter ritual for Sovereign Shelf. Good first custom stack for new Weavers.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "ideas",
+        "sales_page_md",
+        "email_sequence",
+        "hooks"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "idea_miner",
+        "trend_surfer",
+        "sales_page_builder",
+        "email_sequence_builder",
+        "hooks_generator"
+      ],
+      "workflowName": null,
+      "status": "catalog_only"
+    },
+    {
+      "id": "ritual_structure_manifestation",
+      "slug": "structure_manifestation",
+      "name": "Structure Manifestation Ritual",
+      "cardClass": "ritual",
+      "category": "architecture",
+      "packId": "architecture_pack",
+      "stage": "MANIFEST",
+      "rarity": "mythic",
+      "pillar": "Reinforce",
+      "tagline": "Move from concept to build package.",
+      "description": "Architecture ritual that sequences concept, plan, structure, materials, and instructions.",
+      "inputs": [
+        "topic"
+      ],
+      "outputs": [
+        "building_spec",
+        "floor_plan",
+        "construction_bom",
+        "build_manual"
+      ],
+      "accepts": [],
+      "produces": [],
+      "compatibleWith": [],
+      "recommendedNext": [],
+      "sequence": [
+        "concept_parser",
+        "floor_plan_generator",
+        "structural_framer",
+        "construction_bom_builder",
+        "build_instruction_manual"
+      ],
+      "workflowName": null,
+      "status": "catalog_only"
+    }
+  ],
+  "packs": [
+    {
+      "id": "starter_deck",
+      "name": "Starter Deck",
+      "tagline": "Awakening the Weaver.",
+      "description": "Your first cards. Learn the system. Build your first income stack. Free forever.",
+      "declaredCardCount": 20,
+      "includedIds": [
+        "node_vault",
+        "node_ollama",
+        "node_comfyui",
+        "node_evie_api",
+        "shard_idea_miner",
+        "shard_trend_surfer",
+        "shard_prediction_tracker",
+        "shard_sales_page_builder",
+        "shard_email_sequence_builder",
+        "shard_hooks_generator",
+        "shard_product_packager",
+        "shard_image_generator_v2",
+        "lesson_generate_hooks",
+        "lesson_tighten_copy",
+        "lesson_export_markdown",
+        "glyph_local_first",
+        "glyph_publish_safe",
+        "glyph_dry_run",
+        "crystal_vault_context",
+        "mandate_trend_to_money_publish",
+        "mandate_vault_to_money_publish"
+      ],
+      "category": null
+    },
+    {
+      "id": "money_pack",
+      "name": "Money Pack",
+      "tagline": "Replace. Reinforce. Retain.",
+      "description": "Full monetization engine. Hooks, threads, sales, email, newsletters, social, Gumroad, Payhip.",
+      "declaredCardCount": 13,
+      "includedIds": [
+        "shard_cross_pollinator",
+        "shard_sales_copy_generator",
+        "shard_thread_bomber",
+        "shard_short_form_pack",
+        "shard_newsletter_packager",
+        "shard_social_launch_packager",
+        "shard_distribution_generator",
+        "shard_content_exporter",
+        "shard_gumroad_publisher",
+        "shard_youtube_publisher",
+        "shard_payhip_packager",
+        "lesson_validate_json",
+        "lesson_add_cta",
+        "crystal_trend_signal",
+        "mandate_vault_to_membership_pack"
+      ],
+      "category": null
+    },
+    {
+      "id": "visual_pack",
+      "name": "Visual Pack",
+      "tagline": "Vision. Generate. Rank. Publish.",
+      "description": "Full visual/media engine — thumbnails, covers, social visuals, podcasts, slides, audio, video.",
+      "declaredCardCount": 12,
+      "includedIds": [
+        "shard_thumbnail_generator",
+        "shard_product_cover_generator",
+        "shard_social_visual_generator",
+        "shard_visual_ranker",
+        "shard_comfyui_director",
+        "shard_podcast_script_generator",
+        "shard_presentation_generator",
+        "shard_infographic_generator",
+        "shard_study_module",
+        "shard_audio_generator",
+        "shard_video_generator",
+        "node_visual_fx_bridge"
+      ],
+      "category": null
+    },
+    {
+      "id": "hardware_pack",
+      "name": "Hardware Pack",
+      "tagline": "Forge real things. Ship them.",
+      "description": "Complete hardware creation pipeline — schematic to JLCPCB to launch to business operations.",
+      "declaredCardCount": 28,
+      "includedIds": [],
+      "category": null
+    },
+    {
+      "id": "architecture_pack",
+      "name": "Architecture Pack",
+      "tagline": "Plain English → buildable structure.",
+      "description": "Full construction pipeline — floor plans, elevations, framing, MEP, BOM, permit, build manual.",
+      "declaredCardCount": 11,
+      "includedIds": [],
+      "category": null
+    },
+    {
+      "id": "sovereign_living_pack",
+      "name": "Sovereign Living Pack",
+      "tagline": "Root. Food. Energy. Health. Sovereignty.",
+      "description": "Full off-grid living system — farming, water, solar, fabrication, herbalism, wellness.",
+      "declaredCardCount": 23,
+      "includedIds": [],
+      "category": null
+    },
+    {
+      "id": "sound_pack",
+      "name": "Sovereign Sound Pack",
+      "tagline": "Music. Healing. Release. Sovereignty.",
+      "description": "Complete music engine — composition, FL Studio, release, press, healing frequencies, binaural, sound bath.",
+      "declaredCardCount": 25,
+      "includedIds": [],
+      "category": null
+    },
+    {
+      "id": "intelligence_pack",
+      "name": "Intelligence Pack",
+      "tagline": "The brain that runs everything.",
+      "description": "Analytics, Dreamteam coordination, Institute funding, covenant validation, competitor intelligence.",
+      "declaredCardCount": 9,
+      "includedIds": [],
+      "category": null
+    },
+    {
+      "id": "sovereign_all_access",
+      "name": "Sovereign All-Access Deck",
+      "tagline": "Every card. Every mandate. Every vertical.",
+      "description": "The complete EVIE system. All 132 cards, all 6 mandates, all packs, all updates. Operator-level access.",
+      "declaredCardCount": 132,
+      "includedIds": [],
+      "category": null
+    }
+  ],
+  "limitations": "This is a public read-only historic catalog. Status labels do not imply card executors exist. Original descriptions are historical aspirations, not certified capabilities. Public Pages has no access to local EVIE APIs or vaults."
+}
