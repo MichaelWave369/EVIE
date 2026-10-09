@@ -33,3 +33,10 @@ GitHub Pages is static: it cannot host EVIE's Python modules or vault API. Authe
 **Full Sovereign Shelf** in the React sidebar explores the privacy-minimized 159-card public archive across all 9 historical packs and 7 classes. Each card opens its original input/output contracts, nested ritual/mandate sequences and compatibility links. Add cards to a design-only deck, reorder, review dependency hints and export a JSON draft. **The public deck has no executor or API access.** The 11-card Architecture Pack and the original CAD fixture workshop remain independently available.
 
 Reviewed source: `app/shelf/public_nested_catalog.json`. Generated UI snapshot synchronized by `web/scripts/sync-shelf.mjs`. Original full source archive remains in the owner's Library and is not published. See `docs/PUBLIC_NESTED_SHELF_R4.md`.
+
+
+## Capability Mission Control (R6)
+
+The public React **Mission Control** tab is a static source-derived snapshot of EVIE's real Python module registry and configured workflows. A deterministic Node exporter (`web/scripts/mission-audit.mjs`) reads those files during every frontend dev/test/build. It counts registered modules and referenced dependencies, but never tests live providers, calls the local EVIE API, imports Python, sends credentials, or executes a workflow. Historical job cards remain a separate inventory.
+
+**Evidence discipline:** Only the bounded CAD producer has targeted test-source evidence indexed at this stage. Every other module is marked registered-only. The site claims **zero live runtime qualifications** and clearly labels risk-review hints as heuristics. See `docs/EVIE_MISSION_CONTROL_R6.md` and the local doctor at `python -m tools.evie_doctor --json --smoke-cad`.
