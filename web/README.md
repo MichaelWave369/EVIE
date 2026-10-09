@@ -60,3 +60,8 @@ The public sidebar includes a **Family Gate** preview for six proposed ecosystem
 ## R9: Check real OpenBlue artifact bytes
 
 The Family Gate now includes a two-file OpenBlue inspector. Select the R8B review envelope and its referenced blueprint JSON. The browser validates SHA-256 and byte length, expiry, destination, and supported wall/symbol geometry. This runs entirely in-browser with **no upload, no transport, no project changes, and no recipient acceptance**. After a PASS, independently open OpenBlue's existing EVIE CAD review UI to inspect and approve the plan. Details: `docs/EVIE_OPENBLUE_PREFLIGHT_R9.md`.
+
+
+## R10 OpenBlue parser compatibility
+
+After a R9 local file preflight, the Family Gate can optionally inspect an unsigned JSON report from the R10 command-line conformance runner. The runner uses an expressly selected local OpenBlue git revision and exercises its real parser. The browser only compares the report's fields with the already-inspected file digest/nonce; no upload, authentication or CAD import is implied. A separate pinned cross-repo GitHub Action tests parser compatibility in CI. See `docs/EVIE_OPENBLUE_PARSER_REPLAY_R10.md`.

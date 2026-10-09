@@ -478,3 +478,8 @@ The local family-gate CLI can create a digest-bound, short-lived artifact review
 ## R9: Read-only OpenBlue artifact preflight
 
 EVIE can now compare an actual OpenBlue-compatible EVIE proposal against its R8B `evie.family-handoff-proposal/1` review envelope, verifying exact SHA-256 bytes, size, expiration, target, and a conservative mirror of the reviewed OpenBlueprint importer geometry rules. From the local clone run `python -m tools.evie_family_gate inspect-openblue --proposal ./review.proposal.json --artifact ./plan.json`. The public **Family Gate → OpenBlue handoff check** offers a browser-only two-file inspector. These checks do not upload anything, modify OpenBlue or imply OpenBlue accepted the plan. The existing OpenBlue importer must separately preview and get your explicit approval. [Read R9 preflight protocol](docs/EVIE_OPENBLUE_PREFLIGHT_R9.md).
+
+
+## R10: OpenBlue real-parser contract replay
+
+EVIE can now replay an actual OpenBlue `parseEvieProposal` implementation from a **local, trusted, explicitly git-revision-pinned OpenBlue checkout**. This is stronger parser-compatibility evidence than EVIE's own R9 geometry mirror, while remaining **read-only and non-authorizing**. Use `node tools/openblue_parser_replay.mjs --openblue-dir ../OpenBlueprintStudio --expected-revision YOUR_VERIFIED_COMMIT_SHA --proposal ./review.proposal.json --artifact ./plan.json --receipt ./openblue-parser-replay.json`. An additional GitHub Actions job checks the two repos together using a pinned OpenBlue commit. The unsigned local replay can be inspected in Family Gate after a matching R9 preflight. It is **not** a recipient-issued acknowledgment or a UI import approval. [R10 replay guide](docs/EVIE_OPENBLUE_PARSER_REPLAY_R10.md).
