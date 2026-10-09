@@ -2,6 +2,7 @@ import { useState } from 'react';
 import targets from './generated/family-targets.json';
 import { reviewLocalArtifact, exportProposal, MAX_ARTIFACT_BYTES } from './familyGateLogic.js';
 import OpenBlueInspector from './OpenBlueInspector.jsx';
+import FieldDeckHandoff from './FieldDeckHandoff.jsx';
 import './familyGate.css';
 
 const COMMANDS = [
@@ -71,6 +72,7 @@ export default function FamilyGate() {
         :<div className="fg-empty"><strong>◇</strong><span>No review proposal prepared yet. Select a local artifact and target above.</span></div>}
     </div></section>
     <OpenBlueInspector/>
+    <FieldDeckHandoff/>
     <div className="fg-title"><span>03 / REVIEW ON YOUR OWN COMPUTER</span><h2>Signed human acknowledgement.</h2></div>
     <section className="fg-cli"><p>Use the existing encrypted R8 Ed25519 key to acknowledge a specific review proposal locally. The recipient will still receive nothing automatically. Verification needs an independently selected trusted public key.</p>
       {COMMANDS.map((cmd,i)=><div key={i} className="fg-command"><span>{String(i+1).padStart(2,'0')}</span><code>{cmd}</code><button onClick={()=>copy(cmd)}>Copy</button></div>)}

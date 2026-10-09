@@ -64,3 +64,8 @@ The OpenBlue validator performs strict local read-only contract checks and binds
 ## R10 recipient parser replay limitations
 
 The local OpenBlue conformance harness deliberately imports and executes source from the operator-selected OpenBlue git checkout. It checks an explicit revision pin and clean tracked parser files, but **does not isolate malicious code**; run it only against reviewed trustworthy source. The source revision/digest and unsigned report do not authenticate an actual OpenBlue user's receipt or grant project import authority. The UI still requires explicit approval in OpenBlue, and EVIE adds no network transfer or agent execution.
+
+
+## R11: FieldDeck action boundaries
+
+EVIE Shelf cards and FieldDeck action IDs are separate authority domains. `evie.deck.draft/1` imports are never treated as executable FieldDeck steps. The new browser composer creates only manual selections from three fixed FieldDeck diagnostic IDs, with `policy.execution=denied` and independent review/authentication required. FieldDeck's own IssueOps and execution policy are unaffected. Parser compatibility testing on a reviewed pinned FieldDeck revision is not execution authorization.

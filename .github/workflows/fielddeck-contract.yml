@@ -1,0 +1,45 @@
+name: EVIE FieldDeck Blueprint Compatibility
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "web/src/fielddeckBridge.js"
+      - "web/src/fielddeckBridge.test.js"
+      - "web/src/FieldDeckHandoff.jsx"
+      - "tests/fielddeck_contract.test.mjs"
+      - ".github/workflows/fielddeck-contract.yml"
+  push:
+    branches: [main]
+    paths:
+      - "web/src/fielddeckBridge.js"
+      - "web/src/fielddeckBridge.test.js"
+      - "web/src/FieldDeckHandoff.jsx"
+      - "tests/fielddeck_contract.test.mjs"
+      - ".github/workflows/fielddeck-contract.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fielddeck-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: evie
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: MichaelWave369/FieldDeck
+          ref: bc9b73688d8725945d08f1299e5bc0e27e73e710
+          path: fielddeck
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Execute pinned FieldDeck parser against EVIE-created default-deny blueprints
+        working-directory: evie
+        env:
+          CI: "true"
+          FIELDDECK_CHECKOUT: ${{ github.workspace }}/fielddeck
+          FIELDDECK_REVISION: bc9b73688d8725945d08f1299e5bc0e27e73e710
+        run: node --test tests/fielddeck_contract.test.mjs
