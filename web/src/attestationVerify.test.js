@@ -49,7 +49,7 @@ describe('R8 independently selected public-key signature verification', () => {
     const other = sample().pem;
     await expect(verify(attestation, other)).rejects.toThrow('not the selected');
     const altered = { ...attestation, payloadBase64: base64('{}') };
-    await expect(verify(altered, pem)).rejects.toThrow('signature size|INVALID');
+    await expect(verify(altered, pem)).rejects.toThrow(/signature size|INVALID/);
     await expect(verify({ ...attestation, signatureBase64: base64(Buffer.alloc(64)) }, pem)).rejects.toThrow('INVALID');
   });
   it('rejects malformed and unsupported files before any trust claim', async () => {
