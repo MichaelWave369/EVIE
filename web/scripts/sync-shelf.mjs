@@ -40,4 +40,11 @@ if (!historicFloor || !checkedFloor || historicFloor.status !== checkedFloor.exe
 save('nested-shelf.json', shelf);
 console.log('Synced:', shelf.cards.length, 'cards,', shelf.packs.length, 'packs; architecture audit:', architecture.cards.length, 'cards.');
 
+const familySource = read('../../app/family_gate/family_targets.json');
+if (familySource.schemaVersion !== 'evie.family-target-catalog/1' || !Array.isArray(familySource.targets)
+    || familySource.targets.length !== 6 || familySource.transport !== 'not-implemented'
+    || familySource.execution !== 'disabled') throw Error('Family Gate catalog drift / unsafe default');
+const targetIds = new Set(familySource.targets.map(t => t.id));
+if (targetIds.size !== familySource.targets.length) throw Error('Duplicate family target IDs');
+save('family-targets.json', familySource);
 syncMissionManifest();

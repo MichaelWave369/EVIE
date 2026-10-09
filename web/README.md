@@ -50,3 +50,8 @@ Mission Control → **Qualification Lab** explains the single allowlisted local 
 ## R8: Verify a signed local qualification
 
 Mission Control → Qualification Lab offers two-file, browser-only Ed25519 verification. Select the signed attestation and a trusted PUBLIC KEY PEM obtained through an independent channel. Files never leave the browser. A matching signature proves key control over the signed bytes, **not** that the reported test actually ran, nor that any operation is authorized. Global runtime-qualified count stays zero. See docs/EVIE_SIGNED_ATTESTATION_R8.md.
+
+
+## R8B Family Gate
+
+The public sidebar includes a **Family Gate** preview for six proposed ecosystem routes. The browser hashes a locally selected file (8 MB maximum), creates a time-limited `evie.family-handoff-proposal/1` review-only JSON, and downloads it without uploading the original. There is no remote transfer, credential exchange, action permission, or recipient adapter. Locally, `python -m tools.evie_family_gate` supports catalog, prepare, Ed25519 acknowledgement, and independent verification. See `docs/EVIE_FAMILY_GATE_R8B.md`.

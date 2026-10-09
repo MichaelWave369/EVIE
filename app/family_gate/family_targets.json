@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "evie.family-target-catalog/1",
+  "targets": [
+    {
+      "id": "openblue",
+      "label": "OpenBlue Studio",
+      "artifactKinds": [
+        "openblueprint.evie-proposal/1"
+      ],
+      "description": "CAD concept plan for explicit review"
+    },
+    {
+      "id": "fielddeck",
+      "label": "FieldDeck",
+      "artifactKinds": [
+        "evie.deck.draft/1"
+      ],
+      "description": "Workflow deck proposal for review"
+    },
+    {
+      "id": "phios",
+      "label": "PhiOS",
+      "artifactKinds": [
+        "evie.qualification-receipt/1"
+      ],
+      "description": "Qualification evidence envelope for inspection"
+    },
+    {
+      "id": "superphivessel",
+      "label": "SuperPhiVessel",
+      "artifactKinds": [
+        "evie.qualification-attestation/1"
+      ],
+      "description": "Signed evidence record for review"
+    },
+    {
+      "id": "pixelforge",
+      "label": "PixelForge",
+      "artifactKinds": [
+        "openblueprint.evie-proposal/1"
+      ],
+      "description": "Future 3D concept conversion review"
+    },
+    {
+      "id": "domistika",
+      "label": "Domistika",
+      "artifactKinds": [
+        "evie.deck.draft/1"
+      ],
+      "description": "Future creative workflow inspection"
+    }
+  ],
+  "transport": "not-implemented",
+  "execution": "disabled",
+  "capabilityStatus": "proposed-contract-only",
+  "notes": "Source-level intent only; no live bridge, recipient importer or verified transport."
+}

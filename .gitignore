@@ -53,3 +53,7 @@ Thumbs.db
 # Local evidence stays off GitHub by default
 *.attestation.json
 *.qualification.json
+
+# Family Gate local handoff envelopes (can include private metadata)
+*.ack.json
+*.proposal.json
