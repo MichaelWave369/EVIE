@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "evie.shelf.architecture-catalog/1",
+  "source": {
+    "registry": "EVIE_SOVEREIGN_SHELF_CARD_REGISTRY_v1_1_FIXED.json",
+    "registry_version": "1.1.0",
+    "sha256": "efe80d7172edce3db026b5160c2fa9bd41468c16b083b3d747ce96de1b485f35",
+    "kind": "minimal_metadata_extract",
+    "total_original_cards": 159
+  },
+  "pack_id": "architecture_pack",
+  "cards": [
+    {
+      "card_id": "shard_concept_parser",
+      "slug": "concept_parser",
+      "name": "Concept Parser",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "FRAME",
+      "historical_contract": {
+        "requires": [
+          "structure_description"
+        ],
+        "emits": [
+          "structure_spec"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_floor_plan_generator",
+      "slug": "floor_plan_generator",
+      "name": "Floor Plan Generator",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "EMERGE",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "floor_plan_dxf",
+          "floor_plan_svg"
+        ]
+      },
+      "execution": {
+        "status": "bounded_adapter",
+        "producer_module": "openblueprint_floor_plan",
+        "invoke": {
+          "method": "POST",
+          "path": "/v1/modules/openblueprint_floor_plan/generate"
+        },
+        "implemented_outputs": [
+          "openblueprint.evie-proposal/1",
+          "sha256-receipt.json"
+        ],
+        "unsupported_historical_outputs": [
+          "floor_plan_dxf",
+          "floor_plan_svg"
+        ],
+        "notes": "New rectangle-plan producer; original structure_spec input and DXF/SVG outputs are NOT implemented."
+      }
+    },
+    {
+      "card_id": "shard_elevation_generator",
+      "slug": "elevation_generator",
+      "name": "Elevation Generator",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "EMERGE",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "elevations_svg"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_structural_framer",
+      "slug": "structural_framer",
+      "name": "Structural Framer",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "EMERGE",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "framing_plan_svg",
+          "framing_dxf"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_mep_planner",
+      "slug": "mep_planner",
+      "name": "MEP Planner",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "EMERGE",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "mep_plan_json",
+          "mep_notes_md"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_construction_bom_builder",
+      "slug": "construction_bom_builder",
+      "name": "Construction BOM Builder",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "FRAME",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "lumber_takeoff_csv",
+          "construction_bom_csv"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_permit_package_builder",
+      "slug": "permit_package_builder",
+      "name": "Permit Package Builder",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "MANIFEST",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "permit_package_md",
+          "compliance_checklist"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_build_instruction_manual",
+      "slug": "build_instruction_manual",
+      "name": "Build Instruction Manual",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "MANIFEST",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "build_manual_md"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_maintenance_manual_builder",
+      "slug": "maintenance_manual_builder",
+      "name": "Maintenance Manual Builder",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "MANIFEST",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "maintenance_manual_md"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_build_video_script",
+      "slug": "build_video_script",
+      "name": "Build Video Script",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "LIGHT",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "video_scripts_md",
+          "shot_lists"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    },
+    {
+      "card_id": "shard_construction_cost_estimator",
+      "slug": "construction_cost_estimator",
+      "name": "Construction Cost Estimator",
+      "card_class": "shard",
+      "category": "architecture",
+      "pack_id": "architecture_pack",
+      "flem_stage": "FRAME",
+      "historical_contract": {
+        "requires": [
+          "structure_spec"
+        ],
+        "emits": [
+          "cost_estimate_json",
+          "cost_report_md"
+        ]
+      },
+      "execution": {
+        "status": "catalog_only",
+        "implemented_outputs": [],
+        "notes": "Historical specification recovered; no verified executor."
+      }
+    }
+  ],
+  "rituals": [
+    {
+      "card_id": "ritual_concept_to_built_structure",
+      "name": "Concept to Built Structure Ritual",
+      "status": "catalog_only",
+      "sequence": [
+        "concept_parser",
+        "floor_plan_generator",
+        "elevation_generator",
+        "structural_framer",
+        "mep_planner",
+        "construction_bom_builder",
+        "permit_package_builder",
+        "build_instruction_manual",
+        "maintenance_manual_builder",
+        "construction_cost_estimator"
+      ]
+    },
+    {
+      "card_id": "ritual_structure_manifestation",
+      "name": "Structure Manifestation Ritual",
+      "status": "catalog_only",
+      "sequence": [
+        "concept_parser",
+        "floor_plan_generator",
+        "structural_framer",
+        "construction_bom_builder",
+        "build_instruction_manual"
+      ]
+    }
+  ],
+  "notes": "Read-only metadata, not evidence of operational job cards, automatic execution, professional engineering checks, or field-ready documents."
+}

@@ -431,3 +431,8 @@ See `PHI_COMMONS.md`, `THIRD_PARTY_NOTICES.md`, `MODEL_LICENSES.md`, and `PUBLIC
 ## OpenBlueprint CAD producer
 
 The native openblueprint_floor_plan module creates locally generated concept floor plans and SHA-256 digest receipts. Import the resulting JSON through OpenBlueprint's **EVIE CAD** review gate; never auto-import. See docs/OPENBLUEPRINT_CAD_HANDOFF.md. This is a new module, not a recovered original Sovereign Shelf CAD card.
+
+
+## Recovered Sovereign Shelf Architecture Pack (Rung 3)
+
+Eleven original Architecture Pack card definitions and two ritual sequences are available as authenticated read-only metadata at GET /v1/shelf/architecture. The bounded OpenBlueprint producer is linked to the historical Floor Plan Generator card but does not implement its original structure_spec input or DXF/SVG outputs. Other cards are catalog-only. See docs/SOVEREIGN_SHELF_ARCHITECTURE_R3.md.

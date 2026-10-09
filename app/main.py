@@ -18,6 +18,7 @@ from app.api.routes_factory import router as factory_router
 from app.api.routes_scheduler import router as scheduler_router
 from app.api.routes_runs import router as runs_router
 from app.api.routes_swarm import router as swarm_router
+from app.api.routes_shelf_architecture import router as architecture_shelf_router
 from app.scheduler.runner import start_scheduler
 
 @asynccontextmanager
@@ -110,3 +111,4 @@ app.include_router(factory_router)
 app.include_router(scheduler_router)
 app.include_router(runs_router)
 app.include_router(swarm_router)
+app.include_router(architecture_shelf_router)
