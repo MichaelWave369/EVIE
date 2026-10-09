@@ -426,3 +426,8 @@ EVIE is treated as a **donor system**, not a mandatory PhiOS dependency. Its str
 For modern PhiOS integration, externally visible or mutating actions should pass through explicit PhiOS authority gates rather than inheriting historical EVIE permissions.
 
 See `PHI_COMMONS.md`, `THIRD_PARTY_NOTICES.md`, `MODEL_LICENSES.md`, and `PUBLIC_RELEASE.md`.
+
+
+## OpenBlueprint CAD producer
+
+The native openblueprint_floor_plan module creates locally generated concept floor plans and SHA-256 digest receipts. Import the resulting JSON through OpenBlueprint's **EVIE CAD** review gate; never auto-import. See docs/OPENBLUEPRINT_CAD_HANDOFF.md. This is a new module, not a recovered original Sovereign Shelf CAD card.
