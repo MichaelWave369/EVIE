@@ -42,6 +42,27 @@ COMMON_SCHEMA: Dict[str, Any] = {
 
 # Curated specs for the highest-impact lanes (safe: modules ignore unknown keys)
 CURATED: Dict[str, ModuleSpec] = {
+    "openblueprint_floor_plan": ModuleSpec(
+        name="openblueprint_floor_plan",
+        description="Local-first concept floor plan for manual OpenBlueprint review.",
+        safety_tier=1,
+        input_schema={"type": "object", "additionalProperties": False,
+          "properties": {
+            "units": {"type": "string", "enum": ["ft", "m"]},
+            "width": {"type": "number", "minimum": 2, "maximum": 200},
+            "depth": {"type": "number", "minimum": 2, "maximum": 200},
+            "partition": {"type": "string", "enum": ["none", "vertical", "horizontal"]},
+            "partition_ratio": {"type": "number", "minimum": 0.2, "maximum": 0.8},
+            "wall_height": {"type": "number", "minimum": 0.5, "maximum": 100},
+            "wall_thickness": {"type": "number", "minimum": 0.1, "maximum": 10},
+            "grid": {"type": "number", "minimum": 0.01, "maximum": 100},
+            "include_door": {"type": "boolean"},
+            "include_network": {"type": "boolean"},
+          }},
+        example_constraints={"width": 28, "depth": 20, "partition": "vertical"},
+        declared_outputs=[".json"],
+        notes="New deterministic concept-only module, not a recovered Shelf card. Approval mandatory.",
+    ),
     "ebooks": ModuleSpec(
         name="ebooks",
         description="Generate an ebook-style asset (outline + chapters + export).",

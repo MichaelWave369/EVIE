@@ -100,6 +100,7 @@ from app.modules.vault_generator import VaultGeneratorModule
 from app.modules.workshop_webinar_kit import WorkshopWebinarKitModule
 from app.modules.youtube_script import YoutubeScriptModule
 from app.modules.career_tools import CareerToolsModule
+from app.modules.openblueprint_floor_plan import OpenBlueprintFloorPlanModule
 from app.modules.podcast_script_generator import PodcastScriptGeneratorModule
 from app.modules.presentation_generator import PresentationGeneratorModule
 from app.modules.infographic_generator import InfographicGeneratorModule
@@ -283,4 +284,5 @@ REGISTRY = {
 
     # v4.0 - Career & Job Search Tools
     "career_tools": CareerToolsModule(),
+    "openblueprint_floor_plan": OpenBlueprintFloorPlanModule(),
 }
