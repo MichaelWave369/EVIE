@@ -55,3 +55,8 @@ Mission Control → Qualification Lab offers two-file, browser-only Ed25519 veri
 ## R8B Family Gate
 
 The public sidebar includes a **Family Gate** preview for six proposed ecosystem routes. The browser hashes a locally selected file (8 MB maximum), creates a time-limited `evie.family-handoff-proposal/1` review-only JSON, and downloads it without uploading the original. There is no remote transfer, credential exchange, action permission, or recipient adapter. Locally, `python -m tools.evie_family_gate` supports catalog, prepare, Ed25519 acknowledgement, and independent verification. See `docs/EVIE_FAMILY_GATE_R8B.md`.
+
+
+## R9: Check real OpenBlue artifact bytes
+
+The Family Gate now includes a two-file OpenBlue inspector. Select the R8B review envelope and its referenced blueprint JSON. The browser validates SHA-256 and byte length, expiry, destination, and supported wall/symbol geometry. This runs entirely in-browser with **no upload, no transport, no project changes, and no recipient acceptance**. After a PASS, independently open OpenBlue's existing EVIE CAD review UI to inspect and approve the plan. Details: `docs/EVIE_OPENBLUE_PREFLIGHT_R9.md`.

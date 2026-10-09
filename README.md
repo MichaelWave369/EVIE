@@ -473,3 +473,8 @@ Use `python -m tools.evie_attest keygen --private ./evie-local.pem --public ./ev
 ## R8B: EVIE Family Permission Gate (review only)
 
 The local family-gate CLI can create a digest-bound, short-lived artifact review proposal, acknowledge it with your encrypted Ed25519 private key, and verify the acknowledgement against an independently selected trusted public key. **This does not grant execution permission or transfer a file.** Six family targets have proposed artifact contracts only, and all transports remain disabled. Use `python -m tools.evie_family_gate catalog` to inspect them. The public React **Family Gate** tab can generate the same review envelope from a local file entirely in your browser. See [Family Gate R8B](docs/EVIE_FAMILY_GATE_R8B.md).
+
+
+## R9: Read-only OpenBlue artifact preflight
+
+EVIE can now compare an actual OpenBlue-compatible EVIE proposal against its R8B `evie.family-handoff-proposal/1` review envelope, verifying exact SHA-256 bytes, size, expiration, target, and a conservative mirror of the reviewed OpenBlueprint importer geometry rules. From the local clone run `python -m tools.evie_family_gate inspect-openblue --proposal ./review.proposal.json --artifact ./plan.json`. The public **Family Gate → OpenBlue handoff check** offers a browser-only two-file inspector. These checks do not upload anything, modify OpenBlue or imply OpenBlue accepted the plan. The existing OpenBlue importer must separately preview and get your explicit approval. [Read R9 preflight protocol](docs/EVIE_OPENBLUE_PREFLIGHT_R9.md).
