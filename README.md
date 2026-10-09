@@ -458,3 +458,8 @@ Developer launchers now use loopback networking and protected API endpoints fail
 ## Capability Mission Control (R6)
 
 The React sidebar now includes **Mission Control**, an indexed public snapshot of the **real source-registered Python modules** and **configured workflows** (separate from the 159 historical Shelf cards). It lets visitors search and inspect module registrations, dependency references, workflow steps, and targeted test-source evidence. The snapshot is generated directly from `app/modules/__init__.py` and `configs/workflows.json` on every web build, never from credentials or local runtime probes. No claim is made that all modules are runnable. See [R6 evidence and limitations](docs/EVIE_MISSION_CONTROL_R6.md).
+
+
+## Capability Qualification Lab (R7)
+
+EVIE now has an explicitly allowlisted **local subprocess qualification runner** for only the bounded OpenBlueprint concept floor-plan producer. Run `python -m tools.evie_qualify list`, then `python -m tools.evie_qualify run openblueprint_floor_plan --receipt ./cad-qualification.json` in your local clone. The receipt records a fixed-schema, digest-checked disposable fixture, and does **not** authorize agents to act or claim production readiness. A browser-only inspector appears under Mission Control → Qualification Lab; it checks source-version and schema but **never authenticates** an unsigned receipt or changes the public live-qualified count. See [R7 qualification protocol](docs/EVIE_QUALIFICATION_LAB_R7.md).

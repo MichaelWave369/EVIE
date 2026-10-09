@@ -98,6 +98,16 @@ export function buildMissionManifest(registrySource, workflowSource) {
           description: 'Disposable CAD producer smoke test exists in source. Not a local-machine runtime qualification.' }
       : { level: 'registration_only', description: 'Python registry entry, not proof of successful execution.' }
   }));
+  const cadSourceSha256 = createHash('sha256').update(
+    readFileSync(resolve(import.meta.dirname, '../../app/modules/openblueprint_floor_plan.py'))
+  ).digest('hex');
+  const qualificationFixtures = [{
+    module: 'openblueprint_floor_plan',
+    scenario: 'cad_rectangular_concept_v1',
+    sourceSha256: cadSourceSha256,
+    initialStatus: 'no_local_receipt',
+    trust: 'local_unsigned_unverified',
+  }];
   const inWorkflows = allModules.filter(m => m.workflowRefs.length).length;
   const digest = createHash('sha256').update(registrySource).update('\n--- workflow ---\n').update(workflowSource).digest('hex');
   return {
@@ -110,6 +120,7 @@ export function buildMissionManifest(registrySource, workflowSource) {
       directlyUsedModules: inWorkflows, referenceIssues: examined.referenceIssues.length,
       sourceTestWiredModules: allModules.filter(m => m.evidence.level === 'targeted_test_source').length,
       runtimeQualifiedModules: 0 },
+    qualificationFixtures,
     modules: allModules, workflows: examined.workflows,
     referenceIssues: examined.referenceIssues,
     limitations: [

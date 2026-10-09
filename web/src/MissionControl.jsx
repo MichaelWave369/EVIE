@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import manifest from './generated/mission-control.json';
+import QualificationLab from './QualificationLab.jsx';
 import './missionControl.css';
 
 const GH = 'https://github.com/MichaelWave369/EVIE';
@@ -120,8 +121,8 @@ export default function MissionControl() {
     </header>
     <section className="mc-truth"><div className="mc-truth-symbol">◎</div><div><b>This is a static source inventory, not a live status monitor.</b><p>Module registrations, configured workflows, and targeted test files can be indexed without running a provider. No green availability badges, model access, key inspection, or private API connection from GitHub Pages.</p></div></section>
     <div className="mc-body">
-      <div className="mc-switch"><button className={tab === 'modules' ? 'active' : ''} onClick={() => choose('modules')}>◈ Modules <span>{manifest.summary.registeredModules}</span></button><button className={tab === 'workflows' ? 'active' : ''} onClick={() => choose('workflows')}>⌘ Workflows <span>{manifest.summary.configuredWorkflows}</span></button></div>
-      <div className="mc-section-title"><div><div className="mc-overline">INVENTORY / READ-ONLY INSPECTION</div><h2>{tab === 'modules' ? 'Python capability roster' : 'Workflow dependency graph'}</h2></div><span>SHA-256 · {manifest.source.sha256.slice(0, 12)}…</span></div>
+      <div className="mc-switch"><button className={tab === 'modules' ? 'active' : ''} onClick={() => choose('modules')}>◈ Modules <span>{manifest.summary.registeredModules}</span></button><button className={tab === 'workflows' ? 'active' : ''} onClick={() => choose('workflows')}>⌘ Workflows <span>{manifest.summary.configuredWorkflows}</span></button><button className={tab === 'lab' ? 'active' : ''} onClick={() => choose('lab')}>⌗ Qualification Lab <span>01</span></button></div>
+      {tab === 'lab' ? <QualificationLab/> : <><div className="mc-section-title"><div><div className="mc-overline">INVENTORY / READ-ONLY INSPECTION</div><h2>{tab === 'modules' ? 'Python capability roster' : 'Workflow dependency graph'}</h2></div><span>SHA-256 · {manifest.source.sha256.slice(0, 12)}…</span></div>
       <div className="mc-controls"><label className="mc-search">⌕<input value={query} onChange={e => { setQuery(e.target.value); setShow(36); }} placeholder={tab === 'modules' ? 'Search modules, classes and workflow references…' : 'Search workflow steps and tags…'} aria-label={'Search ' + tab}/></label>
         {tab === 'modules' && <><select aria-label="Filter module group" value={group} onChange={e => { setGroup(e.target.value); setShow(36); }}><option value="all">All groups</option>{GROUPS.map(g => <option key={g} value={g}>{g}</option>)}</select>
           <select aria-label="Filter module evidence" value={qualification} onChange={e => { setQualification(e.target.value); setShow(36); }}>
@@ -138,7 +139,7 @@ export default function MissionControl() {
       {tab === 'workflows' && <div className="mc-flow-grid">{flows.map(w => <button key={w.id} onClick={() => setWorkflow(w)} className="mc-flow-card"><div className="mc-tile-top"><span className="mc-glyph">⌘</span><span>↗</span></div><span className="mc-mono">WORKFLOW / CONFIGURED ONLY</span><h3>{pretty(w.id)}</h3><p>{w.description}</p><div className="mc-flow-foot"><span>{w.steps.length} STEPS</span><span>{w.modules.length} MODULES</span><span>{w.referenceIssues.length} REF ISSUES</span></div></button>)}</div>}
       {((tab === 'modules' && modules.length === 0) || (tab === 'workflows' && flows.length === 0)) && <div className="mc-empty">No matching entries. Change your search or filters.</div>}
       <section className="mc-local-panel"><div className="mc-local-icon">⌘</div><div><div className="mc-overline">LOCAL ENGINE / NEXT QUALIFICATION GATE</div><h3>EVIE Doctor</h3><p>Run the offline diagnosis on your PC to inspect registration wiring and optionally perform a real, disposable CAD-producer smoke test. It does not probe the other modules or authorize publishing.</p><div className="mc-command"><code>{command}</code><button onClick={copyCommand} aria-label="Copy EVIE Doctor command">Copy ↗</button></div>{copyMessage && <small role="status">{copyMessage}</small>}</div></section>
-      <div className="mc-footer-line">BUILD SOURCE · {manifest.source.files.join(' + ')} · VERIFIED RUNS ARE NOT IMPLIED BY THIS VIEW.</div>
+      <div className="mc-footer-line">BUILD SOURCE · {manifest.source.files.join(' + ')} · VERIFIED RUNS ARE NOT IMPLIED BY THIS VIEW.</div></>}
     </div>
     <ModuleDetail module={module} onClose={() => setModule(null)} openWorkflow={openWorkflow}/>
     <WorkflowDetail workflow={workflow} onClose={() => setWorkflow(null)} openModule={openModule}/>

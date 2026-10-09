@@ -40,3 +40,8 @@ Reviewed source: `app/shelf/public_nested_catalog.json`. Generated UI snapshot s
 The public React **Mission Control** tab is a static source-derived snapshot of EVIE's real Python module registry and configured workflows. A deterministic Node exporter (`web/scripts/mission-audit.mjs`) reads those files during every frontend dev/test/build. It counts registered modules and referenced dependencies, but never tests live providers, calls the local EVIE API, imports Python, sends credentials, or executes a workflow. Historical job cards remain a separate inventory.
 
 **Evidence discipline:** Only the bounded CAD producer has targeted test-source evidence indexed at this stage. Every other module is marked registered-only. The site claims **zero live runtime qualifications** and clearly labels risk-review hints as heuristics. See `docs/EVIE_MISSION_CONTROL_R6.md` and the local doctor at `python -m tools.evie_doctor --json --smoke-cad`.
+
+
+## Qualification Lab (R7)
+
+Mission Control → **Qualification Lab** explains the single allowlisted local CAD smoke scenario and lets you inspect a JSON receipt selected from your own computer. Validation is entirely in the browser, no uploads or persistence. The uploaded file is explicitly an *unsigned self-report* and cannot independently prove execution. The public live-qualified count stays zero. See `docs/EVIE_QUALIFICATION_LAB_R7.md` in the repository.
