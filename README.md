@@ -463,3 +463,8 @@ The React sidebar now includes **Mission Control**, an indexed public snapshot o
 ## Capability Qualification Lab (R7)
 
 EVIE now has an explicitly allowlisted **local subprocess qualification runner** for only the bounded OpenBlueprint concept floor-plan producer. Run `python -m tools.evie_qualify list`, then `python -m tools.evie_qualify run openblueprint_floor_plan --receipt ./cad-qualification.json` in your local clone. The receipt records a fixed-schema, digest-checked disposable fixture, and does **not** authorize agents to act or claim production readiness. A browser-only inspector appears under Mission Control → Qualification Lab; it checks source-version and schema but **never authenticates** an unsigned receipt or changes the public live-qualified count. See [R7 qualification protocol](docs/EVIE_QUALIFICATION_LAB_R7.md).
+
+
+## R8: Signed local qualification attestations
+
+Use `python -m tools.evie_attest keygen --private ./evie-local.pem --public ./evie-trusted.pub.pem` to generate an encrypted local Ed25519 private key and independently shareable public key. Sign a **fresh passing** CAD qualification using `python -m tools.evie_qualify run openblueprint_floor_plan --signing-key ./evie-local.pem --attestation ./cad-run.attestation.json`. Verify with `python -m tools.evie_attest verify --attestation ./cad-run.attestation.json --trusted-public ./evie-trusted.pub.pem`. The React Qualification Lab provides optional browser-only signature verification using a separately selected trusted public PEM. A valid signature grants no job permissions. See [Signed Evidence R8](docs/EVIE_SIGNED_ATTESTATION_R8.md).

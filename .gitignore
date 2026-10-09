@@ -49,3 +49,7 @@ workspace/
 Thumbs.db
 .vscode/
 .idea/
+
+# Local evidence stays off GitHub by default
+*.attestation.json
+*.qualification.json

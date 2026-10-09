@@ -45,3 +45,8 @@ The public React **Mission Control** tab is a static source-derived snapshot of 
 ## Qualification Lab (R7)
 
 Mission Control → **Qualification Lab** explains the single allowlisted local CAD smoke scenario and lets you inspect a JSON receipt selected from your own computer. Validation is entirely in the browser, no uploads or persistence. The uploaded file is explicitly an *unsigned self-report* and cannot independently prove execution. The public live-qualified count stays zero. See `docs/EVIE_QUALIFICATION_LAB_R7.md` in the repository.
+
+
+## R8: Verify a signed local qualification
+
+Mission Control → Qualification Lab offers two-file, browser-only Ed25519 verification. Select the signed attestation and a trusted PUBLIC KEY PEM obtained through an independent channel. Files never leave the browser. A matching signature proves key control over the signed bytes, **not** that the reported test actually ran, nor that any operation is authorized. Global runtime-qualified count stays zero. See docs/EVIE_SIGNED_ATTESTATION_R8.md.

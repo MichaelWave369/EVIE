@@ -44,3 +44,8 @@ EVIE was designed local-first. Before exposing the API or dashboard to untrusted
 ## Rung 5 local defaults
 
 The API and Streamlit developer launchers bind 127.0.0.1; Docker Compose publishes ports on host 127.0.0.1 and requires a configured API secret. Protected endpoints refuse blank or known example keys. Do not expose this runtime outside the host without authentication/CORS/TLS threat modeling and review of all effectful modules. GitHub Pages never hosts the private runtime.
+
+
+## R8 local signer trust
+
+Keep all private signing keys on your own machine, encrypted with a passphrase and ideally outside the Git checkout. A trusted public key must be pinned independently; key fingerprints stated inside an attestation are only claims until verified against that trust root. Signed evidence does not imply runtime isolation, correctness, permission to publish or authority to run external tools. The subprocess used in R7 is still not an OS sandbox.
