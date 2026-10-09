@@ -49,3 +49,8 @@ The API and Streamlit developer launchers bind 127.0.0.1; Docker Compose publish
 ## R8 local signer trust
 
 Keep all private signing keys on your own machine, encrypted with a passphrase and ideally outside the Git checkout. A trusted public key must be pinned independently; key fingerprints stated inside an attestation are only claims until verified against that trust root. Signed evidence does not imply runtime isolation, correctness, permission to publish or authority to run external tools. The subprocess used in R7 is still not an OS sandbox.
+
+
+## R8B review proposals are never execution leases
+
+`evie.family-handoff-proposal/1` is a digest-bound human-inspection request, with `requestedEffects: []`, `executionAuthorized: false` and `transportEnabled: false`. A separately signed `evie.family-handoff-acknowledgement/1` records the signing key holder's acknowledgement only; it does not guarantee recipient receipt, physical human identity, one-time consumption or permission to run tools. Trust roots must be independently selected, not taken from envelopes. All six proposed target transports remain disabled; no family app must treat these records as automation permissions.

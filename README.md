@@ -468,3 +468,8 @@ EVIE now has an explicitly allowlisted **local subprocess qualification runner**
 ## R8: Signed local qualification attestations
 
 Use `python -m tools.evie_attest keygen --private ./evie-local.pem --public ./evie-trusted.pub.pem` to generate an encrypted local Ed25519 private key and independently shareable public key. Sign a **fresh passing** CAD qualification using `python -m tools.evie_qualify run openblueprint_floor_plan --signing-key ./evie-local.pem --attestation ./cad-run.attestation.json`. Verify with `python -m tools.evie_attest verify --attestation ./cad-run.attestation.json --trusted-public ./evie-trusted.pub.pem`. The React Qualification Lab provides optional browser-only signature verification using a separately selected trusted public PEM. A valid signature grants no job permissions. See [Signed Evidence R8](docs/EVIE_SIGNED_ATTESTATION_R8.md).
+
+
+## R8B: EVIE Family Permission Gate (review only)
+
+The local family-gate CLI can create a digest-bound, short-lived artifact review proposal, acknowledge it with your encrypted Ed25519 private key, and verify the acknowledgement against an independently selected trusted public key. **This does not grant execution permission or transfer a file.** Six family targets have proposed artifact contracts only, and all transports remain disabled. Use `python -m tools.evie_family_gate catalog` to inspect them. The public React **Family Gate** tab can generate the same review envelope from a local file entirely in your browser. See [Family Gate R8B](docs/EVIE_FAMILY_GATE_R8B.md).

@@ -9,6 +9,7 @@ on:
       - "app/modules/__init__.py"
       - "configs/workflows.json"
       - "app/modules/openblueprint_floor_plan.py"
+      - "app/family_gate/family_targets.json"
       - ".github/workflows/pages.yml"
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - "app/modules/__init__.py"
       - "configs/workflows.json"
       - "app/modules/openblueprint_floor_plan.py"
+      - "app/family_gate/family_targets.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 permissions:
