@@ -436,3 +436,10 @@ The native openblueprint_floor_plan module creates locally generated concept flo
 ## Recovered Sovereign Shelf Architecture Pack (Rung 3)
 
 Eleven original Architecture Pack card definitions and two ritual sequences are available as authenticated read-only metadata at GET /v1/shelf/architecture. The bounded OpenBlueprint producer is linked to the historical Floor Plan Generator card but does not implement its original structure_spec input or DXF/SVG outputs. Other cards are catalog-only. See docs/SOVEREIGN_SHELF_ARCHITECTURE_R3.md.
+
+
+## Public React website (EVIE Commons Porch)
+
+The static, public React/Vite interface lives in [`web/`](web/README.md). It features a searchable Sovereign Shelf Architecture catalog, recovered ritual sequences, and a browser-only sample OpenBlueprint handoff. No API key, vault content, or Python module execution is exposed by GitHub Pages.
+
+**Expected GitHub Pages address:** https://michaelwave369.github.io/EVIE/ (available after merging the frontend and selecting **GitHub Actions** in Settings → Pages). The static porch is **not** the local authenticated EVIE API or a hosted Streamlit dashboard.
