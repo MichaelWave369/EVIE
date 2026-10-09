@@ -453,3 +453,8 @@ The EVIE React public porch now explores a reviewed, sanitized historical catalo
 ## Local EVIE revival (Rung 5)
 
 Developer launchers now use loopback networking and protected API endpoints fail closed on blank/known sample keys. Audit registry links and optionally run one real disposable CAD producer smoke with `python -m tools.evie_doctor --json --smoke-cad`. This does not claim all registered modules work. See [EVIE Local Revival](docs/EVIE_LOCAL_REVIVAL_R5.md).
+
+
+## Capability Mission Control (R6)
+
+The React sidebar now includes **Mission Control**, an indexed public snapshot of the **real source-registered Python modules** and **configured workflows** (separate from the 159 historical Shelf cards). It lets visitors search and inspect module registrations, dependency references, workflow steps, and targeted test-source evidence. The snapshot is generated directly from `app/modules/__init__.py` and `configs/workflows.json` on every web build, never from credentials or local runtime probes. No claim is made that all modules are runnable. See [R6 evidence and limitations](docs/EVIE_MISSION_CONTROL_R6.md).

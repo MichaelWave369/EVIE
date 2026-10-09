@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { syncMissionManifest } from './mission-audit.mjs';
 import { resolve, dirname } from 'node:path';
 
 const read = (path) => JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8'));
@@ -38,3 +39,5 @@ if (!historicFloor || !checkedFloor || historicFloor.status !== checkedFloor.exe
 }
 save('nested-shelf.json', shelf);
 console.log('Synced:', shelf.cards.length, 'cards,', shelf.packs.length, 'packs; architecture audit:', architecture.cards.length, 'cards.');
+
+syncMissionManifest();
