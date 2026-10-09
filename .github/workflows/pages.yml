@@ -5,11 +5,13 @@ on:
     paths:
       - "web/**"
       - "app/shelf/architecture_cards.json"
+      - "app/shelf/public_nested_catalog.json"
       - ".github/workflows/pages.yml"
   pull_request:
     paths:
       - "web/**"
       - "app/shelf/architecture_cards.json"
+      - "app/shelf/public_nested_catalog.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 permissions:
