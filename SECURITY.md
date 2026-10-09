@@ -54,3 +54,8 @@ Keep all private signing keys on your own machine, encrypted with a passphrase a
 ## R8B review proposals are never execution leases
 
 `evie.family-handoff-proposal/1` is a digest-bound human-inspection request, with `requestedEffects: []`, `executionAuthorized: false` and `transportEnabled: false`. A separately signed `evie.family-handoff-acknowledgement/1` records the signing key holder's acknowledgement only; it does not guarantee recipient receipt, physical human identity, one-time consumption or permission to run tools. Trust roots must be independently selected, not taken from envelopes. All six proposed target transports remain disabled; no family app must treat these records as automation permissions.
+
+
+## R9: OpenBlue preflight is not authorization
+
+The OpenBlue validator performs strict local read-only contract checks and binds artifact bytes to the R8B review envelope using SHA-256. No networking, writing, target mutation, or job execution is available. The envelope is unsigned and can be replaced along with the referenced artifact, so a preflight PASS does not authenticate origin or grant import permission. OpenBlue's separate human approval remains mandatory. This does not certify construction geometry or engineering correctness.

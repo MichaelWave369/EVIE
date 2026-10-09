@@ -10,6 +10,7 @@ from app.family_gate.contracts import (
     acknowledge, catalog, create_proposal, hash_local_artifact,
     validate_proposal, verify_acknowledgement,
 )
+from app.family_gate.openblue_preflight import preflight_files
 from tools.evie_attest import (
     _exclusive_write, load_private_key, load_public_key,
 )
@@ -48,6 +49,9 @@ def main() -> int:
     check = sub.add_parser("verify", help="verify local acknowledgement using a separately pinned public key")
     check.add_argument("--ack", required=True)
     check.add_argument("--trusted-public", required=True)
+    inspect = sub.add_parser("inspect-openblue", help="read-only digest+geometry preflight; never import into OpenBlue")
+    inspect.add_argument("--proposal", required=True, help="family review JSON envelope")
+    inspect.add_argument("--artifact", required=True, help="OpenBlue EVIE proposal JSON file")
     args = parser.parse_args()
     try:
         if args.operation == "catalog":
@@ -65,9 +69,12 @@ def main() -> int:
             save_new(args.ack, receipt)
             print(json.dumps({"status": "acknowledged", "signed": True,
                               "executionAuthorized": False, "transportEnabled": False}))
-        else:
+        elif args.operation == "verify":
             report = verify_acknowledgement(read_json_file(args.ack, limit=48_000),
                                             load_public_key(args.trusted_public))
+            print(json.dumps(report, indent=2))
+        else:
+            report = preflight_files(args.proposal, args.artifact)
             print(json.dumps(report, indent=2))
         return 0
     except (ValueError, TypeError, OSError, json.JSONDecodeError, UnicodeError):
