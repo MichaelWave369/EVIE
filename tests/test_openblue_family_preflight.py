@@ -57,7 +57,7 @@ def test_changed_bytes_digest_size_wrong_destination_and_expiry_fail():
                           now=NOW + timedelta(minutes=1))
     with pytest.raises(ValueError, match="byte length differs"):
         preflight_handoff(envelope, payload + b" ", now=NOW + timedelta(minutes=1))
-    with pytest.raises(ValueError, match="target"):
+    with pytest.raises(ValueError, match="OpenBlue artifact review envelope"):
         preflight_handoff({**envelope, "target": "pixelforge"}, payload, now=NOW)
     with pytest.raises(ValueError, match="expired"):
         preflight_handoff(envelope, payload, now=NOW + timedelta(hours=2))
