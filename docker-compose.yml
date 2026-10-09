@@ -1,13 +1,12 @@
-version: "3.9"
 services:
   api:
     build: .
     ports:
-      - "18791:18791"
+      - "127.0.0.1:18791:18791"
     volumes:
       - ./data:/app/data
     environment:
-      - EV_API_KEY=${EV_API_KEY:-change-me-long-random}
+      - EV_API_KEY=${EV_API_KEY:?Set EV_API_KEY to a unique random secret in .env}
       - EV_DATA_DIR=/app/data
       - EV_DB_PATH=/app/data/embervault.db
       - EV_VAULT_FILES_DIR=/app/data/vault_files
@@ -17,11 +16,11 @@ services:
     build: .
     command: ["streamlit", "run", "dashboard/app.py", "--server.address=0.0.0.0", "--server.port=8501"]
     ports:
-      - "8501:8501"
+      - "127.0.0.1:8501:8501"
     depends_on:
       - api
     environment:
       - EV_API_BASE=http://api:18791
-      - EV_API_KEY=${EV_API_KEY:-change-me-long-random}
+      - EV_API_KEY=${EV_API_KEY:?Set EV_API_KEY to a unique random secret in .env}
     volumes:
       - ./data:/app/data
