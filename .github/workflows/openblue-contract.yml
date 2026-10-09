@@ -1,0 +1,49 @@
+name: EVIE OpenBlue Parser Contract Replay
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/openblue_parser_replay.mjs"
+      - "tests/openblue_parser_replay.test.mjs"
+      - "web/src/openBluePreflight.js"
+      - "web/src/familyGateLogic.js"
+      - "web/src/blueprint.js"
+      - ".github/workflows/openblue-contract.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/openblue_parser_replay.mjs"
+      - "tests/openblue_parser_replay.test.mjs"
+      - "web/src/openBluePreflight.js"
+      - "web/src/familyGateLogic.js"
+      - "web/src/blueprint.js"
+      - ".github/workflows/openblue-contract.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pinned-recipient-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout EVIE
+        uses: actions/checkout@v4
+        with:
+          path: evie
+          persist-credentials: false
+      - name: Checkout inspected OpenBlue revision, read-only
+        uses: actions/checkout@v4
+        with:
+          repository: MichaelWave369/OpenBlueprintStudio
+          ref: 015845851191b21764da435ac05f45ccc3779d7b
+          path: openblue
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Replay actual OpenBlue parser against EVIE fixture
+        working-directory: evie
+        env:
+          CI: "true"
+          OPENBLUE_CHECKOUT: ${{ github.workspace }}/openblue
+          OPENBLUE_REVISION: 015845851191b21764da435ac05f45ccc3779d7b
+        run: node --test tests/openblue_parser_replay.test.mjs

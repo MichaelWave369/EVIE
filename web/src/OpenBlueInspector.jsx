@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { inspectLocalOpenBlueFiles } from './openBluePreflight.js';
+import OpenBlueReplayReceipt from './OpenBlueReplayReceipt.jsx';
 import './openBlueInspector.css';
 
 const OPENBLUE_URL = 'https://michaelwave369.github.io/OpenBlueprintStudio/';
@@ -56,6 +57,7 @@ export default function OpenBlueInspector() {
       </div>
       <p>This is not an OpenBlue acceptance receipt. Your file still requires import, preview and explicit approval inside OpenBlue. An unsigned matching pair can be forged together.</p>
       <a href={OPENBLUE_URL} target="_blank" rel="noreferrer">Open OpenBlue Studio for manual import ↗</a>
+      <OpenBlueReplayReceipt preflight={result}/>
     </div>}
   </section>;
 }

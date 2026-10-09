@@ -59,3 +59,8 @@ Keep all private signing keys on your own machine, encrypted with a passphrase a
 ## R9: OpenBlue preflight is not authorization
 
 The OpenBlue validator performs strict local read-only contract checks and binds artifact bytes to the R8B review envelope using SHA-256. No networking, writing, target mutation, or job execution is available. The envelope is unsigned and can be replaced along with the referenced artifact, so a preflight PASS does not authenticate origin or grant import permission. OpenBlue's separate human approval remains mandatory. This does not certify construction geometry or engineering correctness.
+
+
+## R10 recipient parser replay limitations
+
+The local OpenBlue conformance harness deliberately imports and executes source from the operator-selected OpenBlue git checkout. It checks an explicit revision pin and clean tracked parser files, but **does not isolate malicious code**; run it only against reviewed trustworthy source. The source revision/digest and unsigned report do not authenticate an actual OpenBlue user's receipt or grant project import authority. The UI still requires explicit approval in OpenBlue, and EVIE adds no network transfer or agent execution.
