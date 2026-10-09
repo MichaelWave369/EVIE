@@ -134,6 +134,8 @@ def main() -> int:
     run.add_argument("module", choices=sorted(SCENARIOS))
     run.add_argument("--receipt", help="optionally write JSON receipt to new, existing-parent destination")
     run.add_argument("--timeout", type=int, default=15)
+    run.add_argument("--signing-key", help="encrypted Ed25519 private key, used only after a successful local run")
+    run.add_argument("--attestation", help="write new signed attestation JSON using --signing-key")
     args = parser.parse_args()
     if args.command == "list":
         print(json.dumps({"schemaVersion": "evie.qualification-scenarios/1",
@@ -141,6 +143,18 @@ def main() -> int:
         return 0
     try:
         receipt = run_qualification(args.module, timeout=args.timeout)
+        if bool(args.signing_key) != bool(args.attestation):
+            raise ValueError("signing needs both --signing-key and --attestation")
+        if args.receipt and args.attestation and Path(args.receipt).resolve() == Path(args.attestation).resolve():
+            raise ValueError("receipt and attestation paths must be different")
+        if args.attestation:
+            if receipt["status"] != "pass":
+                raise ValueError("refuse to sign a failed qualification")
+            from tools.evie_attest import load_private_key, sign_local_receipt, _exclusive_write
+            import getpass
+            private = load_private_key(args.signing_key, getpass.getpass("Private-key passphrase: "))
+            attestation = sign_local_receipt(receipt, private)
+            _exclusive_write(args.attestation, (json.dumps(attestation, indent=2) + "\n").encode("utf-8"))
         if args.receipt:
             write_receipt_exclusive(args.receipt, receipt)
         print(json.dumps(receipt, indent=2))

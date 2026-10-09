@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import manifest from './generated/mission-control.json';
 import { examineLocalReceipt } from './receiptReview.js';
+import TrustedAttestation from './TrustedAttestation.jsx';
 import './qualificationLab.css';
 
 const CLI = 'python -m tools.evie_qualify run openblueprint_floor_plan --receipt ./cad-qualification.json';
@@ -39,7 +40,7 @@ export default function QualificationLab() {
   };
   return <div className="ql-page">
     <section className="ql-hero">
-      <div className="mc-overline">EVIE / QUALIFICATION LAB / R7</div>
+      <div className="mc-overline">EVIE / QUALIFICATION LAB / R7 + R8</div>
       <h2>Test. Record. <em>Trust cautiously.</em></h2>
       <p>Registration isn’t execution. This first qualification scenario runs one audited, deterministic CAD producer in a disposable local process. The public site never runs EVIE’s Python modules.</p>
     </section>
@@ -84,9 +85,10 @@ export default function QualificationLab() {
           <dt>Claimed checks</dt><dd>{result.checkCount} accepted</dd>
           <dt>Reported duration</dt><dd>{result.durationMs} ms</dd>
           <dt>Report date</dt><dd>{new Date(result.createdAt).toLocaleString()}</dd></dl>
-        <p>**No official qualification was granted.** This file's claims remain untrusted until an independently authenticated replay or approved evidence channel exists.</p>
+        <p>No official qualification was granted. This file's claims remain untrusted until an independently authenticated replay or approved evidence channel exists.</p>
       </div> : <div className="ql-empty">No local receipt selected. Public qualification count remains zero.</div>}
     </section>
+    <TrustedAttestation/>
     <section className="ql-next"><div className="mc-overline">03 / NEXT GOVERNANCE GATE</div>
       <h3>From self-reported to reproducible evidence.</h3>
       <p>Before EVIE can automatically run additional modules, we need trusted receipts, version-bound replay, stronger isolation, explicit budgets and human approval for external effects. Especially publishing. Nobody needs an autonomous newsletter accident.</p>
