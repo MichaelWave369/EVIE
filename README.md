@@ -448,3 +448,8 @@ The static, public React/Vite interface lives in [`web/`](web/README.md). It fea
 ## Full Nested Sovereign Shelf
 
 The EVIE React public porch now explores a reviewed, sanitized historical catalog of all 159 unique cards nested under 9 packs, with 7 card classes, linked rituals, compatible-card trails and a design-only deck composer. The original 11-card Architecture Pack remains available. The deck does not execute, import, authorize or operate EVIE's private API. See [Rung 4 public Shelf documentation](docs/PUBLIC_NESTED_SHELF_R4.md).
+
+
+## Local EVIE revival (Rung 5)
+
+Developer launchers now use loopback networking and protected API endpoints fail closed on blank/known sample keys. Audit registry links and optionally run one real disposable CAD producer smoke with `python -m tools.evie_doctor --json --smoke-cad`. This does not claim all registered modules work. See [EVIE Local Revival](docs/EVIE_LOCAL_REVIVAL_R5.md).

@@ -39,3 +39,8 @@ Treat executable paths and handoff directories as local configuration, not sourc
 ## Public deployment
 
 EVIE was designed local-first. Before exposing the API or dashboard to untrusted networks, review authentication, reverse-proxy/TLS configuration, allowed origins/hosts, upload limits, provider credentials, and any modules capable of external effects.
+
+
+## Rung 5 local defaults
+
+The API and Streamlit developer launchers bind 127.0.0.1; Docker Compose publishes ports on host 127.0.0.1 and requires a configured API secret. Protected endpoints refuse blank or known example keys. Do not expose this runtime outside the host without authentication/CORS/TLS threat modeling and review of all effectful modules. GitHub Pages never hosts the private runtime.
