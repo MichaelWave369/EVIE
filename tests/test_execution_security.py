@@ -39,7 +39,7 @@ def test_source_provenance_matches_real_repository_bytes():
         assert hashlib.sha256((security.ROOT/path).read_bytes()).hexdigest()==digest
 
 
-@pytest.mark.parametrize("request",[
+@pytest.mark.parametrize("candidate",[
     None,
     {"action":"start","verifiedPrincipal":True},
     {"action":"resume","operatorAuthenticated":True,"signedLeaseValid":True},
@@ -50,8 +50,8 @@ def test_source_provenance_matches_real_repository_bytes():
     {"role":"root","capabilities":["*"],"securityMode":"disabled"},
     "token&cookie&approve&execute",
 ])
-def test_forged_authority_and_caller_supplied_properties_never_grant_execution(request):
-    rejected=security.deny_http_execution(intent=request)
+def test_forged_authority_and_caller_supplied_properties_never_grant_execution(candidate):
+    rejected=security.deny_http_execution(intent=candidate)
     assert rejected["status"]=="DENIED"
     assert rejected["executionAllowed"] is False
     assert rejected["approvalConsumed"] is False
