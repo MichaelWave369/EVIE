@@ -130,3 +130,8 @@ Content Handoff Studio includes local copyable `python -m tools.evie_local_servi
 ## R23: Execution security contract (read-only)
 
 The Local Service Preview now includes an always-closed execution security readiness report via `GET /v1/security` and `python -m tools.evie_execution_security assess`. Six unresolved requirements remain, and no server-side worker dispatch, signing, publishing or lease consumption is implemented. The public website still makes no localhost requests. See `docs/EVIE_EXECUTION_SECURITY_R23.md`.
+
+
+## R24: Local operator-state inspection
+
+The Local Service Preview includes a read-only local inspector command for bearer-token and nonce-ledger file ownership/permission observations. On Windows the tool uses native token SID/file owner and DACL-presence APIs, while deliberately treating effective ACL privacy as unverified. Linux/Unix observes UID and permission bits. The public website does not read local paths or run this tool. See `docs/EVIE_OPERATOR_STATE_R24.md`.

@@ -1,4 +1,4 @@
-"""R23: default-deny service execution security contract.
+"""R23/R24: default-deny service execution contract with read-only identity observations.
 
 A *read-only* readiness assessment, NOT a mechanism for granting privileges.
 The R22 HTTP service still exposes zero execution endpoints, and this module
@@ -26,6 +26,7 @@ CONTRACT_SOURCES = (
     "tools/evie_action_lease_contract.py",
     "tools/evie_container_runner.py",
     "tools/evie_execution_security.py",
+    "tools/evie_operator_state.py",
 )
 
 # Values represent things **not yet enforced by the R22 service itself**.
@@ -74,6 +75,9 @@ def assess() -> dict:
             "httpLoopbackReadOnly": True,
             "httpExecutionRoutesEnabled": False,
             "callerOsIdentityAuthenticated": False,
+            "localOperatorFileInspectorAvailable": True,
+            "localFileInspectionProvesHttpCallerIdentity": False,
+            "localFileInspectionProvesProtectedState": False,
             "bearerTokenIsOsIdentity": False,
             "directLegacyCliPathsStillExist": True,
             "localSqliteIsTamperProof": False,

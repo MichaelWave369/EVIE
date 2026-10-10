@@ -63,3 +63,8 @@ The R20 completion auditor remains the authority for a **narrow locally verified
 ## Requirements before any execute route
 
 Build a dedicated OS-privileged boundary separating untrusted transport from the worker; authenticate the connecting local principal; persist protected, atomic per-request replay state; enforce one service-controlled entrypoint after an explicit legacy migration; qualify Docker containment and failure recovery; establish independently trusted signed execution receipts and explicit user approval. Add mutating routes only in a separately reviewed PR with negative-control security tests. R23 does **none** of those things silently.
+
+
+## R24 addendum: native OS observations, not promotion
+
+R24 adds `python -m tools.evie_operator_state inspect` as a separate local read-only tool. It checks the process-to-file owner relationship and candidate file metadata on Windows and POSIX without reading private file contents or enabling service execution. The R23 security source inventory now binds this inspector file too. None of R23's six unmet promotion requirements are satisfied merely by R24's observation. Refer to `docs/EVIE_OPERATOR_STATE_R24.md`.
