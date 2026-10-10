@@ -70,3 +70,8 @@ After a R9 local file preflight, the Family Gate can optionally inspect an unsig
 ## R11: FieldDeck human-reviewed blueprint bridge
 
 Family Gate now includes a locally operated EVIE draft inspector + FieldDeck blueprint designer. Open an exported EVIE Sovereign Shelf design draft, independently select 1–6 of FieldDeck's reviewed action IDs, and export a default-deny FieldDeck v0.5 JSON. FieldDeck's actual parser is tested against it in pinned CI. No automatic EVIE-card mapping, upload, IssueOps submission, or runtime grant. See `docs/EVIE_FIELDDECK_HANDOFF_R11.md`.
+
+
+## R12: Workflow Revival Studio
+
+Mission Control → Workflow Studio shows actual nested workflow expansion and optional conditions derived from source. You can simulate branches, inspect naming-heuristic effect risks, and export a `evie.workflow-preflight/1` **review-only** plan. This UI has no API connection, provider access, DB writing or execution capability. A Python standard-library CLI provides equivalent local source-only planning. See `docs/EVIE_WORKFLOW_STUDIO_R12.md`.
