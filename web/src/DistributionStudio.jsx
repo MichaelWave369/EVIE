@@ -6,6 +6,7 @@ import DockerIsolationGuide from './DockerIsolationGuide.jsx';
 import GovernedFlowGuide from './GovernedFlowGuide.jsx';
 import CompletionLedgerGuide from './CompletionLedgerGuide.jsx';
 import SafeEntryGuide from './SafeEntryGuide.jsx';
+import LocalServiceGuide from './LocalServiceGuide.jsx';
 import './distributionStudio.css';
 const FIRST='python -m tools.evie_supervised_hooks local_content_hooks_review --script-file ./draft.txt --topic "EVIE Creator Loop" --stage-dir ../evie-hooks-review-001 --confirm-local-execution';
 const SECOND='python -m tools.evie_supervised_distribution --hooks-dir ../evie-hooks-review-001 --approved-hooks-sha256 YOUR_REVIEWED_64_CHARACTER_SHA256 --stage-dir ../evie-distribution-review-001 --confirm-local-execution';
@@ -43,6 +44,7 @@ export default function DistributionStudio(){
       <p>The original two-stage content handoff remains available for compatibility. For NEW runs, prefer the R21 EVIE Safe Entry guide below: both stages use offline Docker and the second requires separate signed approval.</p>
     </header>
     <SafeEntryGuide/>
+    <LocalServiceGuide/>
     <div className="ds-boundary">LEGACY DIRECT TWO-COMMAND PATH · COMPATIBILITY ONLY · SHA-PINNED REVIEW · NO PUBLISHING</div>
     <p className="ds-caution">The commands in the next two cards are older direct R14/R15 commands. They run host Python, have weaker protections, and are NOT the recommended default. Keep them only for existing compatibility workflows.</p>
     <div className="ds-stages">

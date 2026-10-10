@@ -120,3 +120,8 @@ The Content Handoff Studio now includes read-only CLI instructions for auditing 
 ## R21: Default safe entry
 
 The Content Handoff Studio now places **EVIE Safe Entry** first: one documented local `python -m tools.evie_safe` CLI for policy inventory, source-only plan, isolated hooks start, read-only status, signed offline Docker resume and narrow completion audit. Old R14/R15 direct host commands are visibly marked **legacy compatibility only**. This React/GitHub Pages site has no host execution access. See `docs/EVIE_SAFE_ENTRY_R21.md`.
+
+
+## R22: Local read-only service preview
+
+Content Handoff Studio includes local copyable `python -m tools.evie_local_service` commands for token creation, loopback-only startup and the read-only probe. The service exposes only fixed bearer-protected GET endpoints for health, R21 migration policy and source-only workflow plan. The public React site does not connect to localhost or execute a workflow. See `docs/EVIE_LOOPBACK_SERVICE_R22.md`.
