@@ -1,5 +1,14 @@
 # EVIE — EmberVault Income Engine
 
+## R24 · Local operator and file-state inspection (no execution)
+
+The new **read-only native-OS operator inspector** runs locally and never opens an HTTP execution route, reads secrets/SQLite contents, or changes permissions:
+
+```sh
+python -m tools.evie_operator_state inspect --token-file ../evie-local-service.token --ledger-file ../evie-local-lease-ledger.sqlite
+```
+
+On Windows it uses native token-user and file owner SID comparison plus DACL-presence observation, **without** claiming to calculate effective ACL permissions. On POSIX it checks current-process UID, file/parent permission bits and hardlinks. Missing, linked or oversized targets are reported conservatively. Neither platform's result proves authenticated HTTP client identity or service-protected nonce storage; the R23 execution gate remains **CLOSED**. A new `windows-latest` GitHub Action runs the native Windows tests in addition to the existing Python/React/Docker gates. See [R24 operator-state protocol](docs/EVIE_OPERATOR_STATE_R24.md).
 ## R23 · Execution-service security gate (still read-only)
 
 EVIE's local loopback control plane now has a fourth authenticated read-only route, `GET /v1/security`, plus a matching local assessment CLI:

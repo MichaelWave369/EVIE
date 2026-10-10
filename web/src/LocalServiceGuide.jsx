@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import './localServiceGuide.css';
 import ExecutionSecurityGuide from './ExecutionSecurityGuide.jsx';
+import OperatorStateGuide from './OperatorStateGuide.jsx';
 const COMMANDS=[
   {label:'01 · Create private local access token',command:'python -m tools.evie_local_service token --token-file ../evie-local-service.token',description:'Create a new, non-overwritten 256-bit bearer-token file OUTSIDE your Git checkout. This does not start a service or authorize an execution.'},
   {label:'02 · Start the read-only localhost service',command:'python -m tools.evie_local_service serve --token-file ../evie-local-service.token --port 8765',description:'Binds only 127.0.0.1. Keep this terminal open; Ctrl+C stops the service. It does not start Docker or any EVIE module.'},
@@ -29,6 +30,7 @@ export default function LocalServiceGuide(){
      <div><code>POST /v1/resume</code><span>DENIED · no such route</span></div>
    </div>
    <ExecutionSecurityGuide/>
+   <OperatorStateGuide/>
    <p className="lsg-warning"><strong>Security boundary:</strong> This token is a local bearer secret, not verified user identity or an encrypted HTTPS channel. Keep its file private, especially on shared Windows accounts; protect it using local filesystem permissions. The server rejects requests with browser Origin/Referer headers and exposes no browser-control APIs. Existing Python CLIs remain separately executable. Do not expose the port through Starlink, port forwarding, tunnels, proxy servers or remote browser tools.</p>
    {status&&<p className="lsg-feedback" role="status">{status}</p>}
  </section>;
