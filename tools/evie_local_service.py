@@ -21,12 +21,12 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
 from app.workflows.preflight import ROOT
-from tools import evie_safe, evie_governed_flow
+from tools import evie_safe, evie_governed_flow, evie_execution_security
 
 SCHEMA = "evie.local-readonly-service/1"
 HOST = "127.0.0.1"
 TOKEN_PATTERN = re.compile(r"^[a-f0-9]{64}$")
-ROUTES = frozenset(("/v1/health", "/v1/policy", "/v1/plan"))
+ROUTES = frozenset(("/v1/health", "/v1/policy", "/v1/plan", "/v1/security"))
 MAX_RESPONSE = 48_000
 
 
@@ -65,8 +65,12 @@ def load_token(filename: str) -> str:
     target = _token_path(filename, creating=False)
     if not target.is_file() or target.stat().st_size > 128:
         raise ValueError("local service token missing or oversized")
-    if os.name == "posix" and target.stat().st_mode & (stat.S_IRWXG | stat.S_IRWXO):
-        raise ValueError("local token must not be group/world accessible")
+    if os.name == "posix":
+        metadata = target.stat()
+        if metadata.st_mode & (stat.S_IRWXG | stat.S_IRWXO):
+            raise ValueError("local token must not be group/world accessible")
+        if metadata.st_uid != os.geteuid() or metadata.st_nlink != 1:
+            raise ValueError("local token must be owned by service user and not hardlinked")
     try:
         token = target.read_text(encoding="ascii").strip()
     except UnicodeError as exc:
@@ -77,7 +81,7 @@ def load_token(filename: str) -> str:
 
 
 def _data(route: str) -> dict:
-    """Exactly three reviewed read-only routes; never caller-provided paths."""
+    """Only reviewed read-only routes; never caller-provided paths."""
     if route == "/v1/health":
         return {
             "schemaVersion": SCHEMA, "service": "evie-local-readonly",
@@ -97,6 +101,13 @@ def _data(route: str) -> dict:
         return {
             "schemaVersion": SCHEMA, "mode": "source_only_plan",
             "data": evie_governed_flow.plan(),
+            "httpExecutionEndpointsEnabled": False,
+            "publishingAuthorized": False,
+        }
+    if route == "/v1/security":
+        return {
+            "schemaVersion": SCHEMA, "mode": "read_only_security_contract",
+            "data": evie_execution_security.assess(),
             "httpExecutionEndpointsEnabled": False,
             "publishingAuthorized": False,
         }
@@ -212,7 +223,7 @@ def probe(*, port: int, token: str) -> dict:
     if not TOKEN_PATTERN.fullmatch(token):
         raise ValueError("invalid local probe token")
     responses = {}
-    for route in ("/v1/health", "/v1/plan", "/v1/policy"):
+    for route in ("/v1/health", "/v1/plan", "/v1/policy", "/v1/security"):
         request = urllib.request.Request(
             f"http://{HOST}:{port}{route}",
             headers={"Authorization": f"Bearer {token}"},
@@ -227,8 +238,10 @@ def probe(*, port: int, token: str) -> dict:
             responses[route] = json.loads(raw)
     if (responses["/v1/health"].get("httpExecutionEndpointsEnabled") is not False
             or responses["/v1/plan"].get("data", {}).get("nextStageExecuted") is not False
-            or responses["/v1/plan"].get("publishingAuthorized") is not False):
-        # Plans must remain source-only, not report downstream execution.
+            or responses["/v1/plan"].get("publishingAuthorized") is not False
+            or responses["/v1/security"].get("data", {}).get("executionAllowed") is not False
+            or responses["/v1/security"].get("data", {}).get("promotionReady") is not False):
+        # Neither the plan nor the security report may claim execution authority.
         raise ValueError("unexpected action-capable local service response")
     return {
         "schemaVersion": SCHEMA, "status": "read_only_loopback_probe_passed",

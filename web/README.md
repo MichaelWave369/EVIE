@@ -125,3 +125,8 @@ The Content Handoff Studio now places **EVIE Safe Entry** first: one documented 
 ## R22: Local read-only service preview
 
 Content Handoff Studio includes local copyable `python -m tools.evie_local_service` commands for token creation, loopback-only startup and the read-only probe. The service exposes only fixed bearer-protected GET endpoints for health, R21 migration policy and source-only workflow plan. The public React site does not connect to localhost or execute a workflow. See `docs/EVIE_LOOPBACK_SERVICE_R22.md`.
+
+
+## R23: Execution security contract (read-only)
+
+The Local Service Preview now includes an always-closed execution security readiness report via `GET /v1/security` and `python -m tools.evie_execution_security assess`. Six unresolved requirements remain, and no server-side worker dispatch, signing, publishing or lease consumption is implemented. The public website still makes no localhost requests. See `docs/EVIE_EXECUTION_SECURITY_R23.md`.

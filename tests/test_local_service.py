@@ -49,7 +49,7 @@ def request(port, method, path, *, token=TOKEN, headers=None, body=None):
 def test_binds_exact_ipv4_loopback_only_and_has_no_software_executor(live_server,monkeypatch):
     server,port=live_server
     assert server.server_address[0]=="127.0.0.1"
-    assert set(service.ROUTES)=={"/v1/health","/v1/policy","/v1/plan"}
+    assert set(service.ROUTES)=={"/v1/health","/v1/policy","/v1/plan","/v1/security"}
     monkeypatch.setattr(flow,"start_session",lambda **kw: (_ for _ in ()).throw(AssertionError("remote execution should not occur")))
     monkeypatch.setattr(flow,"resume_session",lambda **kw: (_ for _ in ()).throw(AssertionError("remote resume should not occur")))
     for path in sorted(service.ROUTES):
@@ -61,6 +61,11 @@ def test_binds_exact_ipv4_loopback_only_and_has_no_software_executor(live_server
         assert body["httpExecutionEndpointsEnabled"] is False
         assert body["publishingAuthorized"] is False
     assert request(port,"GET","/v1/plan")[2]["data"]["state"]=="plan_only"
+    guarded=request(port,"GET","/v1/security")[2]["data"]
+    assert guarded["status"]=="EXECUTION_GATE_CLOSED"
+    assert guarded["executionAllowed"] is False
+    assert guarded["promotionReady"] is False
+    assert len(guarded["promotionRequirements"])==6
 
 
 def test_no_token_wrong_token_and_origin_are_rejected(live_server):
@@ -127,13 +132,14 @@ def test_missing_or_incorrect_auth_cannot_expose_policy(live_server):
     assert "legacyRoutes" not in denied
     _,_,success=request(port,"GET","/v1/policy")
     assert len(success["data"]["legacyRoutes"])==6
+    assert request(port,"GET","/v1/security",token=None)[0]==401
 
 
 def test_probe_reads_all_three_without_state_mutation(live_server,tmp_path):
     _,port=live_server
     output=service.probe(port=port,token=TOKEN)
     assert output["status"]=="read_only_loopback_probe_passed"
-    assert output["routeCount"]==3
+    assert output["routeCount"]==4
     assert output["sourcePlanState"]=="plan_only"
     assert output["executionAuthorized"] is False
     assert list(tmp_path.iterdir())==[]
