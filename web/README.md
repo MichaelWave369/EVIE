@@ -75,3 +75,8 @@ Family Gate now includes a locally operated EVIE draft inspector + FieldDeck blu
 ## R12: Workflow Revival Studio
 
 Mission Control → Workflow Studio shows actual nested workflow expansion and optional conditions derived from source. You can simulate branches, inspect naming-heuristic effect risks, and export a `evie.workflow-preflight/1` **review-only** plan. This UI has no API connection, provider access, DB writing or execution capability. A Python standard-library CLI provides equivalent local source-only planning. See `docs/EVIE_WORKFLOW_STUDIO_R12.md`.
+
+
+## R13: Review a real staged local CAD workflow result
+
+Mission Control → Workflow Studio → OpenBlueprint Concept Floor Plan includes **Supervised CAD Run**. It provides a manual CLI command to run one allowlisted local Python fixture in a separate process, and a browser-only two-file receipt and artifact inspection interface. The browser does not run Python or send files anywhere. A successful pair is still unsigned and requires separate approval inside OpenBlue. See `docs/EVIE_SUPERVISED_CAD_R13.md`.
