@@ -1,5 +1,16 @@
 # EVIE — EmberVault Income Engine
 
+## R22 · Local read-only loopback service preview
+
+An optional **127.0.0.1-only HTTP control-plane prototype** exposes just three authenticated read-only routes: health, existing R21 execution-path policy, and source-only governed plan. No HTTP endpoint can execute a module, sign a lease, spend a nonce, read session data or publish. Generate a private token outside Git and start the service explicitly:
+
+```sh
+python -m tools.evie_local_service token --token-file ../evie-local-service.token
+python -m tools.evie_local_service serve --token-file ../evie-local-service.token --port 8765
+```
+
+In a **second** terminal run `python -m tools.evie_local_service probe --token-file ../evie-local-service.token --port 8765`. This is a testable transport boundary, **not** an execution daemon or mandatory security service. [R22 design and limitations](docs/EVIE_LOOPBACK_SERVICE_R22.md).
+
 ## Recommended default local CLI (R21)
 
 For **new** content runs, use the fixed, allowlisted **EVIE Safe Entry** rather than invoking old standalone executors directly:
