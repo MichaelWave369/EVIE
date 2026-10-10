@@ -67,6 +67,7 @@ def test_docker_args_are_fixed_nonprivileged_and_offline(tmp_path):
     folder.mkdir()
     argv = docker_command(SHA, folder)
     assert argv[:4] == ["docker", "run", "--rm", "--pull=never"]
+    assert "-i" in argv and "-t" not in argv  # Pipe stdin only, never a TTY.
     for mandatory in (
         "--network=none", "--read-only", "--cap-drop=ALL",
         "--security-opt=no-new-privileges", "--pids-limit=64",

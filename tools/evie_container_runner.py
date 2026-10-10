@@ -106,7 +106,7 @@ def docker_command(image_id: str, capsule: Path) -> list[str]:
     if not capsule.is_absolute() or not capsule.is_dir():
         raise ValueError("invalid temporary capsule mount")
     return [
-        "docker", "run", "--rm", "--pull=never",
+        "docker", "run", "--rm", "--pull=never", "-i",
         "--network=none", "--read-only",
         "--cap-drop=ALL", "--security-opt=no-new-privileges",
         "--pids-limit=64", "--cpus=1", "--memory=256m", "--memory-swap=256m",
@@ -138,8 +138,7 @@ def run_isolated(topic: str, hooks: list[str], timeout: int, *, image_id: str) -
         try:
             proc = subprocess.run(
                 command, input=payload, stdout=subprocess.PIPE,
-                stderr=(subprocess.PIPE if os.environ.get("EVIE_TEST_DOCKER") == "1"
-                            else subprocess.DEVNULL), timeout=timeout, check=False,
+                stderr=subprocess.DEVNULL, timeout=timeout, check=False,
                 # No repo/provider/API environment variables in the child Docker CLI.
                 env={k: os.environ[k] for k in ("PATH", "SYSTEMROOT", "WINDIR", "HOME")
                      if k in os.environ},
@@ -147,16 +146,6 @@ def run_isolated(topic: str, hooks: list[str], timeout: int, *, image_id: str) -
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise ValueError("isolated worker could not complete within limit") from exc
         if proc.returncode != 0 or not 0 < len(proc.stdout) <= MAX_WORKER_OUTPUT:
-            if os.environ.get("EVIE_TEST_DOCKER") == "1":
-                # CI ONLY: synthetic fixture and public runner, never use with
-                # private content. Remove this extra diagnostic after isolation
-                # tests green; public CLI still returns only fixed error codes.
-                trace = proc.stderr.decode("utf-8", "replace")[:1400]
-                raise ValueError(
-                    "Docker CI worker failure, exit=" + str(proc.returncode) +
-                    " stdout=" + proc.stdout.decode("utf-8", "replace")[:500] +
-                    " stderr=" + trace
-                )
             raise ValueError("Docker capsule returned failure or oversized output")
         # Verify no source module changed on the host during Docker handoff.
         for relative, digest in source_hashes.items():
