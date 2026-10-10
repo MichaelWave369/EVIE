@@ -61,3 +61,8 @@ Thumbs.db
 # R13 local review bundles (do not commit generated review files)
 review-receipt.json
 workflow-preflight.json
+
+# R16 signed local lease / review usage observation
+*.lease.json
+lease-consumption.json
+*lease-ledger*.sqlite

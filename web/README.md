@@ -90,3 +90,8 @@ Mission Control → Workflow Studio → **Local Content Hooks Review** offers a 
 ## R15 Content Handoff Studio
 
 Mission Control → Workflow Studio → Local Hooks To Distribution Review provides separate R14/R15 copyable local CLI steps with a SHA-confirmed checkpoint and a four-file local integrity review. The browser verifies the exact first five hooks were passed to EVIE's real DistributionGenerator without transferring or publishing them. The receipts remain unsigned and do not prove a trusted human approval. See `docs/EVIE_TWO_STEP_HANDOFF_R15.md`.
+
+
+## R16 local signed-lease guide
+
+Mission Control → Workflow Studio → Content Handoff Studio now describes the **optional** signed action lease, using EVIE's existing encrypted Ed25519 keys and a separate local nonce-ledger SQLite file. GitHub Pages never issues signing keys or runs local jobs. The original R15 manual-SHA command is still available, so the signed lane is not a universal enforcement barrier. See `docs/EVIE_LOCAL_ACTION_LEASE_R16.md`.
