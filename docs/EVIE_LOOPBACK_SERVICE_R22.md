@@ -57,3 +57,8 @@ Every allowed route requires the **exact** `Host: 127.0.0.1:<port>` and `Authori
 ## Promotion requirements for a future execution service
 
 Before adding any POST-to-execute capability, qualify a distinct OS identity and filesystem/service privilege boundary, protected local state and audit receipts, strict allowlisted request formats with a CSRF story, independent approval/key handling, executor process supervision, Docker isolation for both stages, bounded memory/time, replay resistance and a migration plan for unrestricted old entrypoints. Until then HTTP execution remains **absent** by design.
+
+
+## R23 addendum
+
+R23 adds a **fourth** authenticated, read-only `GET /v1/security` route, reporting the always-closed execution-service promotion contract. The original R22 routes and refusal rules remain unchanged. See `docs/EVIE_EXECUTION_SECURITY_R23.md`. All HTTP execution methods remain denied.

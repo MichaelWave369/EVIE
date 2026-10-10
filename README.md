@@ -1,5 +1,14 @@
 # EVIE — EmberVault Income Engine
 
+## R23 · Execution-service security gate (still read-only)
+
+EVIE's local loopback control plane now has a fourth authenticated read-only route, `GET /v1/security`, plus a matching local assessment CLI:
+
+```sh
+python -m tools.evie_execution_security assess
+```
+
+The report identifies **six mandatory unresolved security requirements** before any future execution API, including OS-authenticated client identity, OS-isolated service privileges, protected approval/nonce storage, enforced migration of old host CLIs, atomic request-to-lease binding and independent runtime receipts. Every requirement is currently `satisfied:false`; **HTTP execution remains disabled with no override flag**. An R16 signed lease and a localhost bearer token cannot create this service authority. See [R23 execution-security contract](docs/EVIE_EXECUTION_SECURITY_R23.md).
 ## R22 · Local read-only loopback service preview
 
 An optional **127.0.0.1-only HTTP control-plane prototype** exposes just three authenticated read-only routes: health, existing R21 execution-path policy, and source-only governed plan. No HTTP endpoint can execute a module, sign a lease, spend a nonce, read session data or publish. Generate a private token outside Git and start the service explicitly:
