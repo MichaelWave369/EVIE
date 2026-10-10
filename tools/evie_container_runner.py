@@ -152,7 +152,11 @@ def run_isolated(topic: str, hooks: list[str], timeout: int, *, image_id: str) -
                 # private content. Remove this extra diagnostic after isolation
                 # tests green; public CLI still returns only fixed error codes.
                 trace = proc.stderr.decode("utf-8", "replace")[:1400]
-                raise ValueError("Docker CI worker failure: " + trace)
+                raise ValueError(
+                    "Docker CI worker failure, exit=" + str(proc.returncode) +
+                    " stdout=" + proc.stdout.decode("utf-8", "replace")[:500] +
+                    " stderr=" + trace
+                )
             raise ValueError("Docker capsule returned failure or oversized output")
         # Verify no source module changed on the host during Docker handoff.
         for relative, digest in source_hashes.items():
