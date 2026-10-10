@@ -483,3 +483,8 @@ EVIE can now compare an actual OpenBlue-compatible EVIE proposal against its R8B
 ## R10: OpenBlue real-parser contract replay
 
 EVIE can now replay an actual OpenBlue `parseEvieProposal` implementation from a **local, trusted, explicitly git-revision-pinned OpenBlue checkout**. This is stronger parser-compatibility evidence than EVIE's own R9 geometry mirror, while remaining **read-only and non-authorizing**. Use `node tools/openblue_parser_replay.mjs --openblue-dir ../OpenBlueprintStudio --expected-revision YOUR_VERIFIED_COMMIT_SHA --proposal ./review.proposal.json --artifact ./plan.json --receipt ./openblue-parser-replay.json`. An additional GitHub Actions job checks the two repos together using a pinned OpenBlue commit. The unsigned local replay can be inspected in Family Gate after a matching R9 preflight. It is **not** a recipient-issued acknowledgment or a UI import approval. [R10 replay guide](docs/EVIE_OPENBLUE_PARSER_REPLAY_R10.md).
+
+
+## R11: EVIE → FieldDeck review blueprint handoff
+
+The public **Family Gate → EVIE meets FieldDeck** now inspects EVIE's design-only Shelf decks and lets the human independently assemble 1–6 reviewed FieldDeck action steps. It exports a valid `fielddeck.chain.blueprint` v0.5 JSON with **execution denied**, for manual import into FieldDeck's Chain Lab. No automatic mapping exists between 159 historical Shelf cards and FieldDeck's three allowlisted diagnostics. A **pinned two-repository CI workflow** runs FieldDeck's actual parser to prove schema compatibility, not runtime execution. [Details and limits](docs/EVIE_FIELDDECK_HANDOFF_R11.md).

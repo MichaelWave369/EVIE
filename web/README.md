@@ -65,3 +65,8 @@ The Family Gate now includes a two-file OpenBlue inspector. Select the R8B revie
 ## R10 OpenBlue parser compatibility
 
 After a R9 local file preflight, the Family Gate can optionally inspect an unsigned JSON report from the R10 command-line conformance runner. The runner uses an expressly selected local OpenBlue git revision and exercises its real parser. The browser only compares the report's fields with the already-inspected file digest/nonce; no upload, authentication or CAD import is implied. A separate pinned cross-repo GitHub Action tests parser compatibility in CI. See `docs/EVIE_OPENBLUE_PARSER_REPLAY_R10.md`.
+
+
+## R11: FieldDeck human-reviewed blueprint bridge
+
+Family Gate now includes a locally operated EVIE draft inspector + FieldDeck blueprint designer. Open an exported EVIE Sovereign Shelf design draft, independently select 1–6 of FieldDeck's reviewed action IDs, and export a default-deny FieldDeck v0.5 JSON. FieldDeck's actual parser is tested against it in pinned CI. No automatic EVIE-card mapping, upload, IssueOps submission, or runtime grant. See `docs/EVIE_FIELDDECK_HANDOFF_R11.md`.
