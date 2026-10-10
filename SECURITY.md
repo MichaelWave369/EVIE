@@ -89,3 +89,8 @@ Only manually approved one-step `local_content_hooks_review` can be invoked by t
 ## R15 SHA approval is not authentication
 
 The second local distribution CLI accepts only a current-source verified R14 bundle, an exact SHA-256 supplied by the operator, explicit confirmation, a short subprocess and non-overwriting output. It is an operator gesture, **not** a signature, independent identity check, one-time grant, immutable human approval, or network/OS sandbox. Both outputs are unverified editable marketing drafts, and both self-reported receipts are unsigned. External posting, API calls, queues and arbitrary workflow execution remain unavailable in this controlled path.
+
+
+## R16 optional signed local execution leases
+
+The optional signed distribution-runner lane uses an independently selected Ed25519 trusted public key and a new cryptographic domain, validating action, artifact and source hashes, output destination fingerprint, TTL, and fixed runtime/size budgets. A nonce is atomically spent in a local SQLite ledger BEFORE calling the real R15 second-stage module. One-use applies only to consumers sharing the same intact ledger on the same host; someone able to replace the ledger, change source or use the old R15 CLI can bypass this workflow gate. Signing key possession is not verified human identity. Signed approval does NOT mean the unsigned local execution receipt is authenticated. No publishing, provider API, external execution or OS sandbox is added.
