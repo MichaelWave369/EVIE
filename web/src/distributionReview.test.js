@@ -60,7 +60,7 @@ describe('R15 browser two-stage offline receipt inspector',()=>{
     const f=await fixtures();
     await expect(check({...f,r2:{...f.r2,approvedInputSha256:'b'.repeat(64)}}))
       .rejects.toThrow('approved input digest');
-    const changed=new Uint8Array(f.b2);changed[7]^=1;
+    const changed=new Uint8Array(f.b2);const pos=new TextDecoder().decode(changed).indexOf('Write');expect(pos).toBeGreaterThan(0);changed[pos]='S'.charCodeAt(0);
     await expect(check({...f,b2:changed})).rejects.toThrow('digest');
   });
   it('rejects source mismatch and inflated authority',async()=>{
