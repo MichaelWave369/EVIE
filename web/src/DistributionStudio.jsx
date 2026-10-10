@@ -5,6 +5,7 @@ import SignedLeaseGuide from './SignedLeaseGuide.jsx';
 import DockerIsolationGuide from './DockerIsolationGuide.jsx';
 import GovernedFlowGuide from './GovernedFlowGuide.jsx';
 import CompletionLedgerGuide from './CompletionLedgerGuide.jsx';
+import SafeEntryGuide from './SafeEntryGuide.jsx';
 import './distributionStudio.css';
 const FIRST='python -m tools.evie_supervised_hooks local_content_hooks_review --script-file ./draft.txt --topic "EVIE Creator Loop" --stage-dir ../evie-hooks-review-001 --confirm-local-execution';
 const SECOND='python -m tools.evie_supervised_distribution --hooks-dir ../evie-hooks-review-001 --approved-hooks-sha256 YOUR_REVIEWED_64_CHARACTER_SHA256 --stage-dir ../evie-distribution-review-001 --confirm-local-execution';
@@ -39,9 +40,11 @@ export default function DistributionStudio(){
   return <section className="ds-root">
     <div className="mc-overline">R15 / HOOKS → DISTRIBUTION / TWO REAL MODULES</div>
     <header><h3>Content Handoff Studio</h3>
-      <p>The first true two-step EVIE content pipeline. Generate nine hooks, personally review the draft and its SHA-256, then explicitly unlock a local distribution draft that consumes the first five hooks.</p>
+      <p>The original two-stage content handoff remains available for compatibility. For NEW runs, prefer the R21 EVIE Safe Entry guide below: both stages use offline Docker and the second requires separate signed approval.</p>
     </header>
-    <div className="ds-boundary">TWO SEPARATE LOCAL COMMANDS · SHA-PINNED REVIEW CHECKPOINT · NO PUBLISHING</div>
+    <SafeEntryGuide/>
+    <div className="ds-boundary">LEGACY DIRECT TWO-COMMAND PATH · COMPATIBILITY ONLY · SHA-PINNED REVIEW · NO PUBLISHING</div>
+    <p className="ds-caution">The commands in the next two cards are older direct R14/R15 commands. They run host Python, have weaker protections, and are NOT the recommended default. Keep them only for existing compatibility workflows.</p>
     <div className="ds-stages">
       <div><strong>01 / Produce & review nine hooks</strong><p>Use the existing R14 real module. Read and edit claims before deciding to continue. The next step validates the exact saved JSON bytes.</p>
         <div className="ds-command"><code>{FIRST}</code><button onClick={()=>copy(FIRST)}>Copy step 1</button></div>

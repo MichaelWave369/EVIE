@@ -2,11 +2,11 @@ import {useState} from 'react';
 import './completionLedgerGuide.css';
 
 const COMMANDS = [
-  {label:'Audit the known execution lanes',command:'python -m tools.evie_completion_audit entrypoints',
+  {label:'Audit the known execution lanes',command:'python -m tools.evie_safe entrypoints',
     summary:'Read-only inventory of six known CLI entrypoints, their source SHA-256 and whether each requires a signed lease or Docker. Not a full repository security scan.'},
-  {label:'Inspect a local paused or completed session',command:'python -m tools.evie_completion_audit session --session-dir ../evie-flow-session-001',
+  {label:'Inspect a local paused or completed session',command:'python -m tools.evie_safe audit --session-dir ../evie-flow-session-001',
     summary:'Checks the actual local artifacts and events. A staged distribution draft is NOT fully approved or independently verified without trust evidence.'},
-  {label:'Verify the narrow draft completion contract',command:'python -m tools.evie_completion_audit session --session-dir ../evie-flow-session-001 --lease-file ../evie-flow-lease-001.json --trusted-public ../evie-lease-trusted-public.pem --ledger ../evie-local-lease-ledger.sqlite',
+  {label:'Verify the narrow draft completion contract',command:'python -m tools.evie_safe audit --session-dir ../evie-flow-session-001 --lease-file ../evie-flow-lease-001.json --trusted-public ../evie-lease-trusted-public.pem --ledger ../evie-local-lease-ledger.sqlite',
     summary:'Additionally checks the Ed25519 signature, recorded attempt time, exact artifact/source/destination and spent nonce in the selected local ledger without modifying anything.'},
 ];
 const LEVELS=[
@@ -22,7 +22,7 @@ export default function CompletionLedgerGuide(){
    catch{setCopied('Clipboard unavailable; select the command text to copy manually.');}
  };
  return <section className="clg-root">
-   <div className="mc-overline">R20 / ANTI-M STYLE COMPLETION EVIDENCE / NO FALSE DONE</div>
+   <div className="mc-overline">R20→R21 / COMPLETION EVIDENCE VIA SAFE ENTRY / NO FALSE DONE</div>
    <header><h3>Completion Ledger Audit</h3><p>Separate a tested workflow, a signed one-use action, a locally staged artifact, and a real final release. They are four different claims, regardless of how enthusiastically software congratulates itself.</p></header>
    <div className="clg-policies"><span>READ-ONLY</span><span>EXACT BYTES + SOURCE</span><span>SIGNATURE + LOCAL NONCE</span><span>NO PUBLICATION GRANT</span></div>
    <div className="clg-command-list">{COMMANDS.map((item,i)=><article key={item.label}>

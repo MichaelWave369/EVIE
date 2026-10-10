@@ -4,17 +4,17 @@ import './governedFlowGuide.css';
 const COMMANDS=[
   {
     label:'01 / Preflight the exact two-step source',
-    command:'python -m tools.evie_governed_flow plan',
+    command:'python -m tools.evie_safe plan',
     note:'Reads the registered two-module plan; runs nothing and writes nothing.',
   },
   {
     label:'02 / Start: produce nine local hooks and STOP',
-    command:'python -m tools.evie_governed_flow start --session-dir ../evie-flow-session-001 --script-file ./draft.txt --topic "EVIE Creator Loop" --confirm-local-execution',
+    command:'python -m tools.evie_safe start --session-dir ../evie-flow-session-001 --script-file ./draft.txt --topic "EVIE Creator Loop" --confirm-local-execution',
     note:'Requires the already-installed Docker image. Runs the genuine R14 hooks module inside a minimal offline, read-only Docker capsule, then pauses. No signing, distribution or publishing.',
   },
   {
     label:'03 / Review the source hooks and check status',
-    command:'python -m tools.evie_governed_flow status --session-dir ../evie-flow-session-001',
+    command:'python -m tools.evie_safe status --session-dir ../evie-flow-session-001',
     note:'Read hooks/nine-hooks.json and its SHA-256. The status command never executes a worker. If the draft is unacceptable, start a NEW session with improved input.',
   },
   {
@@ -24,7 +24,7 @@ const COMMANDS=[
   },
   {
     label:'05 / Resume ONCE using signed offline Docker',
-    command:'python -m tools.evie_governed_flow resume --session-dir ../evie-flow-session-001 --lease-file ../evie-flow-lease-001.json --trusted-public ../evie-lease-trusted-public.pem --ledger ../evie-local-lease-ledger.sqlite --confirm-local-execution',
+    command:'python -m tools.evie_safe resume --session-dir ../evie-flow-session-001 --lease-file ../evie-flow-lease-001.json --trusted-public ../evie-lease-trusted-public.pem --ledger ../evie-local-lease-ledger.sqlite --confirm-local-execution',
     note:'No direct host-Python fallback. Requires a fresh signature, intact single-host nonce ledger and installed Docker image. Writes attempt event before execution.',
   },
 ];
@@ -36,7 +36,7 @@ export default function GovernedFlowGuide(){
     catch {setNotice('Clipboard unavailable; select and copy the command manually.');}
   };
   return <section className="gfg-root">
-    <div className="mc-overline">R18 / REAL TWO-STAGE WORKFLOW CONTROLLER</div>
+    <div className="mc-overline">R18→R21 / GOVERNED FLOW VIA RECOMMENDED SAFE ENTRY</div>
     <header>
       <h3>Governed Flow Console</h3>
       <p>One controlled local session. EVIE generates genuine hooks, pauses for inspection, then accepts a separately signed, single-use approval to draft distribution content inside the R17 Docker capsule.</p>
