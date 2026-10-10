@@ -56,10 +56,22 @@ def _now(now: datetime | None) -> datetime:
     return instant.astimezone(timezone.utc)
 
 
-def destination_sha256(stage_dir: str) -> str:
-    """Bind the absolute stage directory without disclosing the path in the lease."""
-    from tools.evie_supervised import _stage_directory
-    destination = _stage_directory(stage_dir)
+def destination_sha256(stage_dir: str, *, historical_completed: bool = False) -> str:
+    """Bind exact stage dir; historical mode only for read-only post-run inspection.
+
+    Live execution MUST use the default false mode requiring a nonexistent
+    destination. Historical mode refuses missing, symlinked or in-repo dirs.
+    It is never an authorization to run or stage new files.
+    """
+    if historical_completed:
+        destination = Path(stage_dir).expanduser().absolute()
+        if (not destination.is_dir() or destination.is_symlink()
+                or destination.resolve().is_relative_to(ROOT.resolve())
+                or destination.parent.is_symlink()):
+            raise ValueError("completed audit destination must exist outside checkout")
+    else:
+        from tools.evie_supervised import _stage_directory
+        destination = _stage_directory(stage_dir)
     return hashlib.sha256(os.fsencode(str(destination))).hexdigest()
 
 
@@ -98,7 +110,10 @@ def issue_local_lease(*, artifact_sha: str, source_sha: str, stage_dir: str,
 
 def verify_local_lease(lease: object, trusted_key: Ed25519PublicKey, *,
                        artifact_sha: str, source_sha: str, stage_dir: str,
-                       now: datetime | None = None) -> dict:
+                       now: datetime | None = None,
+                       historical_completed: bool = False) -> dict:
+    if type(historical_completed) is not bool:
+        raise ValueError("historical inspection flag invalid")
     if not isinstance(lease, dict) or set(lease) != ENVELOPE_KEYS or \
             lease["schemaVersion"] != SCHEMA or lease["algorithm"] != "Ed25519":
         raise ValueError("unsupported signed lease envelope")
@@ -124,7 +139,7 @@ def verify_local_lease(lease: object, trusted_key: Ed25519PublicKey, *,
     if not isinstance(body["nonce"], str) or not HEX32.fullmatch(body["nonce"]):
         raise ValueError("lease nonce invalid")
     if body["artifactSha256"] != artifact_sha or body["sourceSha256"] != source_sha or \
-            body["destinationSha256"] != destination_sha256(stage_dir):
+            body["destinationSha256"] != destination_sha256(stage_dir, historical_completed=historical_completed):
         raise ValueError("signed lease does not match artifact, source or destination")
     if not all(isinstance(x, str) and HEX64.fullmatch(x) for x in
                (body["artifactSha256"], body["sourceSha256"], body["destinationSha256"])):

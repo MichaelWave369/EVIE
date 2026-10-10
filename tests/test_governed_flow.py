@@ -20,6 +20,7 @@ from tools import evie_supervised_distribution as distribution
 from tools import evie_isolated_distribution as isolated
 from tools import evie_container_runner as capsule
 from tools import evie_hooks_container as hooks_capsule
+from tools import evie_completion_audit as completion_audit
 from tools import evie_supervised_hooks as legacy_hooks
 
 SCRIPT = ("EVIE should create real draft hooks from these notes before review. "
@@ -249,3 +250,10 @@ def test_real_docker_two_stage_controller_and_no_external_publish(tmp_path, star
     assert capsule_receipt["publishingAuthorized"] is False
     assert capsule_receipt["signedExecutionReceipt"] is False
     assert not (folder/"distribution"/"published.json").exists()
+    audit = completion_audit.audit_session(
+        str(folder), lease_file=kwargs["lease_file"],
+        trusted_public=kwargs["trusted_public"], ledger=kwargs["ledger"],
+    )
+    assert audit["completionContract"]["status"] == "LOCAL_DRAFT_CONTRACT_VERIFIED"
+    assert audit["completionContract"]["fullyVerified"] is True
+    assert audit["policy"]["finalProductDone"] is False

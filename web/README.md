@@ -110,3 +110,8 @@ Mission Control → Workflow Studio → Content Handoff Studio now includes copy
 ## R19: Dual-capsule governed workflow
 
 The Governed Flow Console now requires offline Docker to start Stage 1 as well as resume Stage 2. It copies only an audited four-file HooksGenerator capsule into the first read-only network-disabled container, then pauses for review. The separate signed second stage still uses R17's isolated distribution capsule. The public website cannot execute either. The old standalone R14/R15/R16 commands remain more permissive and are documented as legacy. See `docs/EVIE_HOOKS_DOCKER_R19.md`.
+
+
+## R20: Completion Ledger Audit
+
+The Content Handoff Studio now includes read-only CLI instructions for auditing known legacy entrypoints and verifying governed session integrity, Ed25519 lease and nonce-ledger evidence. The report distinguishes PAUSED, UNKNOWN, STAGED BUT UNVERIFIED and NARROW LOCAL DRAFT VERIFIED. The public site cannot read host session files and never publishes or executes jobs. See `docs/EVIE_COMPLETION_LEDGER_R20.md`.
