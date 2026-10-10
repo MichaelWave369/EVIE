@@ -734,5 +734,10 @@
     "description": "Supervised local nine-hook review draft from a short operator-selected script. No LLM, posting or provider calls.",
     "tags": ["content", "review", "local"],
     "steps": [{"module": "hooks_generator"}]
+  },
+  "local_hooks_to_distribution_review": {
+    "description": "Two-step supervised local content workflow: generate hooks, require separate SHA-pinned human checkpoint, then draft distribution JSON. No posting.",
+    "tags": ["content", "distribution", "local", "manual-approval"],
+    "steps": [{"module": "hooks_generator"}, {"module": "distribution_generator"}]
   }
 }

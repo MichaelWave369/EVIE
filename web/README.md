@@ -85,3 +85,8 @@ Mission Control → Workflow Studio → OpenBlueprint Concept Floor Plan include
 ## R14: Nine-Hook Content Workshop
 
 Mission Control → Workflow Studio → **Local Content Hooks Review** offers a copyable local command to run EVIE's original deterministic v2 HooksGenerator. Bring an 8 KB-or-smaller script, then inspect the staged nine-hook JSON and unsigned local receipt in your browser. It can optionally compare the original script hash; no files leave the browser. No LLM, publishing or authenticated execution claim. See `docs/EVIE_SUPERVISED_HOOKS_R14.md`.
+
+
+## R15 Content Handoff Studio
+
+Mission Control → Workflow Studio → Local Hooks To Distribution Review provides separate R14/R15 copyable local CLI steps with a SHA-confirmed checkpoint and a four-file local integrity review. The browser verifies the exact first five hooks were passed to EVIE's real DistributionGenerator without transferring or publishing them. The receipts remain unsigned and do not prove a trusted human approval. See `docs/EVIE_TWO_STEP_HANDOFF_R15.md`.
