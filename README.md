@@ -523,3 +523,8 @@ EVIE's signed R16 lane now has an additional, **strict Docker-isolated command**
 ## R18: Governed two-stage local workflow controller
 
 `python -m tools.evie_governed_flow plan|start|status|resume` coordinates genuine R14 hooks → explicit human review pause → independent R16 signed one-use lease → real R17 offline Docker distribution. The new-session controller produces create-exclusive local event records `01-hooks-paused.json`, `02-signed-resume-attempt.json`, and `03-distribution-staged.json`. A recorded uncertain attempt cannot be retried through this controller. It never signs its own approvals, publishes anything, runs a background queue or grants arbitrary-module execution. R14 Stage 1 remains a host subprocess without OS isolation. See [R18 flow guide](docs/EVIE_GOVERNED_FLOW_R18.md).
+
+
+## R19: Both stages of the governed content workflow use Docker
+
+The R18 `tools.evie_governed_flow start` command now **requires an installed local Docker Engine and preinstalled `python:3.11-slim` image**. It executes the real R14 HooksGenerator in its own minimal, offline, read-only source capsule, then pauses for human review. The previously signed R17 offline Docker distribution resume remains unchanged. The new controller refuses missing Docker with **no host fallback for either stage** and records the isolated Stage 1 profile as unsigned local evidence. Pre-R19 host-started sessions remain inspectable but cannot resume through R19; create a new session. Older R14/R15/R16 standalone host commands remain accessible as explicitly documented legacy paths; Docker isolation is **not** universal repo enforcement. See [R19 dual-capsule design](docs/EVIE_HOOKS_DOCKER_R19.md).

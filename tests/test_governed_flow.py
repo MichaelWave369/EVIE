@@ -19,6 +19,8 @@ from tools import evie_governed_flow as flow
 from tools import evie_supervised_distribution as distribution
 from tools import evie_isolated_distribution as isolated
 from tools import evie_container_runner as capsule
+from tools import evie_hooks_container as hooks_capsule
+from tools import evie_supervised_hooks as legacy_hooks
 
 SCRIPT = ("EVIE should create real draft hooks from these notes before review. "
           "No automation may publish or approve marketing claims by itself. "
@@ -27,7 +29,16 @@ PASSWORD = "encrypted-key-test-passphrase"
 
 
 @pytest.fixture
-def started(tmp_path):
+def started(tmp_path, monkeypatch):
+    # Normal tests run the REAL producer in host Python, but mock Docker ONLY
+    # when EVIE_TEST_DOCKER is absent. Real Docker CI does not mock Stage 1.
+    if os.environ.get("EVIE_TEST_DOCKER") != "1":
+        monkeypatch.setattr(hooks_capsule, "image_preflight",
+                            lambda: "sha256:" + "a"*64)
+        def simulated_docker(title, script, seconds, *, image_id):
+            assert image_id == "sha256:" + "a"*64
+            return legacy_hooks.subprocess_run(title, script, seconds)
+        monkeypatch.setattr(hooks_capsule, "run_hooks_isolated", simulated_docker)
     script = tmp_path / "script.txt"
     script.write_text(SCRIPT, encoding="utf-8")
     folder = tmp_path / "session"
@@ -74,7 +85,9 @@ def mock_isolated_backend(monkeypatch):
 def test_start_persists_real_hooks_and_pauses_without_authorizing_stage_two(started):
     folder, first, _ = started
     assert first["stageOneExecutedLocally"] is True
-    assert first["stageOneOSIsolated"] is False
+    assert first["stageOneOSIsolated"] is True
+    assert first["stageOneIsolation"]["profile"] == hooks_capsule.PROFILE
+    assert first["stageOneIsolation"]["networkMode"] == "none"
     assert first["stageTwoExecuted"] is False
     assert first["signedApprovalReceived"] is False
     assert first["externalPublishingAuthorized"] is False
@@ -112,6 +125,32 @@ def test_real_two_step_flow_with_mocked_container_keeps_every_boundary(tmp_path,
     assert len(list((folder/"distribution").iterdir())) == 4
     with pytest.raises(ValueError, match="already attempted"):
         flow.resume_session(**kwargs)
+
+
+def test_missing_docker_blocks_stage_one_before_creating_session(tmp_path, monkeypatch):
+    monkeypatch.setattr(hooks_capsule, "image_preflight",
+                        lambda: (_ for _ in ()).throw(ValueError("Docker absent")))
+    script = tmp_path / "input.txt"
+    script.write_text(SCRIPT, encoding="utf-8")
+    session = tmp_path / "not-created"
+    with pytest.raises(ValueError, match="Docker absent"):
+        flow.start_session(session_dir=str(session), script_file=str(script),
+                           topic="EVIE Creator Loop", confirm=True)
+    assert not session.exists()
+
+
+def test_old_host_started_session_may_be_inspected_but_not_resumed(tmp_path, started, monkeypatch):
+    folder, record, _ = started
+    event = folder / flow.EVENT_1
+    old = json.loads(event.read_text())
+    old["stageOneOSIsolated"] = False
+    old.pop("stageOneIsolation", None)
+    event.write_text(json.dumps(old))
+    assert flow.session_status(str(folder))["stageOneIsolation"]["profile"] == "legacy-host-subprocess"
+    kwargs = signed_lease(tmp_path, started)
+    with pytest.raises(ValueError, match="Stage 1 requires"):
+        flow.resume_session(**kwargs)
+    assert not (folder/flow.EVENT_2).exists()
 
 
 def test_missing_docker_fails_before_attempt_event_or_nonce_spend(tmp_path, started, monkeypatch):
@@ -198,6 +237,10 @@ def test_real_docker_two_stage_controller_and_no_external_publish(tmp_path, star
     outcome = flow.resume_session(**kwargs)
     assert outcome["state"] == flow.STATES[2]
     assert outcome["dockerProfile"] == capsule.PROFILE
+    initial = json.loads((Path(kwargs["session_dir"])/flow.EVENT_1).read_text())
+    assert initial["stageOneOSIsolated"] is True
+    assert initial["stageOneIsolation"]["profile"] == hooks_capsule.PROFILE
+    assert initial["stageOneIsolation"]["networkMode"] == "none"
     folder = Path(kwargs["session_dir"])
     assert flow.session_status(str(folder))["state"] == flow.STATES[2]
     capsule_receipt = json.loads(

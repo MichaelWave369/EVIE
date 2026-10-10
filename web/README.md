@@ -105,3 +105,8 @@ The Content Handoff Studio includes a new optional offline Docker capsule guide 
 ## R18: Governed Flow Console
 
 Mission Control → Workflow Studio → Content Handoff Studio now includes copyable local commands to plan, start, inspect, independently sign and resume the exact real two-stage EVIE content workflow. GitHub Pages never executes local programs or uploads private files. See `docs/EVIE_GOVERNED_FLOW_R18.md`.
+
+
+## R19: Dual-capsule governed workflow
+
+The Governed Flow Console now requires offline Docker to start Stage 1 as well as resume Stage 2. It copies only an audited four-file HooksGenerator capsule into the first read-only network-disabled container, then pauses for review. The separate signed second stage still uses R17's isolated distribution capsule. The public website cannot execute either. The old standalone R14/R15/R16 commands remain more permissive and are documented as legacy. See `docs/EVIE_HOOKS_DOCKER_R19.md`.
