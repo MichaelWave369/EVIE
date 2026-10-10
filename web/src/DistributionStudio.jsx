@@ -3,6 +3,7 @@ import manifest from './generated/mission-control.json';
 import {inspectDistributionChain} from './distributionReview.js';
 import SignedLeaseGuide from './SignedLeaseGuide.jsx';
 import DockerIsolationGuide from './DockerIsolationGuide.jsx';
+import GovernedFlowGuide from './GovernedFlowGuide.jsx';
 import './distributionStudio.css';
 const FIRST='python -m tools.evie_supervised_hooks local_content_hooks_review --script-file ./draft.txt --topic "EVIE Creator Loop" --stage-dir ../evie-hooks-review-001 --confirm-local-execution';
 const SECOND='python -m tools.evie_supervised_distribution --hooks-dir ../evie-hooks-review-001 --approved-hooks-sha256 YOUR_REVIEWED_64_CHARACTER_SHA256 --stage-dir ../evie-distribution-review-001 --confirm-local-execution';
@@ -66,5 +67,6 @@ export default function DistributionStudio(){
     </div>}
     <SignedLeaseGuide/>
     <DockerIsolationGuide/>
+    <GovernedFlowGuide/>
   </section>;
 }
