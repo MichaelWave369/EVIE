@@ -503,3 +503,8 @@ Unlike R12's read-only plans, R13 **actually runs one audited local workflow ste
 ## R14: First supervised local content output
 
 EVIE's new **`local_content_hooks_review`** workflow runs the existing v2 `HooksGenerator` for an explicitly selected UTF-8 script, producing **nine editable content hooks** without a model, provider API or publisher. Use `python -m tools.evie_supervised_hooks local_content_hooks_review --script-file ./draft.txt --topic "EVIE Creator Loop" --stage-dir ../evie-hooks-review-001 --confirm-local-execution`. The staged four-file bundle includes JSON, Markdown review sheet, R12 source plan and an unsigned digest-bound observation. **Workflow Studio → Nine-Hook Content Workshop** can inspect local files in the browser, never upload or approve publishing. Only this fixed one-step workflow is allowlisted; the child process is not a hard sandbox. See [R14](docs/EVIE_SUPERVISED_HOOKS_R14.md).
+
+
+## R15: Two-step governed content handoff
+
+The new `local_hooks_to_distribution_review` workflow is a two-module local route: R14 `hooks_generator` output is manually reviewed, its exact SHA-256 is explicitly confirmed, then EVIE's real v2 `DistributionGenerator` consumes the first five hooks. Use `python -m tools.evie_supervised_distribution --hooks-dir ../evie-hooks-review-001 --approved-hooks-sha256 YOUR_REVIEWED_SHA256 --stage-dir ../evie-distribution-review-001 --confirm-local-execution`. The output is a review-only distribution JSON with an unsigned, non-authorizing receipt. Workflow Studio includes a four-file browser-only verification pane. No publishing, provider API, automatic step chaining, or recipient approval. See [R15 protocol](docs/EVIE_TWO_STEP_HANDOFF_R15.md).

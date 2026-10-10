@@ -84,3 +84,8 @@ A user must explicitly invoke the R13 CLI with `--confirm-local-execution`, spec
 ## R14 supervised content review
 
 Only manually approved one-step `local_content_hooks_review` can be invoked by the new CLI, with a short script and bounded output. The runner invokes the real v2 HooksGenerator with fixed output routing to a disposable workspace, an environment allowlist and a timeout. The subprocess is **not** an OS/network sandbox and output hooks are unverified editorial templates that may contain exaggerated claims. Review before publishing. The unsigned local receipt and matching browser display are **not** authenticated proof or permission to execute another module.
+
+
+## R15 SHA approval is not authentication
+
+The second local distribution CLI accepts only a current-source verified R14 bundle, an exact SHA-256 supplied by the operator, explicit confirmation, a short subprocess and non-overwriting output. It is an operator gesture, **not** a signature, independent identity check, one-time grant, immutable human approval, or network/OS sandbox. Both outputs are unverified editable marketing drafts, and both self-reported receipts are unsigned. External posting, API calls, queues and arbitrary workflow execution remain unavailable in this controlled path.

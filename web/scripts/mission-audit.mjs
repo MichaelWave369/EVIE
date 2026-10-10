@@ -122,6 +122,16 @@ export function buildMissionManifest(registrySource, workflowSource) {
     status: 'manual_local_execution_only',
     authenticated: false,
   }];
+  const supervisedDistributionFixtures = [{
+    workflow: 'local_hooks_to_distribution_review',
+    module: 'distribution_generator',
+    scenario: 'approved_five_hooks_to_distribution_v1',
+    moduleSourceSha256: shaFile('app/modules_v2/distribution_generator.py'),
+    wrapperSourceSha256: shaFile('app/modules/distribution_generator.py'),
+    workerSourceSha256: shaFile('tools/evie_distribution_worker.py'),
+    authenticated: false,
+    status: 'manual_sha_pinned_local_execution_only'
+  }];
   const inWorkflows = allModules.filter(m => m.workflowRefs.length).length;
   const digest = createHash('sha256').update(registrySource).update('\n--- workflow ---\n').update(workflowSource).digest('hex');
   return {
@@ -134,7 +144,7 @@ export function buildMissionManifest(registrySource, workflowSource) {
       directlyUsedModules: inWorkflows, referenceIssues: examined.referenceIssues.length,
       sourceTestWiredModules: allModules.filter(m => m.evidence.level === 'targeted_test_source').length,
       runtimeQualifiedModules: 0 },
-    qualificationFixtures, supervisedContentFixtures,
+    qualificationFixtures, supervisedContentFixtures, supervisedDistributionFixtures,
     modules: allModules, workflows: examined.workflows,
     referenceIssues: examined.referenceIssues,
     limitations: [

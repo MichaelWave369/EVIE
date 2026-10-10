@@ -3,6 +3,7 @@ import manifest from './generated/mission-control.json';
 import { availablePlanFlags, planEvieWorkflow } from './workflowPlan.js';
 import SupervisedCad from './SupervisedCad.jsx';
 import SupervisedHooks from './SupervisedHooks.jsx';
+import DistributionStudio from './DistributionStudio.jsx';
 import './workflowStudio.css';
 
 const pretty = value => String(value).replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
@@ -13,6 +14,8 @@ const display = value => {
 };
 const recommended = [
   'openblueprint_concept_floor_plan',
+  'local_hooks_to_distribution_review',
+  'local_content_hooks_review',
   'vault_to_lesson_pack',
   'youtube_flywheel',
   'vault_to_money_pack',
@@ -131,5 +134,6 @@ export default function WorkflowStudio(){
     </div>
     {name === 'openblueprint_concept_floor_plan' && <SupervisedCad/>}
     {name === 'local_content_hooks_review' && <SupervisedHooks/>}
+    {name === 'local_hooks_to_distribution_review' && <DistributionStudio/>}
   </section>;
 }
