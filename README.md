@@ -1,5 +1,16 @@
 # EVIE — EmberVault Income Engine
 
+## Recommended default local CLI (R21)
+
+For **new** content runs, use the fixed, allowlisted **EVIE Safe Entry** rather than invoking old standalone executors directly:
+
+```sh
+python -m tools.evie_safe policy
+python -m tools.evie_safe plan
+```
+
+The same entrypoint exposes `start` (real offline Docker HooksGenerator, hard pause), `status` (read-only), `resume` (separate Ed25519 approval and one-use offline Docker DistributionGenerator) and `audit` (read-only completion evidence). It **cannot publish, auto-sign, retry an uncertain attempt or run arbitrary modules**. Docker and a trusted preinstalled image are required for execution. Legacy R14/R15/R16 commands still work outside this wrapper; this is a default for cooperating users, **not a repository-wide host security gate**. [R21 migration guide](docs/EVIE_SAFE_ENTRY_R21.md).
+
 > **Phi Commons edition.** EVIE is preserved as an open, local-first capability and workflow engine. Its original productization/publishing mission remains visible in the code, but the modern Commons role is broader: reusable modules, workflows, vault patterns, bridges, and artifact pipelines for people to inspect, remix, and integrate into systems such as PhiOS.
 
 

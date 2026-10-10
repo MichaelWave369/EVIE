@@ -115,3 +115,8 @@ The Governed Flow Console now requires offline Docker to start Stage 1 as well a
 ## R20: Completion Ledger Audit
 
 The Content Handoff Studio now includes read-only CLI instructions for auditing known legacy entrypoints and verifying governed session integrity, Ed25519 lease and nonce-ledger evidence. The report distinguishes PAUSED, UNKNOWN, STAGED BUT UNVERIFIED and NARROW LOCAL DRAFT VERIFIED. The public site cannot read host session files and never publishes or executes jobs. See `docs/EVIE_COMPLETION_LEDGER_R20.md`.
+
+
+## R21: Default safe entry
+
+The Content Handoff Studio now places **EVIE Safe Entry** first: one documented local `python -m tools.evie_safe` CLI for policy inventory, source-only plan, isolated hooks start, read-only status, signed offline Docker resume and narrow completion audit. Old R14/R15 direct host commands are visibly marked **legacy compatibility only**. This React/GitHub Pages site has no host execution access. See `docs/EVIE_SAFE_ENTRY_R21.md`.
