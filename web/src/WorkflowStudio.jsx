@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import manifest from './generated/mission-control.json';
 import { availablePlanFlags, planEvieWorkflow } from './workflowPlan.js';
 import SupervisedCad from './SupervisedCad.jsx';
+import SupervisedHooks from './SupervisedHooks.jsx';
 import './workflowStudio.css';
 
 const pretty = value => String(value).replaceAll('_',' ').replace(/\b\w/g,c=>c.toUpperCase());
@@ -129,5 +130,6 @@ export default function WorkflowStudio(){
       </div>
     </div>
     {name === 'openblueprint_concept_floor_plan' && <SupervisedCad/>}
+    {name === 'local_content_hooks_review' && <SupervisedHooks/>}
   </section>;
 }

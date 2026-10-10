@@ -109,6 +109,19 @@ export function buildMissionManifest(registrySource, workflowSource) {
     initialStatus: 'no_local_receipt',
     trust: 'local_unsigned_unverified',
   }];
+  const shaFile = name => createHash('sha256').update(
+    readFileSync(resolve(import.meta.dirname, '../../' + name))
+  ).digest('hex');
+  const supervisedContentFixtures = [{
+    workflow: 'local_content_hooks_review',
+    module: 'hooks_generator',
+    scenario: 'nine_hooks_local_template_v1',
+    moduleSourceSha256: shaFile('app/modules_v2/hooks_generator.py'),
+    wrapperSourceSha256: shaFile('app/modules/hooks_generator.py'),
+    workerSourceSha256: shaFile('tools/evie_hooks_worker.py'),
+    status: 'manual_local_execution_only',
+    authenticated: false,
+  }];
   const inWorkflows = allModules.filter(m => m.workflowRefs.length).length;
   const digest = createHash('sha256').update(registrySource).update('\n--- workflow ---\n').update(workflowSource).digest('hex');
   return {
@@ -121,7 +134,7 @@ export function buildMissionManifest(registrySource, workflowSource) {
       directlyUsedModules: inWorkflows, referenceIssues: examined.referenceIssues.length,
       sourceTestWiredModules: allModules.filter(m => m.evidence.level === 'targeted_test_source').length,
       runtimeQualifiedModules: 0 },
-    qualificationFixtures,
+    qualificationFixtures, supervisedContentFixtures,
     modules: allModules, workflows: examined.workflows,
     referenceIssues: examined.referenceIssues,
     limitations: [

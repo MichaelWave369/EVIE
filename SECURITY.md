@@ -79,3 +79,8 @@ The new source-only Workflow Studio and `app.workflows.preflight` CLI never invo
 ## R13 fixed supervised CAD local run
 
 A user must explicitly invoke the R13 CLI with `--confirm-local-execution`, specifying a NEW staging directory outside the public checkout. Only the audited single-step OpenBlue concept workflow can execute; no API, DB, generic workflow runner, agent, model or publish action is used. A temporary Python subprocess with a minimal environment/timeout is **NOT a network or filesystem sandbox**. Local staged outputs and unsigned receipts should not be committed or treated as recipient approval or authenticated execution evidence. The browser performs local hash/geometry/source inspection only. The only actual permission is to run the one fixed local fixture; any downstream action remains denied.
+
+
+## R14 supervised content review
+
+Only manually approved one-step `local_content_hooks_review` can be invoked by the new CLI, with a short script and bounded output. The runner invokes the real v2 HooksGenerator with fixed output routing to a disposable workspace, an environment allowlist and a timeout. The subprocess is **not** an OS/network sandbox and output hooks are unverified editorial templates that may contain exaggerated claims. Review before publishing. The unsigned local receipt and matching browser display are **not** authenticated proof or permission to execute another module.

@@ -729,5 +729,10 @@
         "module": "openblueprint_floor_plan"
       }
     ]
+  },
+  "local_content_hooks_review": {
+    "description": "Supervised local nine-hook review draft from a short operator-selected script. No LLM, posting or provider calls.",
+    "tags": ["content", "review", "local"],
+    "steps": [{"module": "hooks_generator"}]
   }
 }
