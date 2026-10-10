@@ -66,3 +66,6 @@ workflow-preflight.json
 *.lease.json
 lease-consumption.json
 *lease-ledger*.sqlite
+
+# R17 Docker capsule is temporary; no local container/image metadata in repository
+*.docker-observation.json
