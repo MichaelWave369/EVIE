@@ -69,3 +69,8 @@ The local OpenBlue conformance harness deliberately imports and executes source 
 ## R11: FieldDeck action boundaries
 
 EVIE Shelf cards and FieldDeck action IDs are separate authority domains. `evie.deck.draft/1` imports are never treated as executable FieldDeck steps. The new browser composer creates only manual selections from three fixed FieldDeck diagnostic IDs, with `policy.execution=denied` and independent review/authentication required. FieldDeck's own IssueOps and execution policy are unaffected. Parser compatibility testing on a reviewed pinned FieldDeck revision is not execution authorization.
+
+
+## R12 workflow planning does not grant run authority
+
+The new source-only Workflow Studio and `app.workflows.preflight` CLI never invoke the legacy runner, call `queries.create_run`, run a module, test a provider or grant a job lease. Optional flags affect only a proposed plan and default off. The source digest is a version comparison aid, not an authentication credential. All step decisions remain `candidate_only` or `skipped_by_default` with `executionAuthorized:false`. Name-heuristic effect warnings are incomplete and do not replace manual review. An independent execution security and budget gate is mandatory before making workflows runnable.

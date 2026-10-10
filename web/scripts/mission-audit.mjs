@@ -59,7 +59,8 @@ export function inspectWorkflows(workflows, moduleNames) {
         directUses.get(module)?.add(id);
       }
       if (sub) nested.push(sub);
-      steps.push({ index: index + 1, module, workflow: sub, optional: step.optional === true });
+      steps.push({ index: index + 1, module, workflow: sub, optional: step.optional === true,
+        whenConstraint: typeof step.when_constraint === 'string' ? step.when_constraint : null });
     }
     graph.set(id, nested);
     result.push({ id, description: String(value.description ?? '').slice(0, 240),
