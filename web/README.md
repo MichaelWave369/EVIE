@@ -100,3 +100,8 @@ Mission Control → Workflow Studio → Content Handoff Studio now describes the
 ## R17 Docker-isolated signed distribution guide
 
 The Content Handoff Studio includes a new optional offline Docker capsule guide for the R16 signed stage-2 approval. The browser neither installs Docker nor runs code. The isolated CLI requires a preinstalled local Python image and refuses to run when unavailable. CI includes a dedicated real-Docker test of the actual second-stage module, plus an external-network denial probe. See `docs/EVIE_DOCKER_CAPSULE_R17.md`.
+
+
+## R18: Governed Flow Console
+
+Mission Control → Workflow Studio → Content Handoff Studio now includes copyable local commands to plan, start, inspect, independently sign and resume the exact real two-stage EVIE content workflow. GitHub Pages never executes local programs or uploads private files. See `docs/EVIE_GOVERNED_FLOW_R18.md`.

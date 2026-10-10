@@ -69,3 +69,8 @@ lease-consumption.json
 
 # R17 Docker capsule is temporary; no local container/image metadata in repository
 *.docker-observation.json
+
+# R18 private local sessions should remain outside Git
+01-hooks-paused.json
+02-signed-resume-attempt.json
+03-distribution-staged.json
