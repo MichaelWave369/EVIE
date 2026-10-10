@@ -128,7 +128,7 @@ def _validate_second(response,topic,hooks):
         raise ValueError("real distribution module did not consume approved first five hooks")
     return payload,body
 
-def stage_distribution(*,hooks_dir,approved_hooks_sha256,stage_dir,confirm,timeout=MAX_SECONDS):
+def stage_distribution(*,hooks_dir,approved_hooks_sha256,stage_dir,confirm,timeout=MAX_SECONDS,worker_backend=None):
     if confirm is not True:
         raise ValueError("second step requires operator confirmation")
     if type(timeout) is not int or not 1<=timeout<=MAX_SECONDS:
@@ -137,7 +137,7 @@ def stage_distribution(*,hooks_dir,approved_hooks_sha256,stage_dir,confirm,timeo
     plan,source_sha,hashes=_source_check()
     topic,hooks,input_sha=_load_approved_first_stage(hooks_dir,approved_hooks_sha256,source_sha)
     started=time.monotonic()
-    artifact,body=_validate_second(_run_second_step(topic,hooks,timeout),topic,hooks)
+    artifact,body=_validate_second((worker_backend or _run_second_step)(topic,hooks,timeout),topic,hooks)
     if _source_check()!=(plan,source_sha,hashes):
         raise ValueError("source changed during generation")
     # Re-read source artifact immediately before staging. Refuse changed inputs.

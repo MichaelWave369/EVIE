@@ -95,3 +95,8 @@ Mission Control → Workflow Studio → Local Hooks To Distribution Review provi
 ## R16 local signed-lease guide
 
 Mission Control → Workflow Studio → Content Handoff Studio now describes the **optional** signed action lease, using EVIE's existing encrypted Ed25519 keys and a separate local nonce-ledger SQLite file. GitHub Pages never issues signing keys or runs local jobs. The original R15 manual-SHA command is still available, so the signed lane is not a universal enforcement barrier. See `docs/EVIE_LOCAL_ACTION_LEASE_R16.md`.
+
+
+## R17 Docker-isolated signed distribution guide
+
+The Content Handoff Studio includes a new optional offline Docker capsule guide for the R16 signed stage-2 approval. The browser neither installs Docker nor runs code. The isolated CLI requires a preinstalled local Python image and refuses to run when unavailable. CI includes a dedicated real-Docker test of the actual second-stage module, plus an external-network denial probe. See `docs/EVIE_DOCKER_CAPSULE_R17.md`.

@@ -1,0 +1,53 @@
+name: EVIE R17 Offline Docker Capsule
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "tools/evie_container_runner.py"
+      - "tools/evie_isolated_distribution.py"
+      - "tools/evie_approved_distribution.py"
+      - "tools/evie_supervised_distribution.py"
+      - "tools/evie_distribution_worker.py"
+      - "tests/test_container_isolation.py"
+      - ".github/workflows/docker-isolation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/evie_container_runner.py"
+      - "tools/evie_isolated_distribution.py"
+      - "tools/evie_approved_distribution.py"
+      - "tools/evie_supervised_distribution.py"
+      - "tools/evie_distribution_worker.py"
+      - "tests/test_container_isolation.py"
+      - ".github/workflows/docker-isolation.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-offline-capsule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install EVIE Python test dependencies
+        run: |
+          python -m pip install -r requirements.txt pytest
+      - name: Explicitly preload reviewed local runtime image on CI host
+        run: |
+          docker pull python:3.11-slim
+          docker image inspect python:3.11-slim --format '{{.Id}}'
+      - name: Execute actual signed lease in offline read-only Docker capsule
+        env:
+          EVIE_TEST_DOCKER: "1"
+          EV_API_KEY: ci-placeholder
+          EV_LLM_BACKEND: ollama
+          EV_EMBED_BACKEND: hash
+          EV_DATA_DIR: ./data
+          EV_DB_PATH: ./data/embervault.db
+        run: |
+          python -m pytest -q tests/test_container_isolation.py

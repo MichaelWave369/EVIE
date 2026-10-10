@@ -22,7 +22,8 @@ SCHEMA = "evie.local-lease-consumption/1"
 
 def run_with_local_lease(*, hooks_dir: str, approved_hooks_sha256: str,
                          stage_dir: str, lease_file: str, trusted_public: str,
-                         ledger: str, confirm: bool, timeout: int = 20) -> dict:
+                         ledger: str, confirm: bool, timeout: int = 20,
+                         worker_backend=None, isolation_metadata=None) -> dict:
     if confirm is not True:
         raise ValueError("local execution must be explicitly confirmed")
     if type(timeout) is not int or not 1 <= timeout <= 20:
@@ -45,6 +46,7 @@ def run_with_local_lease(*, hooks_dir: str, approved_hooks_sha256: str,
     result = dist.stage_distribution(
         hooks_dir=hooks_dir, approved_hooks_sha256=approved_hooks_sha256,
         stage_dir=str(dest), confirm=True, timeout=timeout,
+        worker_backend=worker_backend,
     )
     observation = {
         "schemaVersion": SCHEMA,
@@ -59,6 +61,9 @@ def run_with_local_lease(*, hooks_dir: str, approved_hooks_sha256: str,
         "distributionSha256": result["distributionSha256"],
         "executedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "ledgerScope": "one-local-file-on-one-host",
+        "containerIsolation": isolation_metadata or {
+            "profile": "legacy-local-subprocess", "externalNetworkRestricted": False,
+        },
         "signedExecutionReceipt": False,
         "externallyAuthenticatedExecution": False,
         "publishingAuthorized": False,
