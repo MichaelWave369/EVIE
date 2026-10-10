@@ -25,7 +25,7 @@ describe('Mission Control source provenance and accuracy', () => {
     const json = readFileSync(resolve(import.meta.dirname, '../../configs/workflows.json'), 'utf8');
     const report = buildMissionManifest(py, json);
     expect(report.summary.registeredModules).toBe(117);
-    expect(report.summary.configuredWorkflows).toBe(10);
+    expect(report.summary.configuredWorkflows).toBe(11);
     expect(report.summary.referenceIssues).toBe(0);
     expect(report.summary.runtimeQualifiedModules).toBe(0);
     expect(snapshot.source.sha256).toBe(report.source.sha256);

@@ -80,3 +80,8 @@ Mission Control → Workflow Studio shows actual nested workflow expansion and o
 ## R13: Review a real staged local CAD workflow result
 
 Mission Control → Workflow Studio → OpenBlueprint Concept Floor Plan includes **Supervised CAD Run**. It provides a manual CLI command to run one allowlisted local Python fixture in a separate process, and a browser-only two-file receipt and artifact inspection interface. The browser does not run Python or send files anywhere. A successful pair is still unsigned and requires separate approval inside OpenBlue. See `docs/EVIE_SUPERVISED_CAD_R13.md`.
+
+
+## R14: Nine-Hook Content Workshop
+
+Mission Control → Workflow Studio → **Local Content Hooks Review** offers a copyable local command to run EVIE's original deterministic v2 HooksGenerator. Bring an 8 KB-or-smaller script, then inspect the staged nine-hook JSON and unsigned local receipt in your browser. It can optionally compare the original script hash; no files leave the browser. No LLM, publishing or authenticated execution claim. See `docs/EVIE_SUPERVISED_HOOKS_R14.md`.
