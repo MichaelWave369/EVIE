@@ -57,3 +57,7 @@ Thumbs.db
 # Family Gate local handoff envelopes (can include private metadata)
 *.ack.json
 *.proposal.json
+
+# R13 local review bundles (do not commit generated review files)
+review-receipt.json
+workflow-preflight.json

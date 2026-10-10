@@ -74,3 +74,8 @@ EVIE Shelf cards and FieldDeck action IDs are separate authority domains. `evie.
 ## R12 workflow planning does not grant run authority
 
 The new source-only Workflow Studio and `app.workflows.preflight` CLI never invoke the legacy runner, call `queries.create_run`, run a module, test a provider or grant a job lease. Optional flags affect only a proposed plan and default off. The source digest is a version comparison aid, not an authentication credential. All step decisions remain `candidate_only` or `skipped_by_default` with `executionAuthorized:false`. Name-heuristic effect warnings are incomplete and do not replace manual review. An independent execution security and budget gate is mandatory before making workflows runnable.
+
+
+## R13 fixed supervised CAD local run
+
+A user must explicitly invoke the R13 CLI with `--confirm-local-execution`, specifying a NEW staging directory outside the public checkout. Only the audited single-step OpenBlue concept workflow can execute; no API, DB, generic workflow runner, agent, model or publish action is used. A temporary Python subprocess with a minimal environment/timeout is **NOT a network or filesystem sandbox**. Local staged outputs and unsigned receipts should not be committed or treated as recipient approval or authenticated execution evidence. The browser performs local hash/geometry/source inspection only. The only actual permission is to run the one fixed local fixture; any downstream action remains denied.

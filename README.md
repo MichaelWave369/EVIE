@@ -493,3 +493,8 @@ The public **Family Gate → EVIE meets FieldDeck** now inspects EVIE's design-o
 ## R12: Workflow Revival Studio (pure preflight)
 
 Mission Control now includes **Workflow Studio** to inspect EVIE's original ten configured workflows, expand nested steps, simulate optional conditions and export a source-bound **non-executable** review plan. This is separate from legacy `run_workflow(...,dry_run=True)`, which writes a database run record. The new `python -m app.workflows.preflight --workflow vault_to_lesson_pack --enable include_audio` uses source text only, does not import the module registry, call providers or touch the DB. Every step and report denies execution. [Read R12 planning protocol](docs/EVIE_WORKFLOW_STUDIO_R12.md).
+
+
+## R13: Supervised fixed CAD workflow (first actual local execution)
+
+Unlike R12's read-only plans, R13 **actually runs one audited local workflow step**: `openblueprint_concept_floor_plan` calling the genuine `openblueprint_floor_plan` producer. Use `python -m tools.evie_supervised run openblueprint_concept_floor_plan --stage-dir ../evie-cad-review-001 --confirm-local-execution` from the EVIE checkout. It runs a fixed 24 × 16 ft scenario in a disposable credential-stripped Python child process (not an OS sandbox), checks geometry/digests, and stages a blueprint, original source-only preflight, and **unsigned** review receipt into a new directory outside the repo. `Mission Control → Workflow Studio → Supervised CAD Run` can inspect that local pair without uploading or approving a CAD import. No database, external provider, publishing or generalized workflow execution is enabled. [R13 protocol](docs/EVIE_SUPERVISED_CAD_R13.md).
