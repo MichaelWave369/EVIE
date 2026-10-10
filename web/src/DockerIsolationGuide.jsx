@@ -26,7 +26,7 @@ export default function DockerIsolationGuide(){
         <div className="dix-command"><code>{RUN}</code><button onClick={()=>copy(RUN)}>Copy isolated command</button></div>
       </div>
     </div>
-    <p className="dix-note"><strong>Important:</strong> Missing Docker, an unavailable local image, invalid signed approval, or failure of the isolated container means **no fallback** to the unrestricted host subprocess. If the signed lease has already been spent, even a failed container run requires a fresh review destination and lease. This applies to the second distribution module only; the original first-stage hooks CLI is not Docker-isolated. Docker itself is not a guarantee against a compromised host, daemon, or kernel.</p>
+    <p className="dix-note"><strong>Important:</strong> Missing Docker, an unavailable local image, invalid signed approval, or failure of the isolated container means **no fallback** to the unrestricted host subprocess. If the signed lease has already been spent, even a failed container run requires a fresh review destination and lease. This optional command isolates the second distribution step. In R19's governed controller, the first hooks step is also isolated. The older standalone R14 command remains a host subprocess. Docker itself is not a guarantee against a compromised host, daemon, or kernel.</p>
     {message&&<p className="dix-message" role="status">{message}</p>}
   </section>;
 }

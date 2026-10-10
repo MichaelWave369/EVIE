@@ -10,7 +10,7 @@ const COMMANDS=[
   {
     label:'02 / Start: produce nine local hooks and STOP',
     command:'python -m tools.evie_governed_flow start --session-dir ../evie-flow-session-001 --script-file ./draft.txt --topic "EVIE Creator Loop" --confirm-local-execution',
-    note:'Runs the existing R14 generator on the host, creates the session once, and stages a paused event. No Docker, signing, distribution or publishing.',
+    note:'Requires the already-installed Docker image. Runs the genuine R14 hooks module inside a minimal offline, read-only Docker capsule, then pauses. No signing, distribution or publishing.',
   },
   {
     label:'03 / Review the source hooks and check status',
@@ -44,7 +44,7 @@ export default function GovernedFlowGuide(){
     <div className="gfg-states" aria-label="Governed workflow states">
       <span>HOOKS STAGED</span><b>→</b><span>HUMAN REVIEW PAUSE</span><b>→</b><span>SIGNED DOCKER ATTEMPT</span><b>→</b><span>LOCAL DRAFT REVIEW</span>
     </div>
-    <p className="gfg-warning">Every transition is operator-directed. The public web app cannot run local Python, sign leases, launch Docker, or publish content. If Stage 2 fails after the attempt event, this session does NOT auto-retry. A draft is not an approved release.</p>
+    <p className="gfg-warning">Every transition is operator-directed. Both stages of the new controller require Docker; only the separately initiated R14 legacy CLI still runs host Python. The public site cannot run local Python, sign leases, launch Docker, or publish. If Stage 2 fails after the attempt event, this session does NOT auto-retry. A draft is not an approved release.</p>
     <div className="gfg-commands">{COMMANDS.map(item=><article className="gfg-command" key={item.label}>
       <strong>{item.label}</strong>
       <p>{item.note}</p>

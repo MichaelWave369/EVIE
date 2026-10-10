@@ -22,6 +22,7 @@ from tools import evie_supervised_hooks as hooks
 from tools import evie_supervised_distribution as distribution
 from tools import evie_isolated_distribution as isolated
 from tools import evie_container_runner as capsule
+from tools import evie_hooks_container as hooks_capsule
 from tools.evie_action_lease_contract import load_lease, verify_local_lease
 from tools.evie_attest import load_public_key
 from tools.evie_supervised import _stage_directory, _write_new
@@ -84,7 +85,7 @@ def plan() -> dict:
         "steps": [r["name"] for r in reviewed["steps"]],
         "runCapability": "local-explicit-two-stage-only",
         "approvalBoundary": "human_review_then_independent_short_lived_signed_lease",
-        "stageOneIsolation": "host-python-subprocess-not-os-sandbox",
+        "stageOneIsolation": "offline-Docker-required-no-host-fallback",
         "stageTwoIsolation": "offline-Docker-required-no-host-fallback",
         "nextStageExecuted": False,
         "publishingAuthorized": False,
@@ -101,6 +102,12 @@ def start_session(*, session_dir: str, script_file: str,
         raise ValueError("stage 1 wall time above audited maximum")
     target = _stage_directory(session_dir)
     _, digest = _preflight()
+    # Docker is mandatory for the NEW controller's Stage 1.
+    # Check preinstalled image BEFORE creating the session directory.
+    image_id = hooks_capsule.image_preflight()
+    def fixed_worker(title: str, script: str, seconds: int) -> dict:
+        return hooks_capsule.run_hooks_isolated(title, script, seconds, image_id=image_id)
+    isolation = hooks_capsule.isolation_metadata(image_id)
     # Validate operator input before allocating session.
     hooks._title(topic) if hasattr(hooks, "_title") else None
     hooks.read_input(script_file)
@@ -110,7 +117,10 @@ def start_session(*, session_dir: str, script_file: str,
             script_file=script_file, topic=topic,
             stage_dir=str(target / "hooks"),
             confirm=True, timeout=timeout,
+            worker_backend=fixed_worker, isolation_metadata=isolation,
         )
+        if stage1.get("executionIsolation") != isolation:
+            raise ValueError("Stage 1 isolation evidence not attached")
         if stage1.get("workflowSourceSha256") != digest:
             raise ValueError("R14 source drift while preparing controller session")
         record = {
@@ -126,7 +136,8 @@ def start_session(*, session_dir: str, script_file: str,
             "hooksStage": "hooks",
             "nextStage": "distribution",
             "stageOneExecutedLocally": True,
-            "stageOneOSIsolated": False,
+            "stageOneOSIsolated": True,
+            "stageOneIsolation": isolation,
             "stageTwoExecuted": False,
             "signedApprovalReceived": False,
             "externalPublishingAuthorized": False,
@@ -202,6 +213,7 @@ def session_status(session_dir: str) -> dict:
         "hooksArtifactSha256": first["hooksArtifactSha256"],
         "workflowSourceSha256": first["workflowSourceSha256"],
         "sessionNonce": first["sessionNonce"],
+        "stageOneIsolation": first.get("stageOneIsolation", {"profile": "legacy-host-subprocess"}),
         "stageOneOutput": "hooks/nine-hooks.json",
         "stageTwoOutput": "distribution/distribution-draft.json" if state == STATES[2] else None,
         "signedLeaseNecessary": state == STATES[0],
@@ -234,6 +246,12 @@ def resume_session(*, session_dir: str, lease_file: str,
     if type(timeout) is not int or not 1 <= timeout <= 20:
         raise ValueError("resume timeout outside signed budget")
     folder, first, source = _read_session(session_dir)
+    # Preserve status visibility for old R18 sessions but never approve an old
+    # host-executed Stage 1 for the R19 isolated-controller lane.
+    if (first.get("stageOneOSIsolated") is not True
+            or first.get("stageOneIsolation", {}).get("profile") != hooks_capsule.PROFILE
+            or first["stageOneIsolation"].get("networkMode") != "none"):
+        raise ValueError("Stage 1 requires a verified local Docker capsule profile")
     if (folder / EVENT_2).exists() or (folder / EVENT_3).exists():
         raise ValueError("session already attempted; no resume/replay")
     stage = str(folder / "distribution")

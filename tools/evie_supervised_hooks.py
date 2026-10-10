@@ -80,7 +80,8 @@ def review_markdown(obj):
         lines.append("")
     return ("\n".join(lines) + "\n").encode("utf-8")
 
-def stage_hooks(*, script_file, topic, stage_dir, confirm, workflow=WORKFLOW, timeout=20):
+def stage_hooks(*, script_file, topic, stage_dir, confirm, workflow=WORKFLOW, timeout=20,
+                worker_backend=None, isolation_metadata=None):
     if confirm is not True or workflow != WORKFLOW or type(timeout) is not int or not 1 <= timeout <= 20:
         raise ValueError("execution not explicitly authorized for this exact local fixture")
     if not isinstance(topic, str) or not 1 <= len(topic) <= 80 or topic != topic.strip() or not all(c.isalnum() or c in " -_" for c in topic):
@@ -89,7 +90,7 @@ def stage_hooks(*, script_file, topic, stage_dir, confirm, workflow=WORKFLOW, ti
     destination = _stage_directory(stage_dir)
     plan, workflow_sha, hashes = source_check()
     start = time.monotonic()
-    output, parsed = validate_child(subprocess_run(topic, script, timeout), topic, script)
+    output, parsed = validate_child((worker_backend or subprocess_run)(topic, script, timeout), topic, script)
     if source_check() != (plan, workflow_sha, hashes):
         raise ValueError("source changed during run")
     markdown = review_markdown(parsed)
@@ -110,6 +111,10 @@ def stage_hooks(*, script_file, topic, stage_dir, confirm, workflow=WORKFLOW, ti
             "llmCalled": False, "providerCredentialsProvided": False, "externalPublishing": False,
             "networkSandboxEnforced": False, "authorizedForFutureRuns": False,
             "humanReviewRequired": True, "signed": False,
+        },
+        "executionIsolation": isolation_metadata or {
+            "profile": "legacy-host-subprocess",
+            "osSandbox": False,
         },
         "note": "Unsigned local template run, not authenticated or approved for publishing.",
     }
